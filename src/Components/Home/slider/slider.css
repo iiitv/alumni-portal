@@ -1,0 +1,22 @@
+body{
+  height:100%;
+}
+.img-slider{
+  background-image:url("asset/images/Slider/bulb.png");
+  background-size: 100% 87%;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+.innerDiv{
+  width: 80%;
+  background-color: white;
+  margin: 0px auto;
+  margin-top: 50px;
+}
+.innerDiv img{
+  height: 37rem;
+  display: block;
+  width: 100%;
+  border: 2px solid white;
+  object-fit: "cover";
+}
