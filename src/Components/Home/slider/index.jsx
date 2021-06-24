@@ -1,13 +1,13 @@
 import { Slide } from 'react-slideshow-image';
 import "react-slideshow-image/dist/styles.css";
-import "./slider.css";
+import "./Slider.scss";
 
 const ImageSlider = () => {
   const images = [
-    "images/img1.jpeg",
-    "images/img2.jpg",
-    "images/img3.jpg",
-    "images/img4.jpg"
+    "asset/images/Home/Slider/img1.jpeg",
+    "asset/images/Home/Slider/img2.jpg",
+    "asset/images/Home/Slider/img3.jpg",
+    "asset/images/Home/Slider/img4.jpg"
   ];
 
 
@@ -21,7 +21,7 @@ const ImageSlider = () => {
   };
   
   return (
-    <div class="img-slider">
+    <div class="img-slider" style={{ backgroundImage: `url(asset/images/Home/Slider/bulb.png)`  }}>
       <Slide {...properties} className="slider">
         {images.map((each, index) => (
           <div key={index} className="innerDiv">

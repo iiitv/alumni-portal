@@ -14,7 +14,7 @@ const images = [
 const Gallery = () => {
   return (
     <>
-      <div className="gallery" style={{ backgroundImage: `url(images/gallery-bg.png)`  }}>
+      <div className="gallery" style={{ backgroundImage: `url(asset/images/Home/Gallery/gallery-bg.png)`  }}>
         <div className="headContainer">
           <h1 className="GalleryHead">Gallery</h1>
         </div>
@@ -23,7 +23,7 @@ const Gallery = () => {
         </div>
       </div>
 
-      <div className="mobileGallery"  style={{ backgroundImage: `url(images/gallery-bg.png)`  }}>
+      <div className="mobileGallery"  style={{ backgroundImage: `url(asset/images/Home/Gallery/gallery-bg.png)`  }}>
         <div className="headContainer">
           <h1 className="mobileGallery__head">Gallery</h1>
         </div>
