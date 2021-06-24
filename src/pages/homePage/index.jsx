@@ -1,8 +1,10 @@
 import ImageSlider from '../../Components/slider/index'
-const HomePage = ()=>{
+import Gallery from '../../Components/Gallery/index'
+const HomePage = () => {
     return (
         <div>
             <ImageSlider />
+            <Gallery />
         </div>
     )
 }
