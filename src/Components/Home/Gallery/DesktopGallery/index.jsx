@@ -36,7 +36,7 @@ const DesktopGallery = ({ images }) => {
       <CarouselProvider
         naturalSlideWidth={500}
         naturalSlideHeight={400}
-        totalSlides={6}
+        totalSlides={4}
         visibleSlides={2.5}
         interval={2000}
         isPlaying={true}

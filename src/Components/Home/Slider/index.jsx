@@ -19,7 +19,7 @@ const ImageSlider = () => {
     arrows: false,
     pauseOnHover: true,
   };
-  
+
   return (
     <div class="img-slider" style={{ backgroundImage: `url(asset/images/Home/Slider/bulb.png)`  }}>
       <Slide {...properties} className="slider">
@@ -33,4 +33,4 @@ const ImageSlider = () => {
   )
 };
 
-export default ImageSlider;
+export default ImageSlider; 
