@@ -1,14 +1,18 @@
 import React,{ useState } from 'react'
 import {Menu,Dropdown} from 'semantic-ui-react'
-import "./Navbar.scss"
 
 const Navbar = () => {
     const [activeItem,setActiveItem] = useState("");
     const clickHandler = (name) => {
         setActiveItem(name);
     };
+    const navStyle = {
+        backgroundColor: '#18535B',
+        borderRadius: '0px'
+    }
     return (
-        <Menu inverted color='teal' stackable= { true } widths={7}>
+        <Menu inverted widths={9} stackable= { true } style={navStyle}>
+        
         <Menu.Item
           name='About Us'
           active={activeItem === 'About Us'}
