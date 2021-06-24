@@ -14,6 +14,8 @@
     "react-scripts": "4.0.3",
     "react-slideshow-image": "^3.4.7",
     "sass": "^1.35.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
