@@ -39,8 +39,6 @@ const MobileGallery = ({ images }) => {
         visibleSlides={1}
       >
         <Slider>{renderSlide(images)}</Slider>
-        <ButtonBack className="prevMobile">&#10094;</ButtonBack>
-        <ButtonNext className="nextMobile">&#10095;</ButtonNext>
       </CarouselProvider>
     </>
   );
