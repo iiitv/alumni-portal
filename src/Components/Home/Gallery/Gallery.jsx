@@ -1,8 +1,8 @@
 import React from "react";
 import "./Gallery.scss";
 import "pure-react-carousel/dist/react-carousel.es.css";
-import DesktopGallery from "./DesktopGallery/index";
-import MobileGallery from "./MobileGallery/index";
+import DesktopGallery from "./DesktopGallery/DesktopGallery";
+import MobileGallery from "./MobileGallery/MobileGallery";
 
 const images = [
   "images/img1.jpeg",
