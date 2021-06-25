@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'Mate SC';
+    src: url(../../../fonts/MateSC-Regular.ttf) format('truetype');
+}
+
+.brand-logo {
+    margin: 0.7rem 2rem 0.4rem 6rem;
+    float: left;
+}
+.brand-img {
+    height: 5.2rem;
+    width: auto;
+}
+.brand {
+    margin: 1rem 2rem 0rem 0;
+    float: left;
+}
+.brand-name {
+    font-family: 'Mate SC';
+    color: #18535B;
+    font-size: 1.45rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.social {
+    margin: 1.9rem 2rem 0rem 30rem;
+    float: left;
+}
+.social-icon {
+    margin-left: 0.7rem;
+    height: 2.2rem;
+    width: auto;
+}
+.button {
+    margin: 1.9rem 0.5rem 0rem 2rem;
+    float: left;
+    color: #ffff;
+    font-size: 1rem;
+    background-color: #18535B;
+    padding: 0.5rem 1rem;
+}
