@@ -1,4 +1,4 @@
-import Gallery from './Gallery/MobileGallery/MobileGallery'
+import Gallery from './Gallery/Gallery'
 import ImageSlider from './Slider/Slider'
 import Navbar from './Navbar/Navbar'
 import Header from './Header/Header'
