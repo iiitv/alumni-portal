@@ -2,7 +2,10 @@
     font-family: 'Mate SC';
     src: url(../../../fonts/MateSC-Regular.ttf) format('truetype');
 }
-
+@font-face {
+    font-family: 'ReemKufi';
+    src: url(../../../fonts/ReemKufi-Regular.ttf) format('truetype');
+}
 .brand-logo {
     margin: 0.7rem 2rem 0.4rem 6rem;
     float: left;
@@ -34,6 +37,7 @@
 }
 .button {
     margin: 1.9rem 0.5rem 0rem 2rem;
+    font-family: 'ReemKufi';
     float: left;
     color: #ffff;
     font-size: 1rem;
