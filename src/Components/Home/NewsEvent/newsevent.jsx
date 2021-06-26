@@ -1,6 +1,6 @@
-import "./Newsevent.scss";
-import News from './News/Newsfeed'
-import Event from './Event/Event'
+import "./newsevent.scss";
+import News from './News/newsfeed'
+import Event from './Event/event'
 
 const NewsEvent = ()=>{ 
     return (
