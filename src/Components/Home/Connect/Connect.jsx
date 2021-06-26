@@ -1,5 +1,5 @@
 import React from 'react'
-import "./connect.scss";
+import "./Connect.scss";
 
 
 const connect = ()=>{
