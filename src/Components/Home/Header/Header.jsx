@@ -34,11 +34,9 @@ const Header = () => {
                 <a href="/"><img src={ socialIcons[3] } alt="youtube" className="social-icon" /></a>
                 <a href="/"><img src={ socialIcons[4] } alt="instagram" className="social-icon" /></a>
             </div>
-            <a href="/">
-                <div className='button'>
-                    Sign Up/Login
-                </div>
-            </a>
+            <button className='button' onClick="/">
+                Sign Up/Login
+            </button>
         </>
     )
 }

@@ -34,13 +34,18 @@
     margin-left: 0.7rem;
     height: 2.2rem;
     width: auto;
+    float: left;
 }
 .button {
-    margin: 1.9rem 0.5rem 0rem 2rem;
+    margin: 1.9rem 1.5rem 0rem 2rem;
     font-family: 'ReemKufi';
-    float: left;
     color: #ffff;
     font-size: 1rem;
     background-color: #18535B;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1rem;
+    border-width: 0;
+}
+.button:hover {
+    cursor: pointer;
+    background-color: #0e8392;
 }
