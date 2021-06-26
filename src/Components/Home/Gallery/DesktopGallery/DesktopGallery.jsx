@@ -13,10 +13,9 @@ const renderSlides = (images) => {
 
   return images.map((image, index) => {
     let imageUrl = `${imageUrlPrefix}img${index + 1}.jpg`;
-    console.log(imageUrl);
 
     return (
-      <Slide index={index}>
+      <Slide index={index} key={index}>
         <div className="largeImg">
           <img
             className="galleryImg"

@@ -21,7 +21,7 @@ const ImageSlider = () => {
   };
 
   return (
-    <div class="img-slider" style={{ backgroundImage: `url(asset/images/Home/Slider/bulb.png)`  }}>
+    <div className="img-slider" style={{ backgroundImage: `url(asset/images/Home/Slider/bulb.png)`  }}>
       <Slide {...properties} className="slider">
         {images.map((each, index) => (
           <div key={index} className="innerDiv">

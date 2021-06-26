@@ -1,8 +1,10 @@
+
 import Gallery from './Gallery/Gallery'
 import ImageSlider from './Slider/Slider'
 import Navbar from './Navbar/Navbar'
 import Header from './Header/Header'
-import 'semantic-ui-css/semantic.min.css'
+import NewsEvent from './NewsEvent/Newsevent'
+import Connect from './Connect/Connect'
 
 const Home = ()=>{
     return (
@@ -10,6 +12,8 @@ const Home = ()=>{
             <Header/>
             <Navbar />
             <ImageSlider />
+            <NewsEvent />
+            <Connect />     
             <Gallery />
         </div>
     )

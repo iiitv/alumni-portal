@@ -12,7 +12,7 @@ const renderSlide = (images) => {
   return images.map((Image, index) => {
     let imageUrl = `${imageUrlPrefix}img${index + 1}.jpg`;
     return (
-      <Slide index={index}>
+      <Slide index={index} key={index}>
         <div className="mobileGallery__container">
           <img
             alt="img"

@@ -1,0 +1,56 @@
+.event-card{
+    margin: 0 30px;
+    padding:0 30px;
+    width: 50%;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
+    background-size: 25% 30%;
+    background-position: top right;
+    background-repeat: no-repeat;
+    // background-color: #f6f6f6;
+}
+.particular-event{
+    display: flex;
+    border-top: 1px solid #4140402d;
+    border-bottom: 1px solid #4140402d;
+    margin-bottom: 15px;
+    padding: 15px 0;
+}
+.event-timeline{
+    font-size: 14px;
+    color: #BBBBBB;
+}
+.event-month{
+    font-size:20px;
+}
+.event-date{
+    font-size:40px;
+}
+.event-name{
+    padding-bottom: 7px;
+    font-size:20px;
+}
+.register-event-btn{
+    background-color:#194E56;
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.event-info p,.event-time-info p{
+    margin: 0;
+}
+.event-info{
+    border-left: 1px solid  #EAEAEA;
+    padding-left: 15px;
+}
+.event-time-info{
+    padding-right: 15px;
+}
+.event-heading{
+    color:#194E56;
+}
