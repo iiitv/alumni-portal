@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Avenir';
+    src: url('../../../../fonts/AvenirNextLTPro-Regular.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../../../../fonts/Gilroy-Light.otf');
+}
 //card-scss
 .news-card{
     margin: 0 10px;
@@ -13,6 +21,7 @@
 }
 
 .news-heading{
+    font-family: 'Avenir';
     padding-bottom: 1.1rem;
     margin: 0;
     border-bottom: 1px solid #4140402d;
@@ -40,9 +49,11 @@
 }
 .news-info{
     padding: 0;
+    font-family: 'Gilroy';
 }
 .news-time-info{
     padding-right: 15px;
+    font-family: 'Gilroy';
 }
 
 @media only screen and (max-width: 1000px) {
