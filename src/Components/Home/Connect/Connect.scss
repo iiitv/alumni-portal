@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Avenir';
+    src: url('../../../fonts/AvenirNextLTPro-Regular.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../../../fonts/Gilroy-Light.otf') format('opentype');
+}
 .wrapper{
     padding: 0px;
     display:grid;
@@ -24,11 +32,16 @@
 }
 
 
-.heading{
-    font-size: 2.4rem;
+.heading {
+    font-size: 2.8rem;
+}
+.cont{
+    font-family: 'Avenir';
+    font-weight: 900;
 }
 
 .connect-btn{
+    font-family: 'Avenir';
     background-color: #fff;
     width: 8rem;
     height: 2.7rem;
@@ -41,12 +54,14 @@
 }       
 
 .connect-btn:hover{
+    font-family: 'Avenir';
     cursor: pointer;
     background-color: #f3f3f3;
     color: rgb(0, 0, 0);
 }
 
 .knowmore{
+    font-family: 'Gilroy';
     width: 100%;
     padding: 40px;
     // max-width: 700px;
@@ -60,10 +75,12 @@
 }
 
 .info{
+    font-family: 'Gilroy';
     font-size: 1.5rem;
 }
 
 .know-btn{
+    font-family: 'Gilroy';
     background-color: #006E6D;
     width: 150px;
     height: 40px;
@@ -82,6 +99,7 @@
 
 @media only screen and (max-width: 1000px) {
     .info{
+        font-family: 'Gilroy';
         font-size: 1.2rem;
     }
 }
