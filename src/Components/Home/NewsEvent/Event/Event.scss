@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Avenir';
+    src: url('../../../../fonts/AvenirNextLTPro-Regular.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../../../../fonts/Gilroy-Light.otf') format('opentype');
+}
 .event-card{
     margin: 0 10px;
     padding:0 20px;
@@ -19,20 +27,25 @@
     padding: 15px 0;
 }
 .event-timeline{
+    font-family: 'Gilroy';
     font-size: 14px;
     color: #BBBBBB;
 }
 .event-month{
+    font-family: 'Gilroy';
     font-size:20px;
 }
 .event-date{
+    font-family: 'Gilroy';
     font-size:40px;
 }
 .event-name{
+    font-family: 'Gilroy';
     padding-bottom: 7px;
     font-size:20px;
 }
 .register-event-btn{
+    font-family: 'Gilroy';
     background-color:#194E56;
     color: white;
     border: none;
@@ -52,6 +65,7 @@
     padding-right: 15px;
 }
 .event-heading{
+    font-family: 'Avenir';
     color:#194E56;
 }
 
