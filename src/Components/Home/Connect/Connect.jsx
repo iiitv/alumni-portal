@@ -11,7 +11,7 @@ const connect = ()=>{
                     <button type="button" className="connect-btn">Connect</button>
                 </div>
             </div>
-            <div className="knowmore"> 
+            <div className="knowmore" style={{ backgroundImage: `url(asset/images/Home/Event/bg.png)`}} > 
                 <p className="info">
                 - Create a profile<br/>
                 - Browse Members by company,Industry and Location.<br/>

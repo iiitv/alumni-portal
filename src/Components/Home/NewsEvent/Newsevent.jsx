@@ -1,5 +1,5 @@
 import "./Newsevent.scss";
-import News from './News/Newsfeed'
+import News from './News/News'
 import Event from './Event/Event'
 
 const NewsEvent = ()=>{ 
