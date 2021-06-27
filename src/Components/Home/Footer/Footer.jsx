@@ -1,5 +1,5 @@
 import React,{ useState } from 'react'
-import {Menu,Dropdown} from 'semantic-ui-react'
+import {Menu} from 'semantic-ui-react'
 
 const Footer = () => {
     const [activeItem,setActiveItem] = useState("");
