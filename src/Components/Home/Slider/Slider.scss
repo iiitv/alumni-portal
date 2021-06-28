@@ -21,3 +21,18 @@ body{
     border: 2px solid white;
     object-fit: "cover";
   } 
+  @media only screen and (max-width: 800px) {
+    .innerDiv img{
+      height:25rem;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .innerDiv img{
+      height:20rem;
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    .innerDiv img{
+      height:15rem;
+    }
+  }
