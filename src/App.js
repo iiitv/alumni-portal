@@ -4,6 +4,7 @@ import NewsBlogs from "./Components/NewsBlogs/NewsBlogs";
 import Header from "./Components/Shared/Header/Header";
 import Footer from "./Components/Shared/Footer/Footer";
 import Navbar from "./Components/Shared/Navbar/Navbar";
+import Event from './Components/Events/Event'
 import { createMedia } from "@artsy/fresnel";
 
 const AppMedia = createMedia({
@@ -30,6 +31,8 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route exact path="/News" component={NewsBlogs} />
+              <Route exact path="/Events" component={Event} />
+              <Route exact path="/event/:id" component={Event} />
             </Switch>
           </Navbar>
         </MediaContextProvider>
