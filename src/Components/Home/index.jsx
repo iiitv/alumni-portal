@@ -1,10 +1,10 @@
 import Gallery from './Gallery/Gallery'
 import ImageSlider from './Slider/Slider'
-import Navbar from './Navbar/Navbar'
-import Header from './Header/Header'
+import Navbar from '../Shared/Navbar/Navbar'
+import Header from '../Shared/Header/Header'
 import NewsEvent from './NewsEvent/Newsevent'
 import Connect from './Connect/Connect'
-import Footer from './Footer/Footer'
+import Footer from '../Shared/Footer/Footer'
 import { createMedia } from "@artsy/fresnel";
 
 const AppMedia = createMedia({
