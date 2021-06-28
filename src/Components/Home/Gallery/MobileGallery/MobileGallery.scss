@@ -1,0 +1,34 @@
+  .mobileGallery__container{
+    height: 100%;  
+  }
+  
+  .mobileGallery__container__img{
+    width: 100%;
+    height: 60%;
+    border: 4px solid white;
+    object-fit: cover;
+  }
+  
+  .mobileGallery__carousel{
+    position: relative;
+    width: 90%;
+    height: 250px;
+    padding: 0 17px;
+  }
+  
+  .galleryImg{
+    object-fit: cover;
+  }
+    
+  .mobileGallery__container{
+    padding: 0 20px;
+  }
+  
+  @media only screen and (max-width: 500px){
+    .gallery{
+      display: none;
+    }
+    .mobileGallery{
+      display: flex;
+    }
+  }

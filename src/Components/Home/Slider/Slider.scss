@@ -1,0 +1,38 @@
+body{
+    height:100%;
+  }
+  .img-slider{
+    // relative import do not work at compile time also react do not support root import i.e import outside src
+    // background-image:url("asset/");
+    background-size: 100% 87%;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
+  .innerDiv{
+    width: 80%;
+    background-color: white;
+    margin: 0px auto;
+    margin-top: 50px;
+  }
+  .innerDiv img{
+    height: 37rem;
+    display: block;
+    width: 100%;
+    border: 2px solid white;
+    object-fit: "cover";
+  } 
+  @media only screen and (max-width: 800px) {
+    .innerDiv img{
+      height:25rem;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .innerDiv img{
+      height:20rem;
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    .innerDiv img{
+      height:15rem;
+    }
+  }

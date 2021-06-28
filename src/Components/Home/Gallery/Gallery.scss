@@ -1,0 +1,74 @@
+  @font-face {
+    font-family: 'Avenir';
+    src: url(../../../fonts/AvenirNextLTPro-Regular.otf) format('opentype');
+  }
+  .galleryCarousel{
+    position: relative;
+    // margin-top: 100px;
+  }
+
+  .desktop-gallery {
+    margin-top: 100px;
+  }
+  
+  .gallery {
+    margin-bottom: 150px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .gallery h1 {
+    font-size: 2.5rem;
+    font-family: 'Avenir';
+    color: #124F56;
+    font-weight: 300;
+    padding-top: 20px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+  }
+  
+  
+  .GalleryHead {
+    width: 110px;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: 22px;
+    margin-left: 45px;
+    padding: 5px 10px;
+    margin-bottom: 84px;
+  }
+  
+  
+  .mobileGallery{
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-flow: column;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .headContainer{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .mobileGallery__head{
+    width: 135px;
+    text-align: center;
+    margin-top: 20px;
+    color: #124F56;
+    font-weight: 600;
+    font-size: 22px;
+    padding: 10px 0;
+    margin-left: 15px;
+  }
+  .mobileGallery__carousel{
+    position: relative;
+    width: 90%;
+    height: 80%;
+    padding: 0 17px;
+  }

@@ -1,0 +1,160 @@
+@font-face {
+    font-family: 'Mate SC';
+    src: url(../../../fonts/MateSC-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'ReemKufi';
+    src: url(../../../fonts/ReemKufi-Regular.ttf) format('truetype');
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+.left-flex {
+    display: flex;
+}
+.right-flex {
+    display: flex;
+}
+.brand-logo {
+    margin: 0.7rem 2rem 0.4rem 6rem;
+}
+.brand-img {
+    height: 5.2rem;
+    width: auto;
+}
+.brand {
+    margin: 1rem 2rem 0rem 0;
+}
+.brand-name {
+    font-family: 'Mate SC';
+    color: #18535B;
+    font-size: 1.45rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.social {
+    padding: 1.9rem 1rem 0rem 0rem;
+}
+.social-icon {
+    margin-left: 0.7rem;
+    height: 2.2rem;
+    width: auto;
+}
+.button {
+    margin: 1.9rem 6rem 1.9rem 3rem;
+    font-family: 'ReemKufi';
+    color: #ffff;
+    font-size: 1rem;
+    background-color: #18535B;
+    padding: 0 1rem;
+    border-width: 0;
+}
+.button:hover {
+    cursor: pointer;
+    background-color: #0e8392;
+}
+
+@media only screen and (max-width: 1000px) {
+    .header {
+        display:list-item
+    }
+    .left-flex {
+        display: flex;
+        justify-content: center;
+    }
+    .right-flex {
+        display: flex;
+        justify-content:center;
+    }
+    .brand-logo {
+        margin: 0.7rem 2rem 0.4rem 2.5rem;
+    }
+    .brand-img {
+        height: 5.2rem;
+        width: auto;
+    }
+    .brand {
+        margin: 1rem 2rem 0rem 0;
+    }
+    .brand-name {
+        font-family: 'Mate SC';
+        color: #18535B;
+        font-size: 1.45rem;
+        margin-top: 0.4rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    .social {
+        margin: 1rem auto;
+    }
+    .social-icon {
+        margin-left: 0.7rem;
+        height: 2.2rem;
+        width: auto;
+    }
+    .button {
+        margin: 3rem auto;
+        font-family: 'ReemKufi';
+        color: #ffff;
+        font-size: 1rem;
+        background-color: #18535B;
+        padding: 0.5rem 1rem;
+        border-width: 0;
+    }
+    .button:hover {
+        cursor: pointer;
+        background-color: #0e8392;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .left-flex {
+        display: flex;
+        justify-content: center;
+    }
+    .right-flex {
+        display: list-item;
+        justify-content: center;
+    }
+    .brand-logo {
+        margin: 0.7rem 2rem 0.4rem 1rem;
+    }
+    .brand-img {
+        height: 5.2rem;
+        width: auto;
+    }
+    .brand {
+        margin: 1rem 1rem 0 0;
+    }
+    .brand-name {
+        font-family: 'Mate SC';
+        color: #18535B;
+        font-size: 1.45rem;
+        margin-top: 0.4rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    .social {
+        margin: 1rem 0 1rem 2.5rem;
+    }
+    .social-icon {
+        margin-left: 0.7rem;
+        height: 2.2rem;
+        width: auto;
+    }
+    .button {
+        margin: 1rem 0 1rem 3rem;
+        font-family: 'ReemKufi';
+        color: #ffff;
+        font-size: 1rem;
+        background-color: #18535B;
+        padding: 0.5rem 1rem;
+        border-width: 0;
+    }
+    .button:hover {
+        cursor: pointer;
+        background-color: #0e8392;
+    }
+}
