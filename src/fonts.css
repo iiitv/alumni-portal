@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Avenir';
+    src: url(./fonts/AvenirNextLTPro-Regular.otf) format('opentype');
+  }
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url(./fonts/Gilroy-Light.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Mate SC';
+    src: url(./fonts/MateSC-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'ReemKufi';
+    src: url(./fonts/ReemKufi-Regular.ttf) format('truetype');
+}

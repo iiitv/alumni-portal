@@ -15,21 +15,25 @@ const AppMedia = createMedia({
     tablet: 768,
     computer: 992,
     largeScreen: 1200,
-    widescreen: 1920
-  }
+    widescreen: 1920,
+  },
 });
 
 // const mediaStyles = AppMedia.createMediaStyle();
 const { Media } = AppMedia;
 
 const items = [
-  {content: "Home", key: "Home", link: "/"},
-  {content: "About Us", key: "About Us", link: "/AboutUs" },
-  {content: "Meet the Alumni", key: "Meet the Alumni", link: "/MeetTheAlumni" },
-  {content: "News", key: "News", link: "/News" },
-  {content: "Events", key: "Events", link: "/Events" },
-  {content: "Jobs", key: "Jobs", link: "/Jobs" },
-  {content: "Blogs", key: "Blogs", link: "/Blogs" },
+  { content: "Home", key: "Home", link: "/" },
+  { content: "About Us", key: "About Us", link: "/AboutUs" },
+  {
+    content: "Meet the Alumni",
+    key: "Meet the Alumni",
+    link: "/MeetTheAlumni",
+  },
+  { content: "News", key: "News", link: "/News" },
+  { content: "Events", key: "Events", link: "/Events" },
+  { content: "Jobs", key: "Jobs", link: "/Jobs" },
+  { content: "Blogs", key: "Blogs", link: "/Blogs" },
 ];
 
 const NavBarChildren = (props) => (
@@ -37,7 +41,7 @@ const NavBarChildren = (props) => (
 );
 
 const NavBarMobile = (props) => {
-  const [visible,setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
   const pushHandler = () => {
     if(visible)
       setVisible(false);
@@ -96,40 +100,37 @@ const NavBarDesktop = (props) => {
     setActiveItem(item.content);
   };
   return (
-      
-      <Menu inverted widths={9} style={navStyle}>
-        {items.map((item) => (
-            <Menu.Item {...item} 
-              name={item}
-              active={activeItem === item.content}
-              onClick={() => clickHandler(item)}
-              className="nav-items"
-              as = { Link }
-              to = {item.link}
-            >
-            </Menu.Item>
-        ))}
-      </Menu>
+    <Menu inverted widths={9} style={navStyle}>
+      {items.map((item) => (
+        <Menu.Item
+          {...item}
+          name={item}
+          active={activeItem === item.content}
+          onClick={() => clickHandler(item)}
+          className="nav-items"
+          as={Link}
+          to={item.link}
+        ></Menu.Item>
+      ))}
+    </Menu>
   );
 };
-
 
 const Navbar = (props) => {
   return (
     <div>
-        <Media at="mobile">
-          <NavBarMobile>
-            <NavBarChildren>{props.children}</NavBarChildren>
-          </NavBarMobile>
-        </Media>
-
-        <Media greaterThan="mobile">
-          <NavBarDesktop />
+      <Media at="mobile">
+        <NavBarMobile>
           <NavBarChildren>{props.children}</NavBarChildren>
-        </Media>
+        </NavBarMobile>
+      </Media>
+
+      <Media greaterThan="mobile">
+        <NavBarDesktop />
+        <NavBarChildren>{props.children}</NavBarChildren>
+      </Media>
     </div>
   );
-  
 };
 
 export default Navbar;
