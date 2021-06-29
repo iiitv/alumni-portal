@@ -6,6 +6,13 @@ import Footer from "./Components/Shared/Footer/Footer";
 import Navbar from "./Components/Shared/Navbar/Navbar";
 import Event from './Components/Events/Event'
 import { createMedia } from "@artsy/fresnel";
+import 'semantic-ui-css/components/reset.min.css';
+import 'semantic-ui-css/components/site.min.css';
+import 'semantic-ui-css/components/container.min.css';
+import 'semantic-ui-css/components/icon.min.css';
+import 'semantic-ui-css/components/message.min.css';
+import 'semantic-ui-css/components/header.min.css';
+import 'react-semantic-toasts/styles/react-semantic-alert.css';
 
 const AppMedia = createMedia({
   breakpoints: {
