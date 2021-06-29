@@ -42,6 +42,10 @@ const NavBarMobile = (props) => {
     if(visible)
       setVisible(false);
   }
+  const [activeItem, setActiveItem] = useState("");
+  const clickHandler = (item) => {
+    setActiveItem(item.content);
+  };
   const toggleHandler = () => setVisible(!visible);
   return (
     <>
@@ -50,7 +54,7 @@ const NavBarMobile = (props) => {
             <Icon name="sidebar" />
           </Menu.Item>
         </Menu>
-      <Sidebar.Pushable>
+      <Sidebar.Pushable className='side-push'>
         <Sidebar
           as={Menu}
           animation="overlay"
@@ -58,15 +62,26 @@ const NavBarMobile = (props) => {
           icon="labeled"
           inverted
           style={navStyle}
-          items={items}
           vertical
           visible={visible}
         >
+          {items.map((item) => (
+            <Menu.Item {...item} 
+              name={item}
+              active={activeItem === item.content}
+              onClick={() => clickHandler(item)}
+              className="nav-items"
+              as = { Link }
+              to = {item.link}
+            >
+            </Menu.Item>
+        ))}
         </Sidebar>
         <Sidebar.Pusher
           dimmed={visible}
           onClick={pushHandler}
           style={{ minHeight: "100vh" }}
+          className='side-push'
         >
           {props.children}
         </Sidebar.Pusher>
