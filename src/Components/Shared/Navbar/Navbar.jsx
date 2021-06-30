@@ -37,7 +37,7 @@ const items = [
 ];
 
 const NavBarChildren = (props) => (
-  <Container fluid={true}>{props.children}</Container>
+  <Container fluid>{props.children}</Container>
 );
 
 const NavBarMobile = (props) => {
@@ -88,6 +88,8 @@ const NavBarMobile = (props) => {
           className='side-push'
         >
           {props.children}
+          
+           {/* <NavBarChildren /> */}
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     </>
@@ -121,7 +123,7 @@ const Navbar = (props) => {
     <div>
       <Media at="mobile">
         <NavBarMobile>
-          <NavBarChildren>{props.children}</NavBarChildren>
+            {props.children}
         </NavBarMobile>
       </Media>
 
