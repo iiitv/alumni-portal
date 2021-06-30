@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./Components/Home/index";
-import NewsBlogsPost from "./Components/News/NewsBlogsPost/NewsBlogsPost";
+import NewsBlogsPost from "./Components/NewsBlogs/NewsBlogsPost/NewsBlogsPost";
 import Header from "./Components/Shared/Header/Header";
 import Footer from "./Components/Shared/Footer/Footer";
 import Navbar from "./Components/Shared/Navbar/Navbar";
@@ -13,7 +13,7 @@ import 'semantic-ui-css/components/icon.min.css';
 import 'semantic-ui-css/components/message.min.css';
 import 'semantic-ui-css/components/header.min.css';
 import 'react-semantic-toasts/styles/react-semantic-alert.css';
-import NewsBlogsCard from "./Components/News/NewsBlogsCards/NewsBlogsCard";
+import NewsBlogsCard from "./Components/NewsBlogs/NewsBlogsCards/NewsBlogsCard";
 
 const AppMedia = createMedia({
   breakpoints: {
