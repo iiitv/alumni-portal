@@ -1,4 +1,4 @@
-import "./NewsBlogs.scss";
+import "./NewsBlogsPost.scss";
 import { Container, Segment, Popup } from "semantic-ui-react";
 import { useLocation } from "react-router";
 
@@ -13,7 +13,7 @@ const sampleText =
 const sampleTextSecond =
   "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pedejusto, fringilla vel, aliquet nec, vulputate eget, arcu. In enimjusto, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullamdictum felis eu pede link mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequatvitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut ";
 
-const NewsBlogs = () => {
+const NewsBlogsPost = () => {
   const location = useLocation();
   const copyLink = () => {
     let link = websitePrefix + location.pathname;
@@ -62,4 +62,4 @@ const NewsBlogs = () => {
   );
 };
 
-export default NewsBlogs;
+export default NewsBlogsPost;

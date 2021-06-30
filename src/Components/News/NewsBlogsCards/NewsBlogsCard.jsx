@@ -2,9 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Popup } from 'semantic-ui-react'
 import { SemanticToastContainer, toast } from "react-semantic-toasts"
-import "./News.scss"
+import "./NewsBlogsCard.scss"
+import { useLocation } from "react-router";
 
-const News = () => {
+const NewsBlogsCard = () => {
     let news = [
         { 
             id: 1,
@@ -47,11 +48,13 @@ const News = () => {
             img: "asset/images/NewsAndBlogs/sample-news.png"
         },
     ];
+    const websitePrefix = "http://localhost:3000";
+    const location = useLocation();
     const copyLink = (id) => {
-        let link = `http://localhost:3000/news/${id}`;
+        let link = websitePrefix+location.pathname;
         navigator.clipboard.writeText(link);
         toast({
-          description: <p>News Link Copied to Clipboard</p>,
+          description: <p>Link Copied to Clipboard</p>,
         });
       };
     const renderNews = (obj) => {
@@ -59,7 +62,7 @@ const News = () => {
             <div className="news-block">
                 <div className="share-news-div">
                     <Popup
-                        content="Copy News Link"
+                        content="Copy Link"
                         trigger={
                             <img
                             className="share-news-btn"
@@ -74,7 +77,7 @@ const News = () => {
                 </div>
                 <div className="news">
                     <div className="news-text eq-h">
-                        <Link to={`/news/${obj.id}`} className="news-link">
+                        <Link to={`${location.pathname}/${obj.id}`} className="news-link">
                             <p className="news-head">
                                 {obj.heading}
                             </p>
@@ -99,4 +102,4 @@ const News = () => {
     )
 }
 
-export default News
+export default NewsBlogsCard
