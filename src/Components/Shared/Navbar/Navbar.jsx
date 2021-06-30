@@ -71,8 +71,6 @@ const NavBarMobile = (props) => {
           style={{ minHeight: "100vh" }}
         >
           {props.children}
-          
-           {/* <NavBarChildren /> */}
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     </>
