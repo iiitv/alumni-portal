@@ -88,8 +88,6 @@ const NavBarMobile = (props) => {
           className='side-push'
         >
           {props.children}
-          
-           {/* <NavBarChildren /> */}
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     </>
