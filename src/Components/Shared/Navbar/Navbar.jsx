@@ -24,16 +24,16 @@ const { Media } = AppMedia;
 
 const items = [
   { content: "Home", key: "Home", link: "/" },
-  { content: "About Us", key: "About Us", link: "/AboutUs" },
+  { content: "About Us", key: "About Us", link: "/aboutus" },
   {
     content: "Meet the Alumni",
     key: "Meet the Alumni",
     link: "/MeetTheAlumni",
   },
-  { content: "News", key: "News", link: "/News" },
-  { content: "Events", key: "Events", link: "/Events" },
-  { content: "Jobs", key: "Jobs", link: "/Jobs" },
-  { content: "Blogs", key: "Blogs", link: "/Blogs" },
+  { content: "News", key: "News", link: "/news" },
+  { content: "Events", key: "Events", link: "/events" },
+  { content: "Jobs", key: "Jobs", link: "/jobs" },
+  { content: "Blogs", key: "Blogs", link: "/blogs" },
 ];
 
 const NavBarChildren = (props) => (
@@ -43,17 +43,22 @@ const NavBarChildren = (props) => (
 const NavBarMobile = (props) => {
   const [visible, setVisible] = useState(false);
   const pushHandler = () => {
-    if (visible) setVisible(false);
+    if(visible)
+      setVisible(false);
+  }
+  const [activeItem, setActiveItem] = useState("");
+  const clickHandler = (item) => {
+    setActiveItem(item.content);
   };
   const toggleHandler = () => setVisible(!visible);
   return (
     <>
       <Menu inverted style={navStyle} widths={4}>
-        <Menu.Item onClick={toggleHandler}>
-          <Icon name="sidebar" />
-        </Menu.Item>
-      </Menu>
-      <Sidebar.Pushable>
+          <Menu.Item onClick={toggleHandler}>
+            <Icon name="sidebar" />
+          </Menu.Item>
+        </Menu>
+      <Sidebar.Pushable className='side-push'>
         <Sidebar
           as={Menu}
           animation="overlay"
@@ -61,14 +66,26 @@ const NavBarMobile = (props) => {
           icon="labeled"
           inverted
           style={navStyle}
-          items={items}
           vertical
           visible={visible}
-        ></Sidebar>
+        >
+          {items.map((item) => (
+            <Menu.Item {...item} 
+              name={item}
+              active={activeItem === item.content}
+              onClick={() => clickHandler(item)}
+              className="nav-items"
+              as = { Link }
+              to = {item.link}
+            >
+            </Menu.Item>
+        ))}
+        </Sidebar>
         <Sidebar.Pusher
           dimmed={visible}
           onClick={pushHandler}
           style={{ minHeight: "100vh" }}
+          className='side-push'
         >
           {props.children}
         </Sidebar.Pusher>

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./Components/Home/index";
-import NewsBlogs from "./Components/NewsBlogs/NewsBlogs";
+import NewsBlogsPost from "./Components/News/NewsBlogsPost/NewsBlogsPost";
 import Header from "./Components/Shared/Header/Header";
 import Footer from "./Components/Shared/Footer/Footer";
 import Navbar from "./Components/Shared/Navbar/Navbar";
@@ -13,6 +13,7 @@ import 'semantic-ui-css/components/icon.min.css';
 import 'semantic-ui-css/components/message.min.css';
 import 'semantic-ui-css/components/header.min.css';
 import 'react-semantic-toasts/styles/react-semantic-alert.css';
+import NewsBlogsCard from "./Components/News/NewsBlogsCards/NewsBlogsCard";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -37,9 +38,12 @@ const App = () => {
           <Navbar>
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route exact path="/News" component={NewsBlogs} />
-              <Route exact path="/Events" component={Event} />
+              <Route exact path="/news" component={NewsBlogsCard} />
+              <Route exact path="/news/:id" component={NewsBlogsPost} />
+              <Route exact path="/events" component={Event} />
               <Route exact path="/event/:id" component={Event} />
+              <Route exact path="/blogs" component={NewsBlogsCard} />
+              <Route exact path="/blogs/:id" component={NewsBlogsPost} />
             </Switch>
           </Navbar>
         </MediaContextProvider>
