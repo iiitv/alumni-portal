@@ -30,7 +30,7 @@ const NewsBlogsPost = () => {
             trigger={
               <img
                 className="share"
-                src="asset/svg/share.svg"
+                src="./../asset/svg/share.svg"
                 alt="share"
                 onClick={() => copyLink()}
               />
@@ -46,7 +46,7 @@ const NewsBlogsPost = () => {
               </div>
               <Container textAlign="center">
                 <img
-                  src="asset/images/NewsAndBlogs/sample-news.png"
+                  src={"./../asset/images/NewsAndBlogs/sample-news.png"}
                   alt="news"
                   className="news-image"
                 />
