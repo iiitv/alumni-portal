@@ -1,0 +1,42 @@
+.footer-items {
+    font-family: 'ReemKufi';
+    color: #006ED9;
+}
+.brand-logo-div {
+    text-align: center;
+    margin-top: 5rem;
+}
+.brand-logo-img {
+    height: 4.2rem;
+    width: auto;
+}
+.brand-name-div {
+    text-align: center;
+    padding-top: 1rem;
+}
+.brand-name-p {
+    font-family: 'Mate SC';
+    font-weight: 300;
+}
+.disclaimer-div {
+    text-align: center;
+    padding: 1rem 10rem 1rem 10rem;
+}
+.disclaimer {
+    color: #5A5A5A;
+    font-family: 'ReemKufi';
+    font-size: 0.8rem;
+}
+
+@media only screen and (max-width:920px) {
+    .disclaimer-div {
+        text-align: center;
+        padding: 1rem 5rem 1rem 5rem;
+    }
+}
+@media only screen and (max-width:500px) {
+    .disclaimer-div {
+        text-align: center;
+        padding: 1rem 1rem 1rem 1rem;
+    }
+}
