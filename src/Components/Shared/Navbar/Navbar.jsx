@@ -49,6 +49,7 @@ const NavBarMobile = (props) => {
   const [activeItem, setActiveItem] = useState("");
   const clickHandler = (item) => {
     setActiveItem(item.content);
+    setVisible(false);
   };
   const toggleHandler = () => setVisible(!visible);
   return (
