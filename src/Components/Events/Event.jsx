@@ -35,7 +35,7 @@ const Event = () => {
     },
   ];
   const copyLink = (id) => {
-    let link = `http://localhost:3000/event/${id}`;
+    let link = `https://iiitv-alumni-portal.netlify.app/event/${id}`;
     navigator.clipboard.writeText(link);
     toast({
       description: <p>Event Link Copied to Clipboard</p>,
