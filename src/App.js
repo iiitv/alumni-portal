@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import HomePage from "./Components/Home/index";
+import Home from "./Components/Home/Home";
 import NewsBlogsPost from "./Components/NewsBlogs/NewsBlogsPost/NewsBlogsPost";
 import Header from "./Components/Shared/Header/Header";
 import Footer from "./Components/Shared/Footer/Footer";
@@ -37,7 +37,7 @@ const App = () => {
         <MediaContextProvider>
           <Navbar>
             <Switch>
-              <Route exact path="/" component={HomePage} />
+              <Route exact path="/" component={Home} />
               <Route exact path="/news" component={NewsBlogsCard} />
               <Route exact path="/news/:id" component={NewsBlogsPost} />
               <Route exact path="/events" component={Event} />
