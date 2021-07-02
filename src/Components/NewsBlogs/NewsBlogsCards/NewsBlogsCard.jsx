@@ -48,7 +48,7 @@ const NewsBlogsCard = () => {
       img: "asset/images/NewsAndBlogs/sample-news.png",
     },
   ];
-  const websitePrefix = "https://iiitv-alumni-portal.netlify.app/";
+  const websitePrefix = "https://iiitv-alumni-portal.netlify.app";
   const location = useLocation();
   const copyLink = (id) => {
     let link = websitePrefix + location.pathname + "/" + id;
