@@ -14,6 +14,7 @@ import 'semantic-ui-css/components/message.min.css';
 import 'semantic-ui-css/components/header.min.css';
 import 'react-semantic-toasts/styles/react-semantic-alert.css';
 import NewsBlogsCard from "./Components/NewsBlogs/NewsBlogsCards/NewsBlogsCard";
+import Error404 from "./Components/Shared/Error404/Error404";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -44,6 +45,7 @@ const App = () => {
               <Route exact path="/event/:id" component={Event} />
               <Route exact path="/blogs" component={NewsBlogsCard} />
               <Route exact path="/blogs/:id" component={NewsBlogsPost} />
+              <Route component={Error404}/>
             </Switch>
           </Navbar>
         </MediaContextProvider>
