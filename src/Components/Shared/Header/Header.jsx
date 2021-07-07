@@ -3,13 +3,13 @@ import { Divider } from "semantic-ui-react";
 import "./Header.scss";
 
 const Header = () => {
-  const logo = "asset/images/Home/HeaderNFooter/logo.png";
+  const logo = "/asset/images/Home/HeaderNFooter/logo.png";
   const socialIcons = [
-    "asset/images/Home/HeaderNFooter/facebook.png",
-    "asset/images/Home/HeaderNFooter/twitter.png",
-    "asset/images/Home/HeaderNFooter/linkedin.png",
-    "asset/images/Home/HeaderNFooter/youtube.png",
-    "asset/images/Home/HeaderNFooter/instagram.png",
+    "/asset/images/Home/HeaderNFooter/facebook.png",
+    "/asset/images/Home/HeaderNFooter/twitter.png",
+    "/asset/images/Home/HeaderNFooter/linkedin.png",
+    "/asset/images/Home/HeaderNFooter/youtube.png",
+    "/asset/images/Home/HeaderNFooter/instagram.png",
   ];
   return (
     <div className="header">
