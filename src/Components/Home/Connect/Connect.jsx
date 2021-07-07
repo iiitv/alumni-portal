@@ -6,7 +6,7 @@ const connect = () => {
     <div className="wrapper">
       <div
         className="connect"
-        style={{ backgroundImage: ` url(asset/images/Home/homecon.png)` }}>
+        style={{ backgroundImage: ` url(asset/images/Home/homecon.png)`, backgroundSize: 'cover'}}>
         <div className="cont">
           <h1 className="heading">
             Connect with your <br /> classmates on the

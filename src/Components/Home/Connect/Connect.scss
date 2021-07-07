@@ -3,18 +3,15 @@
     display:grid;
     grid-gap: 0;
     justify-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
 .connect{           
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-    // max-width: 700px;
-    background-color: #fff;
     box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
     border-radius: 1px;
     justify-content: center;
@@ -55,12 +52,12 @@
 .knowmore{
     font-family: 'Gilroy';
     width: 100%;
-    padding: 40px;
+    padding: 60px 40px;
     // max-width: 700px;
     background-color: #fff;
     box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
     border-radius: 1px;
-    border: 20px solid #fff;
+    // border: 20px solid #fff;
     background-size: 20% 40%;
     background-position: top right;
     background-repeat: no-repeat;
@@ -96,13 +93,19 @@
     }
 }
 
+@media only screen and (max-width: 800px) {
+    .connect{
+        padding: 5rem  0px;
+    }   
+}
+
 
 @media only screen and (max-width: 600px) {
     .connect{
-        padding: 5rem  0px;
+        padding: 4rem  0px;
     }
       
     .knowmore{
-        padding: 20px;
+        padding: 50px 20px;
     }
 }
