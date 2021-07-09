@@ -1,7 +1,4 @@
-  @font-face {
-    font-family: 'Avenir';
-    src: url(../../../fonts/AvenirNextLTPro-Regular.otf) format('opentype');
-  }
+
   .galleryCarousel{
     position: relative;
     // margin-top: 100px;
@@ -63,6 +60,7 @@
     color: #124F56;
     font-weight: 600;
     font-size: 22px;
+    font-family: 'Avenir';
     padding: 10px 0;
     margin-left: 15px;
   }

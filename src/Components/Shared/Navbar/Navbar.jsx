@@ -15,33 +15,42 @@ const AppMedia = createMedia({
     tablet: 768,
     computer: 992,
     largeScreen: 1200,
-    widescreen: 1920
-  }
+    widescreen: 1920,
+  },
 });
 
 // const mediaStyles = AppMedia.createMediaStyle();
 const { Media } = AppMedia;
 
 const items = [
-  {content: "Home", key: "Home", link: "/"},
-  {content: "About Us", key: "About Us", link: "/AboutUs" },
-  {content: "Meet the Alumni", key: "Meet the Alumni", link: "/MeetTheAlumni" },
-  {content: "News", key: "News", link: "/News" },
-  {content: "Events", key: "Events", link: "/Events" },
-  {content: "Jobs", key: "Jobs", link: "/Jobs" },
-  {content: "Blogs", key: "Blogs", link: "/Blogs" },
+  { content: "Home", key: "Home", link: "/" },
+  { content: "About Us", key: "About Us", link: "/about-us" },
+  {
+    content: "Meet the Alumni",
+    key: "Meet the Alumni",
+    link: "/meet-the-alumni",
+  },
+  { content: "News", key: "News", link: "/news" },
+  { content: "Events", key: "Events", link: "/events" },
+  { content: "Jobs", key: "Jobs", link: "/jobs" },
+  { content: "Blogs", key: "Blogs", link: "/blogs" },
 ];
 
 const NavBarChildren = (props) => (
-  <Container fluid={true}>{props.children}</Container>
+  <Container fluid>{props.children}</Container>
 );
 
 const NavBarMobile = (props) => {
-  const [visible,setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
   const pushHandler = () => {
     if(visible)
       setVisible(false);
   }
+  const [activeItem, setActiveItem] = useState("");
+  const clickHandler = (item) => {
+    setActiveItem(item.content);
+    setVisible(false);
+  };
   const toggleHandler = () => setVisible(!visible);
   return (
     <>
@@ -50,7 +59,7 @@ const NavBarMobile = (props) => {
             <Icon name="sidebar" />
           </Menu.Item>
         </Menu>
-      <Sidebar.Pushable>
+      <Sidebar.Pushable className='side-push'>
         <Sidebar
           as={Menu}
           animation="overlay"
@@ -58,15 +67,26 @@ const NavBarMobile = (props) => {
           icon="labeled"
           inverted
           style={navStyle}
-          items={items}
           vertical
           visible={visible}
         >
+          {items.map((item) => (
+            <Menu.Item {...item} 
+              name={item}
+              active={activeItem === item.content}
+              onClick={() => clickHandler(item)}
+              className="nav-items"
+              as = { Link }
+              to = {item.link}
+            >
+            </Menu.Item>
+        ))}
         </Sidebar>
         <Sidebar.Pusher
           dimmed={visible}
           onClick={pushHandler}
           style={{ minHeight: "100vh" }}
+          className='side-push'
         >
           {props.children}
         </Sidebar.Pusher>
@@ -81,40 +101,37 @@ const NavBarDesktop = (props) => {
     setActiveItem(item.content);
   };
   return (
-      
-      <Menu inverted widths={9} style={navStyle}>
-        {items.map((item) => (
-            <Menu.Item {...item} 
-              name={item}
-              active={activeItem === item.content}
-              onClick={() => clickHandler(item)}
-              className="nav-items"
-              as = { Link }
-              to = {item.link}
-            >
-            </Menu.Item>
-        ))}
-      </Menu>
+    <Menu inverted widths={9} style={navStyle}>
+      {items.map((item) => (
+        <Menu.Item
+          {...item}
+          name={item}
+          active={activeItem === item.content}
+          onClick={() => clickHandler(item)}
+          className="nav-items"
+          as={Link}
+          to={item.link}
+        ></Menu.Item>
+      ))}
+    </Menu>
   );
 };
-
 
 const Navbar = (props) => {
   return (
     <div>
-        <Media at="mobile">
-          <NavBarMobile>
-            <NavBarChildren>{props.children}</NavBarChildren>
-          </NavBarMobile>
-        </Media>
+      <Media at="mobile">
+        <NavBarMobile>
+            {props.children}
+        </NavBarMobile>
+      </Media>
 
-        <Media greaterThan="mobile">
-          <NavBarDesktop />
-          <NavBarChildren>{props.children}</NavBarChildren>
-        </Media>
+      <Media greaterThan="mobile">
+        <NavBarDesktop />
+        <NavBarChildren>{props.children}</NavBarChildren>
+      </Media>
     </div>
   );
-  
 };
 
 export default Navbar;

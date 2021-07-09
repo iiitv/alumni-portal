@@ -1,11 +1,4 @@
-@font-face {
-    font-family: 'Avenir';
-    src: url('../../../../fonts/AvenirNextLTPro-Regular.otf') format('opentype');
-}
-@font-face {
-    font-family: 'Gilroy';
-    src: url('../../../../fonts/Gilroy-Light.otf') format('opentype');
-}
+
 .event-card{
     margin: 0 10px;
     padding:0 20px;
@@ -44,6 +37,12 @@
     padding-bottom: 7px;
     font-size:20px;
 }
+.event-name a{
+    color: #000000;
+}
+.event-name a:hover{
+    color:#194E56;
+}
 .register-event-btn{
     font-family: 'Gilroy';
     background-color:#194E56;
@@ -58,7 +57,8 @@
     margin: 0;
 }
 .event-info{
-    border-left: 1px solid  #EAEAEA;
+    border-left: 1px solid #CECECE;
+
     padding-left: 15px;
 }
 .event-time-info{
