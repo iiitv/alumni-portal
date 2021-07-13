@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <>
       <div className="brand-logo-div">
-        <img src="asset/images/Home/HeaderNFooter/logo.png" alt="iiitv-logo" className="brand-logo-img" />
+        <img src="/asset/images/Home/HeaderNFooter/logo.png" alt="iiitv-logo" className="brand-logo-img" />
       </div>
       <div className="brand-name-div">
         <p className="brand-name-p">Alumni Portal, IIIT Vadodara</p>
