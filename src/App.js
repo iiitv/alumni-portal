@@ -4,8 +4,15 @@ import NewsBlogsPost from "./Components/NewsBlogs/NewsBlogsPost/NewsBlogsPost";
 import Header from "./Components/Shared/Header/Header";
 import Footer from "./Components/Shared/Footer/Footer";
 import Navbar from "./Components/Shared/Navbar/Navbar";
+<<<<<<< HEAD
 import Event from "./Components/Events/Event";
 import EventPage from "./Components/Events/EventPage/EventPage";
+=======
+import Event from './Components/Events/Event';
+import AdminLogin from './Components/AdminLogin/AdminLogin'
+import EventPage from './Components/Events/EventPage/EventPage'
+import AddNews from './Components/Admin/News/AddNews/AddNews'
+>>>>>>> ad1b87bee74fdf3ec43bbc859e6c68bd53b8e2fb
 import { createMedia } from "@artsy/fresnel";
 import "semantic-ui-css/components/reset.min.css";
 import "semantic-ui-css/components/site.min.css";
@@ -40,15 +47,17 @@ const App = () => {
         <MediaContextProvider>
           <Navbar>
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/news" component={NewsBlogsCard} />
-              <Route exact path="/news/:id" component={NewsBlogsPost} />
-              <Route exact path="/events" component={Event} />
-              <Route exact path="/event/:id" component={EventPage} />
-              <Route exact path="/blogs" component={NewsBlogsCard} />
-              <Route exact path="/blogs/:id" component={NewsBlogsPost} />
-              <Route exact path="/meet-the-alumni" component={AlumniPage} />
-              <Route component={Error404} />
+                <Route exact path="/" component={Home} />
+                <Route exact path="/news" component={NewsBlogsCard} />
+                <Route exact path="/news/:id" component={NewsBlogsPost} />
+                <Route exact path="/events" component={Event} />
+                <Route exact path="/event/:id" component={EventPage} />
+                <Route exact path="/blogs" component={NewsBlogsCard} />
+                <Route exact path="/blogs/:id" component={NewsBlogsPost} />
+                <Route exact path="/admin-login" component={AdminLogin} />
+                <Route exact path="/admin/add-news" component={AddNews} />
+                <Route exact path="/meet-the-alumni" component={AlumniPage} />
+                <Route component={Error404}/>
             </Switch>
           </Navbar>
         </MediaContextProvider>
