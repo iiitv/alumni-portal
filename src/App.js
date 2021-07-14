@@ -4,18 +4,19 @@ import NewsBlogsPost from "./Components/NewsBlogs/NewsBlogsPost/NewsBlogsPost";
 import Header from "./Components/Shared/Header/Header";
 import Footer from "./Components/Shared/Footer/Footer";
 import Navbar from "./Components/Shared/Navbar/Navbar";
-import Event from './Components/Events/Event'
-import EventPage from './Components/Events/EventPage/EventPage'
+import Event from "./Components/Events/Event";
+import EventPage from "./Components/Events/EventPage/EventPage";
 import { createMedia } from "@artsy/fresnel";
-import 'semantic-ui-css/components/reset.min.css';
-import 'semantic-ui-css/components/site.min.css';
-import 'semantic-ui-css/components/container.min.css';
-import 'semantic-ui-css/components/icon.min.css';
-import 'semantic-ui-css/components/message.min.css';
-import 'semantic-ui-css/components/header.min.css';
-import 'react-semantic-toasts/styles/react-semantic-alert.css';
+import "semantic-ui-css/components/reset.min.css";
+import "semantic-ui-css/components/site.min.css";
+import "semantic-ui-css/components/container.min.css";
+import "semantic-ui-css/components/icon.min.css";
+import "semantic-ui-css/components/message.min.css";
+import "semantic-ui-css/components/header.min.css";
+import "react-semantic-toasts/styles/react-semantic-alert.css";
 import NewsBlogsCard from "./Components/NewsBlogs/NewsBlogsCards/NewsBlogsCard";
 import Error404 from "./Components/Shared/Error404/Error404";
+import AlumniPage from "./Components/MeetAlumni/AlumniPage/AlumniPage";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -46,7 +47,8 @@ const App = () => {
               <Route exact path="/event/:id" component={EventPage} />
               <Route exact path="/blogs" component={NewsBlogsCard} />
               <Route exact path="/blogs/:id" component={NewsBlogsPost} />
-              <Route component={Error404}/>
+              <Route exact path="/meet-the-alumni" component={AlumniPage} />
+              <Route component={Error404} />
             </Switch>
           </Navbar>
         </MediaContextProvider>
