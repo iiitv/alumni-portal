@@ -19,6 +19,7 @@ import 'react-semantic-toasts/styles/react-semantic-alert.css';
 import UserProvider from './providers/UserProvider';
 import NewsBlogsCard from "./Components/NewsBlogs/NewsBlogsCards/NewsBlogsCard";
 import Error404 from "./Components/Shared/Error404/Error404";
+import AlumniPage from "./Components/MeetAlumni/AlumniPage/AlumniPage";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -52,6 +53,7 @@ const App = () => {
                 <Route exact path="/blogs/:id" component={NewsBlogsPost} />
                 <Route exact path="/admin-login" component={AdminLogin} />
                 <Route exact path="/admin/add-news" component={AddNews} />
+                <Route exact path="/meet-the-alumni" component={AlumniPage} />
                 <Route component={Error404} />
               </Switch>
             </Navbar>
