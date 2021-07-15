@@ -16,6 +16,7 @@ import 'semantic-ui-css/components/icon.min.css';
 import 'semantic-ui-css/components/message.min.css';
 import 'semantic-ui-css/components/header.min.css';
 import 'react-semantic-toasts/styles/react-semantic-alert.css';
+import UserProvider from './providers/UserProvider';
 import NewsBlogsCard from "./Components/NewsBlogs/NewsBlogsCards/NewsBlogsCard";
 import Error404 from "./Components/Shared/Error404/Error404";
 
@@ -35,12 +36,13 @@ const { MediaContextProvider } = AppMedia;
 const App = () => {
   return (
     <div>
-      <Router>
-        <Header />
-        <style>{mediaStyles}</style>
-        <MediaContextProvider>
-          <Navbar>
-            <Switch>
+      <UserProvider>
+        <Router>
+          <Header />
+          <style>{mediaStyles}</style>
+          <MediaContextProvider>
+            <Navbar>
+              <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/news" component={NewsBlogsCard} />
                 <Route exact path="/news/:id" component={NewsBlogsPost} />
@@ -50,12 +52,13 @@ const App = () => {
                 <Route exact path="/blogs/:id" component={NewsBlogsPost} />
                 <Route exact path="/admin-login" component={AdminLogin} />
                 <Route exact path="/admin/add-news" component={AddNews} />
-                <Route component={Error404}/>
-            </Switch>
-          </Navbar>
-        </MediaContextProvider>
-        <Footer />
-      </Router>
+                <Route component={Error404} />
+              </Switch>
+            </Navbar>
+          </MediaContextProvider>
+          <Footer />
+        </Router>
+      </UserProvider>
     </div>
   );
 };
