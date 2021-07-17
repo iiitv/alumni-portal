@@ -55,7 +55,7 @@ const App = () => {
                 <Route exact path="/admin-login" component={AdminLogin} />
                 <Route exact path="/admin/add-news" component={AddNews} />
                 <Route exact path="/meet-the-alumni" component={AlumniPage} />
-                <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/admin/dashboard" component={Dashboard} />
                 <Route component={Error404} />
               </Switch>
             </Navbar>

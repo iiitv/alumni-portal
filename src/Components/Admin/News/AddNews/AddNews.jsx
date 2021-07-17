@@ -1,6 +1,6 @@
 import './AddNews.scss';
 import { Icon } from 'semantic-ui-react'
-import { Redirect } from 'react-router-dom';
+import { Redirect,useHistory } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../../../providers/UserProvider';
 import Loader from '../../../Shared/Loader/Loader'
@@ -8,8 +8,10 @@ import { addNews } from '../../../../services/firebase';
 
 
 const AddNews = () => {
+    const history = useHistory();
     const info = useContext(UserContext);
     const { user, isLoading } = info;
+    const [addingNews,setAddingNews] = useState(false);
     const [url, setUrl] = useState(null);
     const [redirect, setredirect] = useState(null);
     const [news, setNews] = useState({
@@ -44,7 +46,9 @@ const AddNews = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        addNews(news);
+        setAddingNews(true);
+        await addNews(news);
+        history.push("dashboard")
     }
     return (
         <div className="add-news">
@@ -70,9 +74,7 @@ const AddNews = () => {
                     {url && <p className="img-par"><img className="preview-img" src={url} alt="hello"></img></p>}
                     <p className="line"></p>
                     <p className="btn-parent">
-                        <button className="upload-img-btn" onClick={handleSubmit}>
-                            Submit
-                        </button>
+                        {addingNews?<button className="upload-img-btn">Adding...</button>:<button className="upload-img-btn" onClick={handleSubmit}>Submit</button>}
                     </p>
                 </form>
             </div>}

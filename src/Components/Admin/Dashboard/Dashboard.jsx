@@ -1,7 +1,10 @@
-import React from "react";
+import { useState, useContext, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import "./Dashboard.scss";
+import { UserContext } from "../../../providers/UserProvider";
 import { Container, Grid, Segment, Image } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
+import Loader from '../../Shared/Loader/Loader'
 
 const cardStyle = {
   backgroundColor: "#18535B",
@@ -11,37 +14,37 @@ const cardStyle = {
 const dashboardCards = [
   {
     name: "Gallery",
-    svgSrc: "asset/svg/AdminDashboard/gallery.svg",
+    svgSrc: "/asset/svg/AdminDashboard/gallery.svg",
     align: "left",
     to: "admin/gallery",
   },
   {
     name: "Slider",
-    svgSrc: "asset/svg/AdminDashboard/slider.svg",
+    svgSrc: "/asset/svg/AdminDashboard/slider.svg",
     align: "left",
     to: "admin/slider",
   },
   {
     name: "Alumni",
-    svgSrc: "asset/svg/AdminDashboard/alumni.svg",
+    svgSrc: "/asset/svg/AdminDashboard/alumni.svg",
     align: "left",
     to: "admin/alumni",
   },
   {
     name: "News",
-    svgSrc: "asset/svg/AdminDashboard/newsandblog.svg",
+    svgSrc: "/asset/svg/AdminDashboard/newsandblog.svg",
     align: "right",
     to: "admin/news",
   },
   {
     name: "Blogs",
-    svgSrc: "asset/svg/AdminDashboard/newsandblog.svg",
+    svgSrc: "/asset/svg/AdminDashboard/newsandblog.svg",
     align: "right",
     to: "admin/blogs",
   },
   {
     name: "Gallery",
-    svgSrc: "asset/svg/AdminDashboard/event.svg",
+    svgSrc: "/asset/svg/AdminDashboard/event.svg",
     align: "right",
     to: "admin/event",
   },
@@ -61,23 +64,38 @@ const DashboardCard = (cardData) => {
 };
 
 const Dashboard = () => {
+  const info = useContext(UserContext);
+  const { user, isLoading } = info;
+  const [redirect, setredirect] = useState(null);
+  useEffect(() => {
+    if (!user && !isLoading) {
+      setredirect('/admin-login')
+    }
+  }, [user, isLoading])
+  if (redirect) {
+    return <Redirect to={redirect} />
+  }
   return (
     <div>
-      <h1 className="dashboard-heading"> Dashboard </h1>
-      <Container>
-        <Grid stackable columns={2} padded>
-          <Grid.Column>
-            {dashboardCards
-              .filter((card) => card.align === "left")
-              .map((cardData) => DashboardCard(cardData))}
-          </Grid.Column>
-          <Grid.Column>
-            {dashboardCards
-              .filter((card) => card.align === "right")
-              .map((cardData) => DashboardCard(cardData))}
-          </Grid.Column>
-        </Grid>
-      </Container>
+      {isLoading && <Loader />}
+      {!isLoading &&
+        <div>
+          <h1 className="dashboard-heading"> Dashboard </h1>
+          <Container>
+            <Grid stackable columns={2} padded>
+              <Grid.Column>
+                {dashboardCards
+                  .filter((card) => card.align === "left")
+                  .map((cardData) => DashboardCard(cardData))}
+              </Grid.Column>
+              <Grid.Column>
+                {dashboardCards
+                  .filter((card) => card.align === "right")
+                  .map((cardData) => DashboardCard(cardData))}
+              </Grid.Column>
+            </Grid>
+          </Container>
+        </div>}
     </div>
   );
 };
