@@ -1,0 +1,29 @@
+@import "../../../scss/imports";
+
+.dashboard-heading {
+    text-align: center;
+    text-decoration: underline;
+    line-height: 2rem;
+    letter-spacing: 0.1rem;
+    @include font-config(2rem, 400, "Mate SC", black);
+}
+
+.dashboard-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &-head {
+        margin: 0 auto 0 auto;
+        margin-left: 0;
+        display: block;
+        position: relative;
+        letter-spacing: 0.25rem;
+        @include font-config(1.8rem, 400, "ReemKufi", white);
+    }
+}
+
+.dashboard-card:hover {
+    cursor: pointer;
+}

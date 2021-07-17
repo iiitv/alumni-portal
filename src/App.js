@@ -8,6 +8,7 @@ import Event from './Components/Events/Event';
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import EventPage from './Components/Events/EventPage/EventPage'
 import AddNews from './Components/Admin/News/AddNews/AddNews'
+import Dashboard from "./Components/Admin/Dashboard/Dashboard";
 import { createMedia } from "@artsy/fresnel";
 import 'semantic-ui-css/components/reset.min.css';
 import 'semantic-ui-css/components/site.min.css';
@@ -54,6 +55,7 @@ const App = () => {
                 <Route exact path="/admin-login" component={AdminLogin} />
                 <Route exact path="/admin/add-news" component={AddNews} />
                 <Route exact path="/meet-the-alumni" component={AlumniPage} />
+                <Route exact path="/dashboard" component={Dashboard} />
                 <Route component={Error404} />
               </Switch>
             </Navbar>

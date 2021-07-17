@@ -1,0 +1,85 @@
+import React from "react";
+import "./Dashboard.scss";
+import { Container, Grid, Segment, Image } from "semantic-ui-react";
+import { NavLink } from "react-router-dom";
+
+const cardStyle = {
+  backgroundColor: "#18535B",
+  borderRadius: "10px",
+};
+
+const dashboardCards = [
+  {
+    name: "Gallery",
+    svgSrc: "asset/svg/AdminDashboard/gallery.svg",
+    align: "left",
+    to: "admin/gallery",
+  },
+  {
+    name: "Slider",
+    svgSrc: "asset/svg/AdminDashboard/slider.svg",
+    align: "left",
+    to: "admin/slider",
+  },
+  {
+    name: "Alumni",
+    svgSrc: "asset/svg/AdminDashboard/alumni.svg",
+    align: "left",
+    to: "admin/alumni",
+  },
+  {
+    name: "News",
+    svgSrc: "asset/svg/AdminDashboard/newsandblog.svg",
+    align: "right",
+    to: "admin/news",
+  },
+  {
+    name: "Blogs",
+    svgSrc: "asset/svg/AdminDashboard/newsandblog.svg",
+    align: "right",
+    to: "admin/blogs",
+  },
+  {
+    name: "Gallery",
+    svgSrc: "asset/svg/AdminDashboard/event.svg",
+    align: "right",
+    to: "admin/event",
+  },
+];
+
+const DashboardCard = (cardData) => {
+  return (
+    <Segment padded="very" style={cardStyle}>
+      <NavLink to={cardData.to}>
+        <div className="dashboard-card">
+          <h3 className="dashboard-card-head"> {cardData.name} </h3>
+          <Image spaced src={cardData.svgSrc} size="mini" floated="right" />
+        </div>
+      </NavLink>
+    </Segment>
+  );
+};
+
+const Dashboard = () => {
+  return (
+    <div>
+      <h1 className="dashboard-heading"> Dashboard </h1>
+      <Container>
+        <Grid stackable columns={2} padded>
+          <Grid.Column>
+            {dashboardCards
+              .filter((card) => card.align === "left")
+              .map((cardData) => DashboardCard(cardData))}
+          </Grid.Column>
+          <Grid.Column>
+            {dashboardCards
+              .filter((card) => card.align === "right")
+              .map((cardData) => DashboardCard(cardData))}
+          </Grid.Column>
+        </Grid>
+      </Container>
+    </div>
+  );
+};
+
+export default Dashboard;
