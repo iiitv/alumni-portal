@@ -1,3 +1,6 @@
+.add-image-head {
+    margin-top: 70%;
+}
 .admin-slider{
     width: 80%;
     margin: 0 auto;
@@ -30,8 +33,13 @@
 .admin-slider-img .delete-img{
     cursor: pointer;
     position: absolute;
-    top: 0;
-    color: red;
+    top: -10px;
+    left: -10px;
+    color: white;
+    font-size: 17px;
+    padding: 1px;
+    background-color: rgba(196, 196, 196, 1);
+    border-radius: 50%;
 }
 .admin-slider .btn-parent{
     text-align: center;

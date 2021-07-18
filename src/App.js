@@ -3,7 +3,6 @@ import Home from "./Components/Home/Home";
 import NewsBlogsPost from "./Components/NewsBlogs/NewsBlogsPost/NewsBlogsPost";
 import Header from "./Components/Shared/Header/Header";
 import Footer from "./Components/Shared/Footer/Footer";
-import Navbar from "./Components/Shared/Navbar/Navbar";
 import Event from './Components/Events/Event';
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import EventPage from './Components/Events/EventPage/EventPage'
