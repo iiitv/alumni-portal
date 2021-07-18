@@ -22,17 +22,14 @@ const AppMedia = createMedia({
 const { Media } = AppMedia;
 
 const items = [
-  { content: "Home", key: "Home", link: "/" },
-  { content: "About Us", key: "About Us", link: "/about-us" },
-  {
-    content: "Meet the Alumni",
-    key: "Meet the Alumni",
-    link: "/meet-the-alumni",
-  },
-  { content: "News", key: "News", link: "/news" },
-  { content: "Events", key: "Events", link: "/events" },
-  { content: "Jobs", key: "Jobs", link: "/jobs" },
-  { content: "Blogs", key: "Blogs", link: "/blogs" },
+  {content: "Website", key: "Website", link: "/"}, 
+  { content: "Dashboard", key: "Dashboard", link: "/admin/dashboard" },
+  { content: "News", key: "News", link: "/admin/news" },
+  { content: "Events", key: "Events", link: "/admin/events" },
+  { content: "Slider", key: "Slider", link: "/admin/slider" },
+  { content: "Blogs", key: "Blogs", link: "/admin/blogs" },
+  { content: "Alumni", key: "Alumni", link: "/admin/alumni" },
+  { content: "Gallery", key: "Gallery", link: "/admin/gallery" },
 ];
 
 const NavBarMobile = (props) => {
@@ -97,7 +94,7 @@ const NavBarDesktop = (props) => {
   };
   return (
     <>
-      <Menu inverted widths={9} style={navStyle}>
+      <Menu inverted widths={11} style={navStyle}>
         {items.map((item) => (
           <Menu.Item
             {...item}
@@ -115,7 +112,7 @@ const NavBarDesktop = (props) => {
   );
 };
 
-const Navbar = (props) => {
+const AdminNavbar = (props) => {
   return (
     <div>
       <Media at="mobile">
@@ -125,12 +122,12 @@ const Navbar = (props) => {
       </Media>
 
       <Media greaterThan="mobile">
-        <NavBarDesktop >
-          {props.children}
+        <NavBarDesktop>
+            {props.children}
         </NavBarDesktop>
       </Media>
     </div>
   );
 };
 
-export default Navbar;
+export default AdminNavbar;

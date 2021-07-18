@@ -23,6 +23,7 @@ import UserProvider from './providers/UserProvider';
 import NewsBlogsCard from "./Components/NewsBlogs/NewsBlogsCards/NewsBlogsCard";
 import Error404 from "./Components/Shared/Error404/Error404";
 import AlumniPage from "./Components/MeetAlumni/AlumniPage/AlumniPage";
+import NavDecider from "./Components/Shared/Navbar/NavDecider";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -45,7 +46,7 @@ const App = () => {
           <Header />
           <style>{mediaStyles}</style>
           <MediaContextProvider>
-            {/* <Navbar> */}
+            <NavDecider>
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/news" component={NewsBlogsCard} />
@@ -62,7 +63,7 @@ const App = () => {
                 <Route exact path="/admin/slider" component={AdminSlider} />
                 <Route component={Error404} />
               </Switch>
-            {/* </Navbar> */}
+            </NavDecider>
           </MediaContextProvider>
           <Footer />
         </Router>

@@ -17,13 +17,14 @@ firebase.initializeApp({
 const db = firebase.firestore();
 export const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
+var user;
 export const signInWithGoogle = () => {
     auth.signInWithPopup(provider).then((result) => {
         // var credential = result.credential;
         // This gives you a Google Access Token. You can use it to access the Google API.
         // var token = credential.accessToken;
         // The signed-in user info.
-        var user = result.user;
+        user = result.user;
         console.log(user);
         // ...
     }).catch((error) => {
