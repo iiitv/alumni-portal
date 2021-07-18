@@ -4,7 +4,7 @@ import "./Dashboard.scss";
 import { UserContext } from "../../../providers/UserProvider";
 import { Container, Grid, Segment, Image } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
-import Loader from '../../Shared/Loader/Loader'
+import Loader from "../../Shared/Loader/Loader";
 
 const cardStyle = {
   backgroundColor: "#18535B",
@@ -16,44 +16,44 @@ const dashboardCards = [
     name: "Gallery",
     svgSrc: "/asset/svg/AdminDashboard/gallery.svg",
     align: "left",
-    to: "admin/gallery",
+    to: "gallery",
   },
   {
     name: "Slider",
     svgSrc: "/asset/svg/AdminDashboard/slider.svg",
     align: "left",
-    to: "admin/slider",
+    to: "slider",
   },
   {
     name: "Alumni",
     svgSrc: "/asset/svg/AdminDashboard/alumni.svg",
     align: "left",
-    to: "admin/alumni",
+    to: "alumni",
   },
   {
     name: "News",
     svgSrc: "/asset/svg/AdminDashboard/newsandblog.svg",
     align: "right",
-    to: "admin/news",
+    to: "add-news",
   },
   {
     name: "Blogs",
     svgSrc: "/asset/svg/AdminDashboard/newsandblog.svg",
     align: "right",
-    to: "admin/blogs",
+    to: "blogs",
   },
   {
     name: "Gallery",
     svgSrc: "/asset/svg/AdminDashboard/event.svg",
     align: "right",
-    to: "admin/event",
+    to: "event",
   },
 ];
 
 const DashboardCard = (cardData) => {
   return (
     <Segment padded="very" style={cardStyle}>
-      <NavLink to={cardData.to}>
+      <NavLink strict to={cardData.to}>
         <div className="dashboard-card">
           <h3 className="dashboard-card-head"> {cardData.name} </h3>
           <Image spaced src={cardData.svgSrc} size="mini" floated="right" />
@@ -67,18 +67,21 @@ const Dashboard = () => {
   const info = useContext(UserContext);
   const { user, isLoading } = info;
   const [redirect, setredirect] = useState(null);
+  
   useEffect(() => {
-    if (!user && !isLoading) {
-      setredirect('/admin-login')
+    if(!user && !isLoading) {
+      setredirect("/admin-login");
     }
-  }, [user, isLoading])
+  }, [user, isLoading]);
+  
   if (redirect) {
-    return <Redirect to={redirect} />
+    return <Redirect to={redirect} />;
   }
+
   return (
     <div>
       {isLoading && <Loader />}
-      {!isLoading &&
+      {!isLoading && (
         <div>
           <h1 className="dashboard-heading"> Dashboard </h1>
           <Container>
@@ -95,7 +98,8 @@ const Dashboard = () => {
               </Grid.Column>
             </Grid>
           </Container>
-        </div>}
+        </div>
+      )}
     </div>
   );
 };
