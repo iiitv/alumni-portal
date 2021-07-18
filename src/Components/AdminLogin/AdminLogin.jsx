@@ -13,7 +13,7 @@ const AdminLogin = ()=>{
     useEffect(() => {
       if (user && !isLoading) {
         if(isAdmin(user.email)){
-            setredirect('/admin/add-news')
+            setredirect('/admin/dashboard')
         }else{
             signOut();
             setNotAdmin(true);

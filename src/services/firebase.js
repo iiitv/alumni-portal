@@ -58,18 +58,35 @@ export const isAdmin = (email) => {
     return adminEmail.some((admin) => admin === email);
 }
 
-const handleUpload = async (image) => {
-    const fileName = String(Date.now())+Math.floor(Math.random()*10000);
-    const uploadTask = await firebase.storage().ref(`images/${fileName}`).put(image);
-    let url = await firebase.storage().ref("images").child(fileName).getDownloadURL();
+const getImageUrl = async (folderName, fileName) => {
+    let url = await firebase.storage().ref(folderName).child(fileName).getDownloadURL();
     return url;
+}
+
+const handleUpload = async (image, fileName, folderName) => {
+    await firebase.storage().ref(`${folderName}/${fileName}`).put(image);
+}
+
+const getFileName = () => {
+    let fileName = String(Date.now()) + parseInt(Math.random() * 10) + parseInt(Math.random() * 10) + parseInt(Math.random() * 10);
+    return fileName;
+}
+
+const deleteImage = async (img,folderName) => {
+    // Create a reference to the file to delete
+    var imageRef = firebase.storage().ref(folderName).child(img);
+    // Delete the file
+    await imageRef.delete();
+    console.log("Image Deleted Successfully")
 }
 
 export const addNews = async (news) => {
     try {
-        let url;
-        if (news.image){
-            url = await handleUpload(news.image);
+        let url = "", fileName = "";
+        if (news.image) {
+            fileName = getFileName();
+            await handleUpload(news.image, fileName, "news");
+            url = await getImageUrl("news", fileName);
         } else {
             url = "asset/images/NewsAndBlogs/sample-news.png";
         }
@@ -78,7 +95,8 @@ export const addNews = async (news) => {
             image: url,
             date: news.date,
             place: news.place,
-            text: news.text
+            text: news.text,
+            fileName: fileName
         })
         console.log("News Added!!")
     } catch (error) {
@@ -86,3 +104,72 @@ export const addNews = async (news) => {
     }
 }
 
+export const getSliderImages = async () => {
+    try {
+        let data = [];
+        var listRef = firebase.storage().ref().child('slider');
+        let res = await listRef.listAll();
+        for (let i = 0; i < res.items.length; i++) {
+            let itemRef = res.items[i];
+            let name = itemRef.name;
+            let url = await getImageUrl("slider", name);
+            data.push({ name, url, id: i });
+        }
+        return data;
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const addSliderImages = async (images,removeImage) => {
+    try {
+        let fileName = "";
+        for(let image of removeImage){
+            deleteImage(image,"slider");
+        }
+        for (let i = 0; i < images.length; i++) {
+            let img = images[i];
+            fileName = getFileName();
+            await handleUpload(img.url, fileName, "slider");
+        }
+        console.log("Slider Images Added!!")
+    } catch (error) {
+        console.log("Error while uploading slider images")
+        console.log(error.message);
+    }
+}
+
+export const getGalleryImages = async () => {
+    try {
+        let data = [];
+        var listRef = firebase.storage().ref().child('gallery');
+        let res = await listRef.listAll();
+        for (let i = 0; i < res.items.length; i++) {
+            let itemRef = res.items[i];
+            let name = itemRef.name;
+            let url = await getImageUrl("gallery", name);
+            data.push({ name, url, id: i });
+        }
+        return data;
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const addGalleryImages = async (images,removeImage) => {
+    try {
+        let fileName = "";
+        for(let image of removeImage){
+            deleteImage(image,"gallery");
+        }
+        for (let i = 0; i < images.length; i++) {
+            let img = images[i];
+            fileName = getFileName();
+            await handleUpload(img.url, fileName, "gallery");
+        }
+        console.log("gallery Images Added!!")
+    } catch (error) {
+        console.log("Error while uploading gallery images")
+        console.log(error.message);
+    }
+}
