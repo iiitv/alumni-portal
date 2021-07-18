@@ -8,6 +8,8 @@ import Event from './Components/Events/Event';
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import EventPage from './Components/Events/EventPage/EventPage'
 import AddNews from './Components/Admin/News/AddNews/AddNews'
+import AdminGallery from './Components/Admin/Gallery/Gallery';
+import AdminSlider from './Components/Admin/Slider/Slider'
 import Dashboard from "./Components/Admin/Dashboard/Dashboard";
 import { createMedia } from "@artsy/fresnel";
 import 'semantic-ui-css/components/reset.min.css';
@@ -43,7 +45,7 @@ const App = () => {
           <Header />
           <style>{mediaStyles}</style>
           <MediaContextProvider>
-            <Navbar>
+            {/* <Navbar> */}
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/news" component={NewsBlogsCard} />
@@ -56,9 +58,11 @@ const App = () => {
                 <Route exact path="/admin/add-news" component={AddNews} />
                 <Route exact path="/meet-the-alumni" component={AlumniPage} />
                 <Route exact path="/admin/dashboard" component={Dashboard} />
+                <Route exact path="/admin/gallery" component={AdminGallery}/>
+                <Route exact path="/admin/slider" component={AdminSlider} />
                 <Route component={Error404} />
               </Switch>
-            </Navbar>
+            {/* </Navbar> */}
           </MediaContextProvider>
           <Footer />
         </Router>

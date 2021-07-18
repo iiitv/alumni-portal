@@ -16,37 +16,37 @@ const dashboardCards = [
     name: "Gallery",
     svgSrc: "/asset/svg/AdminDashboard/gallery.svg",
     align: "left",
-    to: "admin/gallery",
+    to: "gallery",
   },
   {
     name: "Slider",
     svgSrc: "/asset/svg/AdminDashboard/slider.svg",
     align: "left",
-    to: "admin/slider",
+    to: "slider",
   },
   {
     name: "Alumni",
     svgSrc: "/asset/svg/AdminDashboard/alumni.svg",
     align: "left",
-    to: "admin/alumni",
+    to: "alumni",
   },
   {
     name: "News",
     svgSrc: "/asset/svg/AdminDashboard/newsandblog.svg",
     align: "right",
-    to: "admin/news",
+    to: "news",
   },
   {
     name: "Blogs",
     svgSrc: "/asset/svg/AdminDashboard/newsandblog.svg",
     align: "right",
-    to: "admin/blogs",
+    to: "blogs",
   },
   {
     name: "Gallery",
     svgSrc: "/asset/svg/AdminDashboard/event.svg",
     align: "right",
-    to: "admin/event",
+    to: "event",
   },
 ];
 

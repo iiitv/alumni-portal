@@ -9,10 +9,9 @@ import {
 } from "pure-react-carousel";
 
 const renderSlides = (images) => {
-  let imageUrlPrefix = "https://gaurkrishna.pythonanywhere.com/media/gallery/";
 
   return images.map((image, index) => {
-    let imageUrl = `${imageUrlPrefix}img${index + 1}.jpg`;
+    let imageUrl = image.url;
 
     return (
       <Slide index={index} key={index}>
@@ -35,7 +34,7 @@ const DesktopGallery = ({ images }) => {
       <CarouselProvider
         naturalSlideWidth={500}
         naturalSlideHeight={400}
-        totalSlides={4}
+        totalSlides={images.length}
         visibleSlides={2.5}
         interval={2000}
         isPlaying={true}
