@@ -49,6 +49,19 @@ const NewsBlogsAdminCard = () => {
     },
   ];
   const location = useLocation();
+  var page;
+
+  const getHeader = () => {
+    var length = location.pathname.length;
+    if(location.pathname[length-2]==='w') {
+      page = "news";
+      return (<p>News</p>);
+    }
+    else {
+      page = "blogs";
+      return (<p>Blogs</p>);
+    }
+  }
   const renderNews = (obj) => {
     return (
       <div className="news-block">
@@ -96,6 +109,27 @@ const NewsBlogsAdminCard = () => {
   };
   return (
     <div className="all-news-info">
+      <div className="news-header-div">
+        <div className="admin-news-heading">
+          {getHeader()}
+        </div>
+        <div className="add-news-btn-div">
+          { page === "news" ?
+            <Link to="/admin/add-news">
+              <button className="add-news-btn">
+                +
+              </button>
+            </Link>
+            :
+            <Link to="/admin/add-blogs">
+              <button className="add-news-btn">
+                +
+              </button>
+            </Link>
+          }
+          
+        </div>
+      </div>
       <SemanticToastContainer />
       {news.map((obj, index) => (
         <div key={index}>{renderNews(obj)}</div>

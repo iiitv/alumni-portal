@@ -51,6 +51,30 @@
     margin: 0.3rem 0.6rem;
     height: 1.5rem;
 }
+.news-header-div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    padding: 0 1rem;
+}
+.admin-news-heading {
+    text-decoration: underline;
+    color: #18535B;
+    font-family: 'ReemKufi';
+    font-size: 2.5rem;
+}
+.add-news-btn {
+    background-color: #18535B;
+    color: #ffff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    background-color: #18535B;
+    padding: 0.5rem 1rem;
+    border-width: 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
 
 @media only screen and (max-width:950px) {
     .all-news-info{
@@ -74,7 +98,7 @@
     }
     .icon-btn {
         cursor: pointer;
-        margin: 0.3rem 0rem;
+        margin: 0.3rem 0.6rem;
         height: 1.5rem;
     }
 }
