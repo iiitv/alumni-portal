@@ -16,6 +16,7 @@ const Slider = () => {
     const { user, isLoading } = info;
     const [redirect, setredirect] = useState(null);
     const [removeImage,setRemoveImage] = useState([]);
+    const [isFetch,setFetch] = useState(false);
 
     const fetchData = async()=>{
         try {
@@ -25,6 +26,7 @@ const Slider = () => {
             console.log("error while fetching images", err);
         } 
         setUploadedImage(sliderImages);
+        setFetch(true);
     }
     useEffect(() => {
         if (!user && !isLoading) {
@@ -79,9 +81,9 @@ const Slider = () => {
     }
     return (
         <div>
-            {isLoading && <Loader/>}
-            {!isLoading && <div className="admin-slider">
-                <h2>Pictures</h2>
+            {(isLoading || !isFetch)  && <Loader/>}
+            {!isLoading && isFetch && <div className="admin-slider">
+                <h2>Slider</h2>
                 <label className="add-btn" htmlFor="upload-img">
                     <Icon name="add"></Icon> Add Images
                 </label>

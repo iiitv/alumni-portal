@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer } from "react-semantic-toasts";
-import "./NewsBlogsDashboard.scss";
+import "./NewsDashboard.scss";
 import { useLocation } from "react-router";
 
 const NewsBlogsAdminCard = () => {

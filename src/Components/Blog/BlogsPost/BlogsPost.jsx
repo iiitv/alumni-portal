@@ -1,4 +1,4 @@
-import "./NewsPost.scss";
+import "./BlogsPost.scss";
 import { Container, Segment, Popup } from "semantic-ui-react";
 import { useLocation } from "react-router";
 import { useParams } from "react-router-dom";

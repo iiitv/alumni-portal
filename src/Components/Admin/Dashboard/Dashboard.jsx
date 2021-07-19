@@ -43,7 +43,7 @@ const dashboardCards = [
     to: "add-blogs",
   },
   {
-    name: "Gallery",
+    name: "Events",
     svgSrc: "/asset/svg/AdminDashboard/event.svg",
     align: "right",
     to: "event",
