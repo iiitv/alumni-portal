@@ -22,6 +22,7 @@ import 'react-semantic-toasts/styles/react-semantic-alert.css';
 import UserProvider from './providers/UserProvider';
 import NewsBlogsCard from "./Components/NewsBlogs/NewsBlogsCards/NewsBlogsCard";
 import Error404 from "./Components/Shared/Error404/Error404";
+import AlumniCard from "./Components/MeetAlumni/AlumniCard/AlumniCard";
 import AlumniPage from "./Components/MeetAlumni/AlumniPage/AlumniPage";
 
 const AppMedia = createMedia({
@@ -57,7 +58,8 @@ const App = () => {
                 <Route exact path="/admin-login" component={AdminLogin} />
                 <Route exact path="/admin/add-news" component={AddNews} />
                 <Route exact path="/admin/add-blogs" component={AddBlog} />
-                <Route exact path="/meet-the-alumni" component={AlumniPage} />
+                <Route exact path="/alumni" component={AlumniCard} />
+                <Route exact path="/alumni/:id" component={AlumniPage} />
                 <Route exact path="/admin/dashboard" component={Dashboard} />
                 <Route exact path="/admin/gallery" component={AdminGallery}/>
                 <Route exact path="/admin/slider" component={AdminSlider} />
