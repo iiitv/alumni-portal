@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import NewsBlogsPost from "./Components/NewsBlogs/NewsBlogsPost/NewsBlogsPost";
-import Header from "./Components/Shared/Header/Header";
 import Footer from "./Components/Shared/Footer/Footer";
 import Event from './Components/Events/Event';
 import AdminLogin from './Components/AdminLogin/AdminLogin'
@@ -24,6 +23,7 @@ import Error404 from "./Components/Shared/Error404/Error404";
 import AlumniPage from "./Components/MeetAlumni/AlumniPage/AlumniPage";
 import NavDecider from "./Components/Shared/Navbar/NavDecider";
 import HeaderDecider from "./Components/Shared/Header/HeaderDecider";
+import NewsBlogsAdminCard from "./Components/Admin/News/NewsBlogsDashboard/NewsBlogsDashboard";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -61,6 +61,8 @@ const App = () => {
                 <Route exact path="/admin/dashboard" component={Dashboard} />
                 <Route exact path="/admin/gallery" component={AdminGallery}/>
                 <Route exact path="/admin/slider" component={AdminSlider} />
+                <Route exact path="/admin/news" component={NewsBlogsAdminCard} />
+                <Route exact path="/admin/blogs" component={NewsBlogsAdminCard} />
                 <Route component={Error404} />
               </Switch>
             </NavDecider>

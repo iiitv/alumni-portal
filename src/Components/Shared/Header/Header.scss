@@ -40,9 +40,10 @@
     color: #ffff;
     font-size: 1rem;
     background-color: #18535B;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1rem;
     border-width: 0;
     display: flex;
+    justify-content: center;
 }
 .button:hover {
     cursor: pointer;
