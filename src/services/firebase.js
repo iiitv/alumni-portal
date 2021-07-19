@@ -232,6 +232,7 @@ export const getAllNews = async () => {
     }
 }
 
+
 export const getParticularNews = async (id) => {
     try {
         let data;

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
-import "./NewsBlogsCard.scss";
+import "./NewsCard.scss";
 import { useLocation } from "react-router";
 import { getAllNews } from "../../../services/firebase";
 import Loader from '../../Shared/Loader/Loader'
