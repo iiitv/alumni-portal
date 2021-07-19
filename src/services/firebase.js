@@ -126,9 +126,9 @@ export const addBlogs = async (blog) => {
             title: blog.title,
             image: url,
             date: blog.date,
-            place: blog.place,
             text: blog.text,
-            fileName: fileName
+            fileName: fileName,
+            author: blog.author,
         }).then((response) => console.log(response))
         console.log("Blog Added!!")
     } catch (error) {
@@ -251,7 +251,7 @@ export const getParticularNews = async (id) => {
         return data;
     } catch (error) {
         console.log(error.message);
-        console.log("Error while accessing all news");
+        console.log("Error while accessing particular news");
     }
 }
 
@@ -270,5 +270,67 @@ export const getDashboardNews = async()=>{
     } catch (error) {
         console.log(error.message);
         console.log("Error while accessing dashboard news");
+    }
+}
+
+export const getAllBlog = async () => {
+    try {
+        let data = [];
+        let ref = await db.collection("Blogs").get();
+        ref.forEach((doc) => {
+            data.push({
+                id: doc.id,
+                heading: doc.data().title,
+                body: doc.data().text,
+                date: doc.data().date,
+                place: doc.data().place,
+                img: doc.data().image,
+                fileName: doc.data().fileName
+            })
+        })
+        return data;
+    } catch (error) {
+        console.log(error.message);
+        console.log("Error while accessing all blogs");
+    }
+}
+
+
+export const getParticularBlog = async (id) => {
+    try {
+        let data;
+        let doc = await db.collection("Blogs").doc(id).get();
+        if(!doc.exists) return null;
+        data = {
+            id: doc.id,
+            heading: doc.data().title,
+            body: doc.data().text,
+            date: doc.data().date,
+            author: doc.data().author,
+            img: doc.data().image,
+            fileName: doc.data().fileName
+        }
+        return data;
+    } catch (error) {
+        console.log(error.message);
+        console.log("Error while accessing particular blog");
+    }
+}
+
+export const getDashboardBlogs = async()=>{
+    try {
+        let data = [];
+        let ref = await db.collection("Blogs").orderBy("date","desc").limit(4).get();
+        ref.forEach((doc) => {
+            data.push({
+                id: doc.id,
+                heading: doc.data().title,
+                date: doc.data().date,
+            })
+        })
+        return data;
+    } catch (error) {
+        console.log(error.message);
+        console.log("Error while accessing dashboard blog");
     }
 }
