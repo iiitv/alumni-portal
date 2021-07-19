@@ -7,6 +7,7 @@ import Event from './Components/Events/Event';
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import EventPage from './Components/Events/EventPage/EventPage'
 import AddNews from './Components/Admin/News/AddNews/AddNews'
+import AddBlog from './Components/Admin/Blog/AddBlog/AddBlog'
 import AdminGallery from './Components/Admin/Gallery/Gallery';
 import AdminSlider from './Components/Admin/Slider/Slider'
 import Dashboard from "./Components/Admin/Dashboard/Dashboard";
@@ -56,6 +57,7 @@ const App = () => {
                 <Route exact path="/blogs/:id" component={NewsBlogsPost} />
                 <Route exact path="/admin-login" component={AdminLogin} />
                 <Route exact path="/admin/add-news" component={AddNews} />
+                <Route exact path="/admin/add-blogs" component={AddBlog} />
                 <Route exact path="/alumni" component={AlumniCard} />
                 <Route exact path="/alumni/:id" component={AlumniPage} />
                 <Route exact path="/admin/dashboard" component={Dashboard} />

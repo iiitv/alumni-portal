@@ -19,7 +19,12 @@ const Slider = () => {
     const [isFetch,setFetch] = useState(false);
 
     const fetchData = async()=>{
-        let sliderImages = await getSliderImages();
+        try {
+            var sliderImages = await getSliderImages(); 
+        }
+         catch(err) {
+            console.log("error while fetching images", err);
+        } 
         setUploadedImage(sliderImages);
         setFetch(true);
     }

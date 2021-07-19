@@ -1,25 +1,32 @@
 import './Gallery.scss';
 import { Icon } from 'semantic-ui-react';
 import { useState, useEffect, useContext } from 'react';
-import { addGalleryImages,getGalleryImages } from '../../../services/firebase';
+import { addGalleryImages, getGalleryImages } from '../../../services/firebase';
 import Loader from '../../Shared/Loader/Loader'
 import { UserContext } from "../../../providers/UserProvider";
-import { Redirect,useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 const Gallery = () => {
     const history = useHistory();
+    const [errorMessage, setErrorMessage] = useState("");
     const [images, setImages] = useState([]);
-    const [uploadedImage,setUploadedImage] = useState([]);
+    const [uploadedImage, setUploadedImage] = useState([]);
     let [count, setCount] = useState(0);
     const [change, setChange] = useState(false);
     const [isAdding, setAdding] = useState(false);
     const info = useContext(UserContext);
     const { user, isLoading } = info;
     const [redirect, setredirect] = useState(null);
-    const [removeImage,setRemoveImage] = useState([]);
-    const [isFetch,setFetch] = useState(false);
+    const [removeImage, setRemoveImage] = useState([]);
+    const [isFetch, setFetch] = useState(false);
 
-    const fetchData = async()=>{
-        let sliderImages = await getGalleryImages();
+    const fetchData = async () => {
+        try {
+            var sliderImages = await getGalleryImages();
+        }
+        catch (err) {
+            setErrorMessage(err);
+            console.log("error while fetching images", err);
+        }
         setUploadedImage(sliderImages);
         setFetch(true);
     }
@@ -27,7 +34,7 @@ const Gallery = () => {
         if (!user && !isLoading) {
             setredirect('/admin-login')
         }
-        if(!isLoading && user){
+        if (!isLoading && user) {
             fetchData();
         }
     }, [user, isLoading])
@@ -48,9 +55,9 @@ const Gallery = () => {
         setImages(images.filter((img) => img.id !== id))
         setChange(true);
     }
-    const handleDeleteUploadImg = (id,name) => {
+    const handleDeleteUploadImg = (id, name) => {
         setUploadedImage(uploadedImage.filter((img) => img.id !== id))
-        setRemoveImage([...removeImage,name]);
+        setRemoveImage([...removeImage, name]);
         setChange(true);
     }
     const showImage = (file) => {
@@ -65,18 +72,22 @@ const Gallery = () => {
         return (
             <div className="admin-slider-img" key={file.id}>
                 <img src={file.url} alt="Gallery" />
-                <p className="delete-img" onClick={() => handleDeleteUploadImg(file.id,file.name)}><Icon name="delete"></Icon></p>
+                <p className="delete-img" onClick={() => handleDeleteUploadImg(file.id, file.name)}><Icon name="delete"></Icon></p>
             </div>
         );
     }
-    const saveImage = async() => {
+    const saveImage = async () => {
         setAdding(true);
-        await addGalleryImages(images,removeImage);
+        try {
+            await addGalleryImages(images, removeImage);
+        } catch (error) {
+            setErrorMessage(error.message);
+        }
         history.push("dashboard")
     }
     return (
         <div>
-            {(isLoading || !isFetch)  && <Loader/>}
+            {(isLoading || !isFetch) && <Loader />}
             {!isLoading && isFetch && <div className="admin-slider">
                 <h2>Gallery</h2>
                 <label className="add-btn" htmlFor="upload-img">

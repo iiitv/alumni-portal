@@ -77,7 +77,12 @@ const deleteImage = async (img, folderName) => {
     // Create a reference to the file to delete
     var imageRef = firebase.storage().ref(folderName).child(img);
     // Delete the file
-    await imageRef.delete();
+    try {
+    await imageRef.delete(); 
+    } catch(err) {
+        console.log("Error while deleting images", err);
+        return err.message;
+    }
     console.log("Image Deleted Successfully")
 }
 
@@ -102,6 +107,32 @@ export const addNews = async (news) => {
         console.log("News Added!!")
     } catch (error) {
         console.log(error.message);
+        return error.message;
+    }
+}
+
+export const addBlogs = async (blog) => {
+    try {
+        let url = "", fileName = "";
+        if (blog.image) {
+            fileName = getFileName();
+            await handleUpload(blog.image, fileName, "blogs");
+            url = await getImageUrl("blogs", fileName);
+        } else {
+            url = "asset/images/NewsAndBlogs/sample-news.png";
+        }
+        await db.collection("Blogs").add({
+            title: blog.title,
+            image: url,
+            date: blog.date,
+            place: blog.place,
+            text: blog.text,
+            fileName: fileName
+        }).then((response) => console.log(response))
+        console.log("Blog Added!!")
+    } catch (error) {
+        console.log(error.message);
+        return error.message;
     }
 }
 
@@ -119,6 +150,7 @@ export const getSliderImages = async () => {
         return data;
     } catch (error) {
         console.log(error.message);
+        return error.message;
     }
 }
 
@@ -137,6 +169,7 @@ export const addSliderImages = async (images, removeImage) => {
     } catch (error) {
         console.log("Error while uploading slider images")
         console.log(error.message);
+        return error.message;
     }
 }
 
@@ -154,6 +187,7 @@ export const getGalleryImages = async () => {
         return data;
     } catch (error) {
         console.log(error.message);
+        return error.message;
     }
 }
 
@@ -172,6 +206,7 @@ export const addGalleryImages = async (images, removeImage) => {
     } catch (error) {
         console.log("Error while uploading gallery images")
         console.log(error.message);
+        return error.message;
     }
 }
 
@@ -215,5 +250,23 @@ export const getParticularNews = async (id) => {
     } catch (error) {
         console.log(error.message);
         console.log("Error while accessing all news");
+    }
+}
+
+export const getDashboardNews = async()=>{
+    try {
+        let data = [];
+        let ref = await db.collection("News").orderBy("date","desc").limit(4).get();
+        ref.forEach((doc) => {
+            data.push({
+                id: doc.id,
+                heading: doc.data().title,
+                date: doc.data().date,
+            })
+        })
+        return data;
+    } catch (error) {
+        console.log(error.message);
+        console.log("Error while accessing dashboard news");
     }
 }
