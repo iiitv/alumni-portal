@@ -104,6 +104,30 @@ export const addNews = async (news) => {
     }
 }
 
+export const addBlogs = async (blog) => {
+    try {
+        let url = "", fileName = "";
+        if (blog.image) {
+            fileName = getFileName();
+            await handleUpload(blog.image, fileName, "blogs");
+            url = await getImageUrl("blogs", fileName);
+        } else {
+            url = "asset/images/NewsAndBlogs/sample-news.png";
+        }
+        await db.collection("Blogs").add({
+            title: blog.title,
+            image: url,
+            date: blog.date,
+            place: blog.place,
+            text: blog.text,
+            fileName: fileName
+        })
+        console.log("Blog Added!!")
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 export const getSliderImages = async () => {
     try {
         let data = [];
