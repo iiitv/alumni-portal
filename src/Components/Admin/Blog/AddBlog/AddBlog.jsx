@@ -17,8 +17,8 @@ const AddBlog = () => {
   const [blog, setBlog] = useState({
     title: "",
     date: null,
-    place: "",
     text: "",
+    author: "",
     image: null,
   });
   useEffect(() => {
@@ -70,19 +70,19 @@ const AddBlog = () => {
               onChange={setInfo}
               required
             />
+            <label htmlFor="author">Author</label>
+            <input
+              type="text"
+              name="author"
+              id="author"
+              onChange={setInfo}
+              required
+            />
             <label htmlFor="date">Date</label>
             <input
               type="date"
               name="date"
               id="date"
-              onChange={setInfo}
-              required
-            />
-            <label htmlFor="place">Place</label>
-            <input
-              type="text"
-              name="place"
-              id="place"
               onChange={setInfo}
               required
             />

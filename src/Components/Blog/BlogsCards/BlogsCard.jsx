@@ -4,15 +4,15 @@ import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import "./BlogsCard.scss";
 import { useLocation } from "react-router";
-import { getAllNews } from "../../../services/firebase";
+import { getAllBlog } from "../../../services/firebase";
 import Loader from '../../Shared/Loader/Loader'
 
 const NewsBlogsCard = () => {
-  const [news, setNews] = useState([]);
+  const [blog, setBlog] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const fetchData = async () => {
-    let val = await getAllNews();
-    setNews(val);
+    let val = await getAllBlog();
+    setBlog(val);
     setLoading(false);
   }
   useEffect(() => {
@@ -65,7 +65,7 @@ const NewsBlogsCard = () => {
       {!isLoading &&
         <div className="all-news-info">
           <SemanticToastContainer />
-          {news.map((obj, index) => (
+          {blog.map((obj, index) => (
             <div key={index}>{renderNews(obj)}</div>
           ))}
         </div>
