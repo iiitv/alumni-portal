@@ -3,7 +3,6 @@ import Home from "./Components/Home/Home";
 import NewsBlogsPost from "./Components/NewsBlogs/NewsBlogsPost/NewsBlogsPost";
 import Header from "./Components/Shared/Header/Header";
 import Footer from "./Components/Shared/Footer/Footer";
-import Navbar from "./Components/Shared/Navbar/Navbar";
 import Event from './Components/Events/Event';
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import EventPage from './Components/Events/EventPage/EventPage'
@@ -24,6 +23,7 @@ import NewsBlogsCard from "./Components/NewsBlogs/NewsBlogsCards/NewsBlogsCard";
 import Error404 from "./Components/Shared/Error404/Error404";
 import AlumniPage from "./Components/MeetAlumni/AlumniPage/AlumniPage";
 import NavDecider from "./Components/Shared/Navbar/NavDecider";
+import HeaderDecider from "./Components/Shared/Header/HeaderDecider";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -43,7 +43,7 @@ const App = () => {
     <div>
       <UserProvider>
         <Router>
-          <Header />
+          <HeaderDecider />
           <style>{mediaStyles}</style>
           <MediaContextProvider>
             <NavDecider>

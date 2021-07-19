@@ -22,7 +22,7 @@ const AppMedia = createMedia({
 const { Media } = AppMedia;
 
 const items = [
-  {content: "Website", key: "Website", link: "/"}, 
+  {content: "Home", key: "Home", link: "/"}, 
   { content: "Dashboard", key: "Dashboard", link: "/admin/dashboard" },
   { content: "News", key: "News", link: "/admin/news" },
   { content: "Events", key: "Events", link: "/admin/events" },
