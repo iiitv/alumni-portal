@@ -36,10 +36,13 @@
     top: -10px;
     left: -10px;
     color: white;
-    font-size: 17px;
+    font-size: 15px;
     padding: 1px;
     background-color: rgba(196, 196, 196, 1);
     border-radius: 50%;
+}
+.admin-slider-img p {
+    padding-left: 3px !important;
 }
 .admin-slider .btn-parent{
     text-align: center;

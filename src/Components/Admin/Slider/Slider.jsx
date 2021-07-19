@@ -18,7 +18,12 @@ const Slider = () => {
     const [removeImage,setRemoveImage] = useState([]);
 
     const fetchData = async()=>{
-        let sliderImages = await getSliderImages();
+        try {
+            var sliderImages = await getSliderImages(); 
+        }
+         catch(err) {
+            console.log("error while fetching images", err);
+        } 
         setUploadedImage(sliderImages);
     }
     useEffect(() => {

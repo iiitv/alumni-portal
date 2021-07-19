@@ -1,5 +1,5 @@
 import "./AddNews.scss";
-import { Icon } from "semantic-ui-react";
+import { Icon, Message, Form } from "semantic-ui-react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../../../providers/UserProvider";
@@ -10,6 +10,7 @@ const AddNews = () => {
   const history = useHistory();
   const info = useContext(UserContext);
   const { user, isLoading } = info;
+  const [errorMessage, setErrorMessage] = useState("");
   const [addingNews, setAddingNews] = useState(false);
   const [url, setUrl] = useState(null);
   const [redirect, setredirect] = useState(null);
@@ -46,7 +47,11 @@ const AddNews = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setAddingNews(true);
+    try {
     await addNews(news);
+    } catch(err) {
+      setErrorMessage(err.message);
+    }
     history.push("dashboard");
   };
   return (
@@ -55,8 +60,8 @@ const AddNews = () => {
       {!isLoading && (
         <div>
           <h2 className="heading">Add News</h2>
-          <form>
-            <p className="line"></p>
+          <p className="line"></p>
+          <Form error={!!errorMessage}>
             <label htmlFor="title">Title</label>
             <input
               type="text"
@@ -104,7 +109,6 @@ const AddNews = () => {
                 <img className="preview-img" src={url} alt="hello"></img>
               </p>
             )}
-            <p className="line"></p>
             <p className="btn-parent">
               {addingNews ? (
                 <button className="upload-img-btn">Adding...</button>
@@ -114,7 +118,8 @@ const AddNews = () => {
                 </button>
               )}
             </p>
-          </form>
+            <Message error header="Oops!!" content={errorMessage} />
+          </Form>
         </div>
       )}
     </div>

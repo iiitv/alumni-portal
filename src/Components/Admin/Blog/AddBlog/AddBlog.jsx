@@ -1,5 +1,5 @@
 import "./AddBlog.scss";
-import { Icon } from "semantic-ui-react";
+import { Icon, Message, Form } from "semantic-ui-react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../../../providers/UserProvider";
@@ -9,6 +9,7 @@ import { addBlogs } from "../../../../services/firebase";
 const AddBlog = () => {
   const history = useHistory();
   const info = useContext(UserContext);
+  const [errorMessage, setErrorMessage] = useState("");
   const { user, isLoading } = info;
   const [addingBlog, setAddingBlog] = useState(false);
   const [url, setUrl] = useState(null);
@@ -46,7 +47,11 @@ const AddBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setAddingBlog(true);
-    await addBlogs(blog);
+    try {
+    await addBlogs(blog); 
+  } catch(err) {
+    setErrorMessage(err.message);
+  }
     history.push("dashboard");
   };
   return (
@@ -55,8 +60,8 @@ const AddBlog = () => {
       {!isLoading && (
         <div>
           <h2 className="heading">Create blog</h2>
-          <form>
-            <p className="line"></p>
+          <p className="line"></p>
+          <Form error={!!errorMessage}>
             <label htmlFor="title">Title</label>
             <input
               type="text"
@@ -104,7 +109,6 @@ const AddBlog = () => {
                 <img className="preview-img" src={url} alt="hello"></img>
               </p>
             )}
-            <p className="line"></p>
             <p className="btn-parent">
               {addingBlog ? (
                 <button className="upload-img-btn">Adding...</button>
@@ -114,7 +118,8 @@ const AddBlog = () => {
                 </button>
               )}
             </p>
-          </form>
+            <Message error header="Oops!!" content={errorMessage} />
+          </Form>
         </div>
       )}
     </div>
