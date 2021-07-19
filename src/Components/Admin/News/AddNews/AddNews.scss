@@ -28,18 +28,24 @@
   color: #323232d3;
   outline: none;
   padding: 4px;
+  font-family: "Reem Kufi";
   border: 1px solid #9a9a9a;
   display: block;
   width: 100%;
+  height: 4vh;
+  border-radius: 5px;
 }
 
 .add-news textarea {
+  font-family: "Reem Kufi";
   width: 100%;
   height: 150px;
   color: #323232d3;
   outline: none;
   padding: 4px;
   border: 1px solid #9a9a9a;
+  border-radius: 5px;
+  resize: none;
 }
 
 .add-news .btn-parent {
@@ -54,7 +60,7 @@
   outline: none;
   border: none;
   cursor: pointer;
-  padding: 7px 10px;
+  padding: 10px 30px;
   border-radius: 4px;
 }
 

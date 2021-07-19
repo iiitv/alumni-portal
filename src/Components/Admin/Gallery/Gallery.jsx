@@ -7,6 +7,7 @@ import { UserContext } from "../../../providers/UserProvider";
 import { Redirect,useHistory } from 'react-router-dom';
 const Gallery = () => {
     const history = useHistory();
+    const [errorMessage, setErrorMessage] = useState("");
     const [images, setImages] = useState([]);
     const [uploadedImage,setUploadedImage] = useState([]);
     let [count, setCount] = useState(0);
@@ -17,9 +18,15 @@ const Gallery = () => {
     const [redirect, setredirect] = useState(null);
     const [removeImage,setRemoveImage] = useState([]);
 
-    const fetchData = async()=>{
-        let sliderImages = await getGalleryImages();
-        setUploadedImage(sliderImages);
+    const fetchData = async()=>{ 
+        try {
+        var sliderImages = await getGalleryImages(); 
+    }
+     catch(err) {
+        setErrorMessage(errorMessage);
+        console.log("error while fetching images", err);
+    } 
+    setUploadedImage(sliderImages);
     }
     useEffect(() => {
         if (!user && !isLoading) {
@@ -69,7 +76,11 @@ const Gallery = () => {
     }
     const saveImage = async() => {
         setAdding(true);
+        try {
         await addGalleryImages(images,removeImage);
+        } catch(error) {
+            setErrorMessage(error.message);
+        }
         history.push("dashboard")
     }
     return (

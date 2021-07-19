@@ -1,20 +1,20 @@
-import "./AddNews.scss";
+import "./AddBlog.scss";
 import { Icon, Message, Form } from "semantic-ui-react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../../../providers/UserProvider";
 import Loader from "../../../Shared/Loader/Loader";
-import { addNews } from "../../../../services/firebase";
+import { addBlogs } from "../../../../services/firebase";
 
-const AddNews = () => {
+const AddBlog = () => {
   const history = useHistory();
   const info = useContext(UserContext);
-  const { user, isLoading } = info;
   const [errorMessage, setErrorMessage] = useState("");
-  const [addingNews, setAddingNews] = useState(false);
+  const { user, isLoading } = info;
+  const [addingBlog, setAddingBlog] = useState(false);
   const [url, setUrl] = useState(null);
   const [redirect, setredirect] = useState(null);
-  const [news, setNews] = useState({
+  const [blog, setBlog] = useState({
     title: "",
     date: null,
     place: "",
@@ -32,26 +32,26 @@ const AddNews = () => {
   const handleImage = (e) => {
     if (e.target.files) {
       setUrl(URL.createObjectURL(e.target.files[0]));
-      setNews({
-        ...news,
+      setBlog({
+        ...blog,
         image: e.target.files[0],
       });
     }
   };
   const setInfo = (e) => {
-    setNews({
-      ...news,
+    setBlog({
+      ...blog,
       [e.target.name]: e.target.value.trim(),
     });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setAddingNews(true);
+    setAddingBlog(true);
     try {
-    await addNews(news);
-    } catch(err) {
-      setErrorMessage(err.message);
-    }
+    await addBlogs(blog); 
+  } catch(err) {
+    setErrorMessage(err.message);
+  }
     history.push("dashboard");
   };
   return (
@@ -59,7 +59,7 @@ const AddNews = () => {
       {isLoading && <Loader />}
       {!isLoading && (
         <div>
-          <h2 className="heading">Add News</h2>
+          <h2 className="heading">Create blog</h2>
           <p className="line"></p>
           <Form error={!!errorMessage}>
             <label htmlFor="title">Title</label>
@@ -110,7 +110,7 @@ const AddNews = () => {
               </p>
             )}
             <p className="btn-parent">
-              {addingNews ? (
+              {addingBlog ? (
                 <button className="upload-img-btn">Adding...</button>
               ) : (
                 <button className="upload-img-btn" onClick={handleSubmit}>
@@ -126,4 +126,4 @@ const AddNews = () => {
   );
 };
 
-export default AddNews;
+export default AddBlog;
