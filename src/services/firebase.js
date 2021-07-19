@@ -2,6 +2,7 @@ import dotenv from 'dotenv'
 import firebase from "firebase/app";
 import "firebase/auth";
 import '@firebase/storage';
+import '@firebase/database'
 import "firebase/firestore";
 dotenv.config();
 
@@ -72,7 +73,7 @@ const getFileName = () => {
     return fileName;
 }
 
-const deleteImage = async (img,folderName) => {
+const deleteImage = async (img, folderName) => {
     // Create a reference to the file to delete
     var imageRef = firebase.storage().ref(folderName).child(img);
     // Delete the file
@@ -88,7 +89,7 @@ export const addNews = async (news) => {
             await handleUpload(news.image, fileName, "news");
             url = await getImageUrl("news", fileName);
         } else {
-            url = "asset/images/NewsAndBlogs/sample-news.png";
+            url = "/asset/images/NewsAndBlogs/sample-news.png";
         }
         await db.collection("News").add({
             title: news.title,
@@ -121,11 +122,11 @@ export const getSliderImages = async () => {
     }
 }
 
-export const addSliderImages = async (images,removeImage) => {
+export const addSliderImages = async (images, removeImage) => {
     try {
         let fileName = "";
-        for(let image of removeImage){
-            deleteImage(image,"slider");
+        for (let image of removeImage) {
+            deleteImage(image, "slider");
         }
         for (let i = 0; i < images.length; i++) {
             let img = images[i];
@@ -156,11 +157,11 @@ export const getGalleryImages = async () => {
     }
 }
 
-export const addGalleryImages = async (images,removeImage) => {
+export const addGalleryImages = async (images, removeImage) => {
     try {
         let fileName = "";
-        for(let image of removeImage){
-            deleteImage(image,"gallery");
+        for (let image of removeImage) {
+            deleteImage(image, "gallery");
         }
         for (let i = 0; i < images.length; i++) {
             let img = images[i];
@@ -171,5 +172,48 @@ export const addGalleryImages = async (images,removeImage) => {
     } catch (error) {
         console.log("Error while uploading gallery images")
         console.log(error.message);
+    }
+}
+
+export const getAllNews = async () => {
+    try {
+        let data = [];
+        let ref = await db.collection("News").get();
+        ref.forEach((doc) => {
+            data.push({
+                id: doc.id,
+                heading: doc.data().title,
+                body: doc.data().text,
+                date: doc.data().date,
+                place: doc.data().place,
+                img: doc.data().image,
+                fileName: doc.data().fileName
+            })
+        })
+        return data;
+    } catch (error) {
+        console.log(error.message);
+        console.log("Error while accessing all news");
+    }
+}
+
+export const getParticularNews = async (id) => {
+    try {
+        let data;
+        let doc = await db.collection("News").doc(id).get();
+        if(!doc.exists) return null;
+        data = {
+            id: doc.id,
+            heading: doc.data().title,
+            body: doc.data().text,
+            date: doc.data().date,
+            place: doc.data().place,
+            img: doc.data().image,
+            fileName: doc.data().fileName
+        }
+        return data;
+    } catch (error) {
+        console.log(error.message);
+        console.log("Error while accessing all news");
     }
 }

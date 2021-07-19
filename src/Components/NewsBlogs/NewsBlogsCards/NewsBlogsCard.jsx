@@ -1,53 +1,23 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import "./NewsBlogsCard.scss";
 import { useLocation } from "react-router";
+import { getAllNews } from "../../../services/firebase";
+import Loader from '../../Shared/Loader/Loader'
 
 const NewsBlogsCard = () => {
-  let news = [
-    {
-      id: 1,
-      heading: "Startup funding",
-      body: "Blandit turpis cursus in hac habitasse platea dictumst. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Ut enim blandit volutpat maecenas. . Sit amet facilisis magna etiam tempor.....",
-      date: "20 June 2020",
-      place: " IIIT Vadodara",
-      img: "asset/images/NewsAndBlogs/sample-news.png",
-    },
-    {
-      id: 2,
-      heading: "IIIT Vadodara anounces alumni portal",
-      body: "Blandit turpis cursus in hac habitasse platea dictumst. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Ut enim blandit volutpat maecenas. . Sit amet facilisis magna etiam tempor.....",
-      date: "20 June 2020",
-      place: " IIIT Vadodara",
-      img: "asset/images/NewsAndBlogs/sample-news.png",
-    },
-    {
-      id: 3,
-      heading: "Connections at IIITV",
-      body: "Blandit turpis cursus in hac habitasse platea dictumst. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Ut enim blandit volutpat maecenas. . Sit amet facilisis magna etiam tempor.....",
-      date: "20 June 2020",
-      place: " IIIT Vadodara",
-      img: "asset/images/NewsAndBlogs/sample-news.png",
-    },
-    {
-      id: 4,
-      heading: "Job Fair at IIIT Vadodara",
-      body: "Blandit turpis cursus in hac habitasse platea dictumst. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Ut enim blandit volutpat maecenas. . Sit amet facilisis magna etiam tempor.....",
-      date: "20 June 2020",
-      place: " IIIT Vadodara",
-      img: "asset/images/NewsAndBlogs/sample-news.png",
-    },
-    {
-      id: 5,
-      heading: "Idea turns into reality at IIITV",
-      body: "Blandit turpis cursus in hac habitasse platea dictumst. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Ut enim blandit volutpat maecenas. . Sit amet facilisis magna etiam tempor.....",
-      date: "20 June 2020",
-      place: " IIIT Vadodara",
-      img: "asset/images/NewsAndBlogs/sample-news.png",
-    },
-  ];
+  const [news, setNews] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+  const fetchData = async () => {
+    let val = await getAllNews();
+    setNews(val);
+    setLoading(false);
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
   const websitePrefix = "https://iiitv-alumni-portal.netlify.app";
   const location = useLocation();
   const copyLink = (id) => {
@@ -90,11 +60,16 @@ const NewsBlogsCard = () => {
     );
   };
   return (
-    <div className="all-news-info">
-      <SemanticToastContainer />
-      {news.map((obj, index) => (
-        <div key={index}>{renderNews(obj)}</div>
-      ))}
+    <div>
+      {isLoading && <Loader />}
+      {!isLoading &&
+        <div className="all-news-info">
+          <SemanticToastContainer />
+          {news.map((obj, index) => (
+            <div key={index}>{renderNews(obj)}</div>
+          ))}
+        </div>
+      }
     </div>
   );
 };
