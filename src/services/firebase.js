@@ -112,6 +112,16 @@ export const addNews = async (news) => {
     }
 }
 
+export const deleteNews = async (news) => {
+    try {
+        await db.collection("News").doc(news.id).delete();
+        console.log("News Deleted Successfully!");
+    } catch (error) {
+        console.log(error.message);
+        return error.message;
+    }
+}
+
 export const addBlogs = async (blog) => {
     try {
         let url = "", fileName = "";
