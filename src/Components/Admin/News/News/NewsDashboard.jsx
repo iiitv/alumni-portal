@@ -19,48 +19,7 @@ const NewsAdminCard = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  // let news = [
-  //   {
-  //     id: 1,
-  //     heading: "Startup funding",
-  //     body: "Blandit turpis cursus in hac habitasse platea dictumst. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Ut enim blandit volutpat maecenas. . Sit amet facilisis magna etiam tempor.....",
-  //     date: "20 June 2020",
-  //     place: " IIIT Vadodara",
-  //     img: "/asset/images/NewsAndBlogs/sample-news.png",
-  //   },
-  //   {
-  //     id: 2,
-  //     heading: "IIIT Vadodara anounces alumni portal",
-  //     body: "Blandit turpis cursus in hac habitasse platea dictumst. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Ut enim blandit volutpat maecenas. . Sit amet facilisis magna etiam tempor.....",
-  //     date: "20 June 2020",
-  //     place: " IIIT Vadodara",
-  //     img: "/asset/images/NewsAndBlogs/sample-news.png",
-  //   },
-  //   {
-  //     id: 3,
-  //     heading: "Connections at IIITV",
-  //     body: "Blandit turpis cursus in hac habitasse platea dictumst. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Ut enim blandit volutpat maecenas. . Sit amet facilisis magna etiam tempor.....",
-  //     date: "20 June 2020",
-  //     place: " IIIT Vadodara",
-  //     img: "/asset/images/NewsAndBlogs/sample-news.png",
-  //   },
-  //   {
-  //     id: 4,
-  //     heading: "Job Fair at IIIT Vadodara",
-  //     body: "Blandit turpis cursus in hac habitasse platea dictumst. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Ut enim blandit volutpat maecenas. . Sit amet facilisis magna etiam tempor.....",
-  //     date: "20 June 2020",
-  //     place: " IIIT Vadodara",
-  //     img: "/asset/images/NewsAndBlogs/sample-news.png",
-  //   },
-  //   {
-  //     id: 5,
-  //     heading: "Idea turns into reality at IIITV",
-  //     body: "Blandit turpis cursus in hac habitasse platea dictumst. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Ut enim blandit volutpat maecenas. . Sit amet facilisis magna etiam tempor.....",
-  //     date: "20 June 2020",
-  //     place: " IIIT Vadodara",
-  //     img: "/asset/images/NewsAndBlogs/sample-news.png",
-  //   },
-  // ];
+  
   const location = useLocation();
   const renderNews = (obj) => {
     return (

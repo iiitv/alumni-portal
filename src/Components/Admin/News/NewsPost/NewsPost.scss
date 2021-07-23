@@ -1,0 +1,41 @@
+@import "./../../../../scss/imports";
+
+.page {
+  width: 80%;
+  margin: auto;
+
+  &-info {
+    &-header {
+      @include font-config(6vmin, 400, "ReemKufi", $color-font);
+      line-height: 5vh;
+    }
+
+    &-date {
+      color: black;
+      font-size: 3vmin;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    }
+  }
+
+  &-footer {
+    margin-top: 10%;
+    text-align: center;
+    @include font-config(3vmin, 400, "ReemKufi", $color-font);
+  }
+}
+
+.share {
+  float: right;
+}
+
+.news-image {
+  max-width: 100%;
+  height: auto;
+  margin: 5% 0 5% 0;
+}
+
+.container-text {
+  @include font-config(2.5vmin, 100, none, black);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}

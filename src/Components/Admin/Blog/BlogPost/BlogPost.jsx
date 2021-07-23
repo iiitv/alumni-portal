@@ -1,12 +1,12 @@
-import "./BlogsPost.scss";
+import "./BlogPost.scss";
 import { Container, Segment, Popup } from "semantic-ui-react";
 import { useLocation } from "react-router";
 import { useParams } from "react-router-dom";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import { useState, useEffect } from 'react';
-import { getParticularBlog } from "../../../services/firebase";
-import Loader from '../../Shared/Loader/Loader'
-import Error404 from "../../Shared/Error404/Error404";
+import { getParticularBlog } from "../../../../services/firebase";
+import Loader from '../../../Shared/Loader/Loader'
+import Error404 from "../../../Shared/Error404/Error404";
 
 const containerMargin = {
   marginTop: "5%",
@@ -14,7 +14,7 @@ const containerMargin = {
 
 const websitePrefix = "https://iiitv-alumni-portal.netlify.app";
 
-const NewsBlogsPost = () => {
+const AdminBlogPost = () => {
   const location = useLocation();
   const [isLoading, setLoading] = useState(true);
   const [blog, setBlog] = useState();
@@ -86,4 +86,4 @@ const NewsBlogsPost = () => {
   );
 };
 
-export default NewsBlogsPost;
+export default AdminBlogPost;

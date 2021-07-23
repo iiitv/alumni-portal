@@ -31,7 +31,7 @@ const NewsBlogsPost = () => {
   }
   useEffect(() => {
     fetchData();
-  }, [])
+  })
   const copyLink = () => {
     let link = websitePrefix + location.pathname;
     navigator.clipboard.writeText(link);

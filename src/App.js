@@ -29,6 +29,8 @@ import NavDecider from "./Components/Shared/Navbar/NavDecider";
 import HeaderDecider from "./Components/Shared/Header/HeaderDecider";
 import NewsAdminCard from "./Components/Admin/News/News/NewsDashboard";
 import BlogsAdminCard from "./Components/Admin/Blog/BlogDashboard/BlogDashboard";
+import AdminNewsPost from "./Components/Admin/News/NewsPost/NewsPost";
+import AdminBlogPost from "./Components/Admin/Blog/BlogPost/BlogPost";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -62,14 +64,16 @@ const App = () => {
                 <Route exact path="/blogs/:id" component={BlogsPost} />
                 <Route exact path="/admin-login" component={AdminLogin} />
                 <Route exact path="/admin/add-news" component={AddNews} />
-                <Route exact path="/admin/add-blogs" component={AddBlog} />
+                <Route exact path="/admin/create-blog" component={AddBlog} />
                 <Route exact path="/alumni" component={AlumniCard} />
                 <Route exact path="/alumni/:id" component={AlumniPage} />
                 <Route exact path="/admin/dashboard" component={Dashboard} />
                 <Route exact path="/admin/gallery" component={AdminGallery}/>
                 <Route exact path="/admin/slider" component={AdminSlider} />
                 <Route exact path="/admin/news" component={NewsAdminCard} />
+                <Route exact path="/admin/news/:id" component={AdminNewsPost} />
                 <Route exact path="/admin/blogs" component={BlogsAdminCard} />
+                <Route exact path="/admin/blogs/:id" component={AdminBlogPost} />
                 <Route component={Error404} />
               </Switch>
             </NavDecider>

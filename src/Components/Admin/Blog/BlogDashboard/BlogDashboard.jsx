@@ -76,7 +76,7 @@ const BlogsAdminCard = () => {
               <p>Blogs</p>
             </div>
             <div className="add-news-btn-div">
-                <Link to="/admin/add-blogs">
+                <Link to="/admin/create-blog">
                   <button className="add-news-btn">
                     +
                   </button>
