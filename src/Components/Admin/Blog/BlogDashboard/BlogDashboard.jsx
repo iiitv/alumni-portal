@@ -5,7 +5,7 @@ import { SemanticToastContainer } from "react-semantic-toasts";
 import "./BlogDashboard.scss";
 import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
-import  { getAllBlog } from "../../../../services/firebase";
+import  { deleteBlog, getAllBlog } from "../../../../services/firebase";
 import Loader from '../../../Shared/Loader/Loader';
 
 const BlogsAdminCard = () => {
@@ -20,7 +20,15 @@ const BlogsAdminCard = () => {
       fetchData();
     }, []);
   const location = useLocation();
-
+  const deleteBlogHandler = async (obj) => {
+    try {
+      await deleteBlog(obj);
+      setLoading(true);
+      fetchData();
+    } catch(err) {
+        console.log(err.message);
+    }
+  }
   const renderNews = (obj) => {
     return (
       <div className="news-block">
@@ -45,7 +53,7 @@ const BlogsAdminCard = () => {
                 className="icon-btn"
                 src={"/asset/images/Home/Admin/NewsNBlogs/delete.png"}
                 onClick={() => {
-                  
+                  deleteBlogHandler(obj);
                 }}
                 alt=""
               />

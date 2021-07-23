@@ -130,7 +130,7 @@ export const addBlogs = async (blog) => {
             await handleUpload(blog.image, fileName, "blogs");
             url = await getImageUrl("blogs", fileName);
         } else {
-            url = "asset/images/NewsAndBlogs/sample-news.png";
+            url = "/asset/images/NewsAndBlogs/sample-news.png";
         }
         await db.collection("Blogs").add({
             title: blog.title,
@@ -141,6 +141,16 @@ export const addBlogs = async (blog) => {
             author: blog.author,
         }).then((response) => console.log(response))
         console.log("Blog Added!!")
+    } catch (error) {
+        console.log(error.message);
+        return error.message;
+    }
+}
+
+export const deleteBlog = async (blog) => {
+    try {
+        await db.collection("Blogs").doc(blog.id).delete();
+        console.log("Blogs Deleted Successfully!");
     } catch (error) {
         console.log(error.message);
         return error.message;
