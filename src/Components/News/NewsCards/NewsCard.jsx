@@ -64,6 +64,11 @@ const NewsCard = () => {
       {isLoading && <Loader />}
       {!isLoading &&
         <div className="all-news-info">
+            <div className="news-header-div">
+              <div className="admin-news-heading">
+                <p>News</p>
+              </div>
+            </div>
           <SemanticToastContainer />
           {news.map((obj, index) => (
             <div key={index}>{renderNews(obj)}</div>

@@ -28,6 +28,7 @@ import AlumniPage from "./Components/MeetAlumni/AlumniPage/AlumniPage";
 import NavDecider from "./Components/Shared/Navbar/NavDecider";
 import HeaderDecider from "./Components/Shared/Header/HeaderDecider";
 import NewsAdminCard from "./Components/Admin/News/News/NewsDashboard";
+import BlogsAdminCard from "./Components/Admin/Blog/BlogDashboard/BlogDashboard";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -68,7 +69,7 @@ const App = () => {
                 <Route exact path="/admin/gallery" component={AdminGallery}/>
                 <Route exact path="/admin/slider" component={AdminSlider} />
                 <Route exact path="/admin/news" component={NewsAdminCard} />
-                <Route exact path="/admin/blogs" component={NewsAdminCard} />
+                <Route exact path="/admin/blogs" component={BlogsAdminCard} />
                 <Route component={Error404} />
               </Switch>
             </NavDecider>

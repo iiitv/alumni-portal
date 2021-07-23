@@ -5,9 +5,9 @@ import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import "./BlogsCard.scss";
 import { useLocation } from "react-router";
 import { getAllBlog } from "../../../services/firebase";
-import Loader from '../../Shared/Loader/Loader'
+import Loader from '../../Shared/Loader/Loader';
 
-const NewsBlogsCard = () => {
+const BlogsCard = () => {
   const [blog, setBlog] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const fetchData = async () => {
@@ -64,6 +64,11 @@ const NewsBlogsCard = () => {
       {isLoading && <Loader />}
       {!isLoading &&
         <div className="all-news-info">
+            <div className="news-header-div">
+              <div className="admin-news-heading">
+                <p>Blogs</p>
+              </div>
+            </div>
           <SemanticToastContainer />
           {blog.map((obj, index) => (
             <div key={index}>{renderNews(obj)}</div>
@@ -74,4 +79,4 @@ const NewsBlogsCard = () => {
   );
 };
 
-export default NewsBlogsCard;
+export default BlogsCard;
