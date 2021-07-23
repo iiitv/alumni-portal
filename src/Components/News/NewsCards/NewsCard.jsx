@@ -50,7 +50,7 @@ const NewsCard = () => {
             <Link to={`${location.pathname}/${obj.id}`} className="news-link">
               <p className="news-head">{obj.heading}</p>
             </Link>
-            <p className="news-body">{obj.body}</p>
+            <p className="news-body">{(obj.body.length > 245) ? obj.body.substring(0,245) + "..." : obj.body}</p>
           </div>
           <div className="news-image-div eq-h">
             <img src={obj.img} alt="sample-news.png" className="news-image" />
