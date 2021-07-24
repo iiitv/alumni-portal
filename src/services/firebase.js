@@ -6,7 +6,7 @@ import '@firebase/database'
 import "firebase/firestore";
 dotenv.config();
 
-firebase.initializeApp({
+export const firebaseApp = firebase.initializeApp({
     apiKey: process.env.REACT_APP_API_KEY,
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
     projectId: process.env.REACT_APP_PROJECT_ID,
@@ -122,30 +122,30 @@ export const deleteNews = async (news) => {
     }
 }
 
-export const addBlogs = async (blog) => {
-    try {
-        let url = "", fileName = "";
-        if (blog.image) {
-            fileName = getFileName();
-            await handleUpload(blog.image, fileName, "blogs");
-            url = await getImageUrl("blogs", fileName);
-        } else {
-            url = "/asset/images/NewsAndBlogs/sample-news.png";
-        }
-        await db.collection("Blogs").add({
-            title: blog.title,
-            image: url,
-            date: blog.date,
-            text: blog.text,
-            fileName: fileName,
-            author: blog.author,
-        }).then((response) => console.log(response))
-        console.log("Blog Added!!")
-    } catch (error) {
-        console.log(error.message);
-        return error.message;
-    }
-}
+// export const addBlogs = async (blog) => {
+//     try {
+//         let url = "", fileName = "";
+//         if (blog.image) {
+//             fileName = getFileName();
+//             await handleUpload(blog.image, fileName, "blogs");
+//             url = await getImageUrl("blogs", fileName);
+//         } else {
+//             url = "/asset/images/NewsAndBlogs/sample-news.png";
+//         }
+//         await db.collection("Blogs").add({
+//             title: blog.title,
+//             image: url,
+//             date: blog.date,
+//             text: blog.text,
+//             fileName: fileName,
+//             author: blog.author,
+//         }).then((response) => console.log(response))
+//         console.log("Blog Added!!")
+//     } catch (error) {
+//         console.log(error.message);
+//         return error.message;
+//     }
+// }
 
 export const deleteBlog = async (blog) => {
     try {
