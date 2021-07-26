@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import { useParams } from "react-router-dom";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import { useState, useEffect } from 'react';
-import { getParticularNews } from "../../../../services/firebase";
+import { getParticularNews } from "../../../../services/newsServices";
 import Loader from '../../../Shared/Error404/Error404'
 import Error404 from "../../../Shared/Loader/Loader";
 

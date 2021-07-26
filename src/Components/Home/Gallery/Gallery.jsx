@@ -3,7 +3,7 @@ import "./Gallery.scss";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import DesktopGallery from "./DesktopGallery/DesktopGallery";
 import MobileGallery from "./MobileGallery/MobileGallery";
-import { getGalleryImages } from "../../../services/firebase";
+import { getGalleryImages } from "../../../services/galleryServices";
 import { useState, useEffect } from "react";
 
 

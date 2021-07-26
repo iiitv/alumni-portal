@@ -5,7 +5,7 @@ import { SemanticToastContainer } from "react-semantic-toasts";
 import "./NewsDashboard.scss";
 import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
-import  { getAllNews, deleteNews } from "../../../../services/firebase";
+import  { getAllNews, deleteNews } from "../../../../services/newsServices";
 import Loader from '../../../Shared/Loader/Loader';
 
 const NewsAdminCard = () => {

@@ -4,7 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../../../providers/UserProvider";
 import Loader from "../../../Shared/Loader/Loader";
-import { addNews } from "../../../../services/firebase";
+import { addNews } from "../../../../services/newsServices";
 
 const AddNews = () => {
   const history = useHistory();
