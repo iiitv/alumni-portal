@@ -4,7 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../../../providers/UserProvider";
 import Loader from "../../../Shared/Loader/Loader";
-import { editNews } from "../../../../services/firebase";
+import { editNews } from "../../../../services/newsServices";
 
 const EditNews = (props) => {
   const history = useHistory();
@@ -15,6 +15,7 @@ const EditNews = (props) => {
   const [url, setUrl] = useState(null);
   const [redirect, setredirect] = useState(null);
   const [news, setNews] = useState({
+    id: "",
     title: "",
     date:"",
     place: null,
@@ -24,6 +25,7 @@ const EditNews = (props) => {
 
   useEffect(() => {
     setNews({
+      id: props.location.obj.id,
       title: props.location.obj.title,
       date: props.location.obj.date,
       place: props.location.obj.place,
@@ -33,7 +35,7 @@ const EditNews = (props) => {
     if (!user && !isLoading) {
       setredirect("/admin-login");
     }
-  }, [user, isLoading, props.location.obj.title, props.location.obj.date, props.location.obj.place, props.location.obj.text, props.location.obj.image]);
+  }, [user, isLoading]);
   if (redirect) {
     return <Redirect to={redirect} />;
   }
@@ -52,7 +54,7 @@ const EditNews = (props) => {
       [e.target.name]: e.target.value.trim(),
     });
   };
-  const handleSubmit = async (e) => {
+  const handleEdit = async (e) => {
     e.preventDefault();
     setAddingNews(true);
     try {
@@ -60,7 +62,7 @@ const EditNews = (props) => {
     } catch(err) {
       setErrorMessage(err.message);
     }
-    history.push("news");
+    history.goBack();
   };
   return (
     <div className="add-news">
@@ -124,10 +126,10 @@ const EditNews = (props) => {
             )}
             <p className="btn-parent">
               {addingNews ? (
-                <button className="upload-img-btn">Adding...</button>
+                <button className="upload-img-btn">Saving changes...</button>
               ) : (
-                <button className="upload-img-btn" onClick={handleSubmit}>
-                  Submit
+                <button className="upload-img-btn" onClick={handleEdit}>
+                  Save Changes
                 </button>
               )}
             </p>

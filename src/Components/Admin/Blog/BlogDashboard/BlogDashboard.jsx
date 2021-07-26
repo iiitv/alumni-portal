@@ -5,7 +5,7 @@ import { SemanticToastContainer } from "react-semantic-toasts";
 import "./BlogDashboard.scss";
 import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
-import  { deleteBlog, getAllBlog } from "../../../../services/firebase";
+import  { deleteBlog, getAllBlog } from "../../../../services/blogsServices";
 import Loader from '../../../Shared/Loader/Loader';
 
 const BlogsAdminCard = () => {

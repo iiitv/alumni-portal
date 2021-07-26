@@ -1,5 +1,5 @@
 import "./Event.scss";
-import {NavLink} from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 const Event = () => {
   let events = [
@@ -8,14 +8,14 @@ const Event = () => {
       date: 15,
       name: "Alumni Speaks : Getting the funds",
       timeline: "Future",
-      id:1
+      id: 1,
     },
     {
       month: "July",
       date: 15,
       name: "Alumni Speaks : Getting the funds",
       timeline: "Future",
-      id:2
+      id: 2,
     },
   ];
   const renderEvent = (event) => {
@@ -27,7 +27,9 @@ const Event = () => {
         </div>
         <div className="event-info">
           <p className="event-timeline">{event.timeline}</p>
-          <p className="event-name"><NavLink to={`/event/${event.id}`}>{event.name}</NavLink></p>
+          <p className="event-name">
+            <NavLink to={`/event/${event.id}`}>{event.name}</NavLink>
+          </p>
           <button className="register-event-btn">Register</button>
         </div>
       </div>

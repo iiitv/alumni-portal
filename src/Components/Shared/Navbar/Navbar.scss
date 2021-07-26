@@ -2,3 +2,18 @@
     font-family: 'ReemKufi';
     font-size: 1rem;
 }
+
+@media only screen and (max-width: 1920px) {
+    .mobile-nav {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .mobile-nav {
+        display: contents;
+    }
+    .desktop-nav {
+        display: none;
+    }
+}

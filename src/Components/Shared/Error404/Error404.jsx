@@ -4,11 +4,7 @@ import "./Error404.scss";
 const Error404 = () => {
   return (
     <div class="main">
-      <svg
-        width="470"
-        height="290"
-        viewBox="0 0 470 290"
-      >
+      <svg width="470" height="290" viewBox="0 0 470 290">
         <defs>
           <path
             class="fundo"

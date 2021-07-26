@@ -1,10 +1,11 @@
 import './Gallery.scss';
 import { Icon } from 'semantic-ui-react';
 import { useState, useEffect, useContext } from 'react';
-import { addGalleryImages, getGalleryImages } from '../../../services/firebase';
+import { addGalleryImages, getGalleryImages } from '../../../services/galleryServices';
 import Loader from '../../Shared/Loader/Loader'
 import { UserContext } from "../../../providers/UserProvider";
 import { Redirect, useHistory } from 'react-router-dom';
+
 const Gallery = () => {
     const history = useHistory();
     const [errorMessage, setErrorMessage] = useState("");

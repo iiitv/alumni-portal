@@ -4,7 +4,7 @@ import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import "./BlogsCard.scss";
 import { useLocation } from "react-router";
-import { getAllBlog } from "../../../services/firebase";
+import { getAllBlog } from "../../../services/blogsServices";
 import Loader from '../../Shared/Loader/Loader';
 
 const BlogsCard = () => {
@@ -27,6 +27,7 @@ const BlogsCard = () => {
       description: <p>Link Copied to Clipboard</p>,
     });
   };
+  
   const renderNews = (obj) => {
     return (
       <div className="news-block">

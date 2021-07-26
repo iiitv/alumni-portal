@@ -38,9 +38,8 @@ const items = [
 const NavBarMobile = (props) => {
   const [visible, setVisible] = useState(false);
   const pushHandler = () => {
-    if(visible)
-      setVisible(false);
-  }
+    if (visible) setVisible(false);
+  };
   const [activeItem, setActiveItem] = useState("");
   const clickHandler = (item) => {
     setActiveItem(item.content);
@@ -50,11 +49,11 @@ const NavBarMobile = (props) => {
   return (
     <>
       <Menu inverted style={navStyle} widths={4}>
-          <Menu.Item onClick={toggleHandler}>
-            <Icon name="sidebar" />
-          </Menu.Item>
-        </Menu>
-      <Sidebar.Pushable className='side-push'>
+        <Menu.Item onClick={toggleHandler}>
+          <Icon name="sidebar" />
+        </Menu.Item>
+      </Menu>
+      <Sidebar.Pushable className="side-push">
         <Sidebar
           as={Menu}
           animation="overlay"
@@ -66,22 +65,22 @@ const NavBarMobile = (props) => {
           visible={visible}
         >
           {items.map((item) => (
-            <Menu.Item {...item} 
+            <Menu.Item
+              {...item}
               name={item}
               active={activeItem === item.content}
               onClick={() => clickHandler(item)}
               className="nav-items"
-              as = { Link }
-              to = {item.link}
-            >
-            </Menu.Item>
-        ))}
+              as={Link}
+              to={item.link}
+            ></Menu.Item>
+          ))}
         </Sidebar>
         <Sidebar.Pusher
           dimmed={visible}
           onClick={pushHandler}
           style={{ minHeight: "100vh" }}
-          className='side-push'
+          className="side-push"
         >
           {props.children}
         </Sidebar.Pusher>
@@ -119,15 +118,11 @@ const Navbar = (props) => {
   return (
     <div>
       <Media at="mobile">
-        <NavBarMobile>
-            {props.children}
-        </NavBarMobile>
+        <NavBarMobile>{props.children}</NavBarMobile>
       </Media>
 
       <Media greaterThan="mobile">
-        <NavBarDesktop >
-          {props.children}
-        </NavBarDesktop>
+        <NavBarDesktop>{props.children}</NavBarDesktop>
       </Media>
     </div>
   );
