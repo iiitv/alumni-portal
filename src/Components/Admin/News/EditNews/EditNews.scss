@@ -1,0 +1,82 @@
+.add-news {
+    padding: 0 7%;
+  }
+  
+  .add-news label {
+    font: Reem Kufi;
+    font-size: 17px;
+    display: block;
+    color: #18535b;
+    margin: 10px 0 5px 0;
+    font-weight: bold;
+  }
+  
+  .add-news .heading {
+    text-align: center;
+    font-size: 27px;
+    color: #18535b;
+  }
+  
+  .add-news .line {
+    margin: auto;
+    width: 100px;
+    height: 1px;
+    border-top: 1px solid #18535b;
+  }
+  
+  .add-news input {
+    color: #323232d3;
+    outline: none;
+    padding: 4px;
+    font-family: "Reem Kufi";
+    border: 1px solid #9a9a9a;
+    display: block;
+    width: 100%;
+    height: 4vh;
+    border-radius: 5px;
+  }
+  
+  .add-news textarea {
+    font-family: "Reem Kufi";
+    width: 100%;
+    height: 150px;
+    color: #323232d3;
+    outline: none;
+    padding: 4px;
+    border: 1px solid #9a9a9a;
+    border-radius: 5px;
+    resize: none;
+  }
+  
+  .add-news .btn-parent {
+    text-align: center;
+    margin-top: 25px;
+  }
+  
+  .add-news .upload-img-btn {
+    display: inline-block;
+    background-color: #18535b;
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 30px;
+    border-radius: 4px;
+  }
+  
+  .add-news .upload-img-btn:hover {
+    background-color: #18535bc5;
+  }
+  
+  #upload-img {
+    display: none;
+  }
+  
+  .add-news .img-par .preview-img {
+    height: 300px;
+  }
+  
+  .add-news .img-par {
+    text-align: center;
+  }
+  

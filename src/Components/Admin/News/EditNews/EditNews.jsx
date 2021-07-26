@@ -1,12 +1,12 @@
-import "./AddNews.scss";
+import "./EditNews.scss";
 import { Icon, Message, Form } from "semantic-ui-react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../../../providers/UserProvider";
 import Loader from "../../../Shared/Loader/Loader";
-import { addNews } from "../../../../services/firebase";
+import { editNews } from "../../../../services/firebase";
 
-const AddNews = () => {
+const EditNews = (props) => {
   const history = useHistory();
   const info = useContext(UserContext);
   const { user, isLoading } = info;
@@ -16,16 +16,24 @@ const AddNews = () => {
   const [redirect, setredirect] = useState(null);
   const [news, setNews] = useState({
     title: "",
-    date: null,
-    place: "",
+    date:"",
+    place: null,
     text: "",
     image: null,
   });
+
   useEffect(() => {
+    setNews({
+      title: props.location.obj.title,
+      date: props.location.obj.date,
+      place: props.location.obj.place,
+      text: props.location.obj.text,
+      image: props.location.obj.image,
+    });
     if (!user && !isLoading) {
       setredirect("/admin-login");
     }
-  }, [user, isLoading]);
+  }, [user, isLoading, props.location.obj.title, props.location.obj.date, props.location.obj.place, props.location.obj.text, props.location.obj.image]);
   if (redirect) {
     return <Redirect to={redirect} />;
   }
@@ -48,7 +56,7 @@ const AddNews = () => {
     e.preventDefault();
     setAddingNews(true);
     try {
-    await addNews(news);
+    await editNews(news);
     } catch(err) {
       setErrorMessage(err.message);
     }
@@ -59,7 +67,7 @@ const AddNews = () => {
       {isLoading && <Loader />}
       {!isLoading && (
         <div>
-          <h2 className="heading">Add News</h2>
+          <h2 className="heading">Edit News</h2>
           <p className="line"></p>
           <Form error={!!errorMessage}>
             <label htmlFor="title">Title</label>
@@ -68,6 +76,7 @@ const AddNews = () => {
               name="title"
               id="title"
               onChange={setInfo}
+              defaultValue={news.title}
               required
             />
             <label htmlFor="date">Date</label>
@@ -76,6 +85,7 @@ const AddNews = () => {
               name="date"
               id="date"
               onChange={setInfo}
+              defaultValue={news.date}
               required
             />
             <label htmlFor="place">Place</label>
@@ -84,6 +94,7 @@ const AddNews = () => {
               name="place"
               id="place"
               onChange={setInfo}
+              defaultValue={news.place}
               required
             />
             <label htmlFor="text">Text</label>
@@ -91,6 +102,7 @@ const AddNews = () => {
               name="text"
               id="text"
               onChange={setInfo}
+              defaultValue={news.text}
               required
             ></textarea>
             <p className="btn-parent">
@@ -102,6 +114,7 @@ const AddNews = () => {
                 accept="image/*"
                 id="upload-img"
                 onChange={(e) => handleImage(e)}
+                defaultValue={news.image}
               ></input>
             </p>
             {url && (
@@ -126,4 +139,4 @@ const AddNews = () => {
   );
 };
 
-export default AddNews;
+export default EditNews;

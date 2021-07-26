@@ -36,16 +36,33 @@ const NewsAdminCard = () => {
         <Popup 
             content = "edit"
             trigger = {
-              <img 
-                className="icon-btn"
-                src={"/asset/images/Home/Admin/NewsNBlogs/edit.png"}
-                onClick={() => {
-                  
-                }}
-                alt=""
-              />
+              <Link to={{pathname: `${location.pathname}/edit-news/${obj.id}`, obj: {
+                title: obj.heading,
+                date: obj.date,
+                place: obj.place,
+                text: obj.body,
+                image: obj.img,
+              }}}>
+                <img 
+                  className="icon-btn"
+                  src={"/asset/images/Home/Admin/NewsNBlogs/edit.png"}
+                  alt="edit-news"
+                />
+              </Link>
             }
+            // onClick={() => {
+            //   let path = `dashboard`;
+            //   history.push(path, this.state.obj);
+            // }}
           />
+          {/* <Link to={`${location.pathname}/edit-news/${obj.id}`}>
+            <img 
+              className="icon-btn"
+              src={"/asset/images/Home/Admin/NewsNBlogs/edit.png"}
+              alt="edit-news"
+            />
+          </Link> */}
+          
           <Popup 
             content = "delete"
             trigger = {

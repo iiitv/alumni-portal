@@ -112,6 +112,17 @@ export const addNews = async (news) => {
     }
 }
 
+export const editNews = async (news) => {
+    try {
+        await db.collection("News").doc(news.id).update({
+            
+        });
+    } catch (e) {
+        console.log(e.message);
+        return e.message;
+    }
+}
+
 export const deleteNews = async (news) => {
     try {
         await db.collection("News").doc(news.id).delete();
