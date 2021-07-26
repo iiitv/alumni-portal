@@ -36,14 +36,21 @@ const BlogsAdminCard = () => {
         <Popup 
             content = "edit"
             trigger = {
-              <img 
-                className="icon-btn"
-                src={"/asset/images/Home/Admin/NewsNBlogs/edit.png"}
-                onClick={() => {
-                  
-                }}
-                alt=""
-              />
+              <Link to={{pathname: `${location.pathname}/edit-blog/${obj.id}`, obj: {
+                id: obj.id,
+                title: obj.heading,
+                date: obj.date,
+                place: obj.place,
+                text: obj.body,
+                image: obj.img,
+                author: obj.author,
+              }}}>
+                <img 
+                  className="icon-btn"
+                  src={"/asset/images/Home/Admin/NewsNBlogs/edit.png"}
+                  alt="edit-blog"
+                />
+              </Link>
             }
           />
           <Popup 
@@ -55,7 +62,7 @@ const BlogsAdminCard = () => {
                 onClick={() => {
                   deleteBlogHandler(obj);
                 }}
-                alt=""
+                alt="delete-blog"
               />
             }
           />

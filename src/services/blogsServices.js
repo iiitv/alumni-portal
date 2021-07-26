@@ -55,6 +55,30 @@ export const deleteBlog = async (blog) => {
     }
 }
 
+export const editBlog = async (blog) => {
+    try {
+        let url = "", fileName = "";
+        if (blog.image && blog.image !== "/asset/images/NewsAndBlogs/sample-news.png") {
+            fileName = getFileName();
+            await handleUpload(blog.image, fileName, "blog");
+            url = await getImageUrl("blog", fileName);
+        } else {
+            url = "/asset/images/NewsAndBlogs/sample-news.png";
+        }
+        await db.collection("Blogs").doc(blog.id).update({
+            title: blog.title,
+            image: url,
+            date: blog.date,
+            text: blog.text,
+            fileName: fileName,
+            author: blog.author,
+        });
+    } catch (e) {
+        console.log(e.message);
+        return e.message;
+    }
+}
+
 export const getAllBlog = async () => {
     try {
         let data = [];
@@ -65,8 +89,8 @@ export const getAllBlog = async () => {
                 heading: doc.data().title,
                 body: doc.data().text,
                 date: doc.data().date,
-                place: doc.data().place,
                 img: doc.data().image,
+                author: doc.data().author,
                 fileName: doc.data().fileName
             })
         })
