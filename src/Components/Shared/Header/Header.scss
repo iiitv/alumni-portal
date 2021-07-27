@@ -40,12 +40,23 @@
     color: #ffff;
     font-size: 1rem;
     background-color: #18535B;
-    padding: 0 1rem;
+    padding: 0.8rem 1rem;
     border-width: 0;
+    display: flex;
+    justify-content: center;
 }
 .button:hover {
     cursor: pointer;
     background-color: #0e8392;
+}
+
+.signout-img {
+    display: flex;
+    margin-right: 0.7rem;
+}
+
+.button-text {
+    display: flex;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -92,7 +103,7 @@
         color: #ffff;
         font-size: 1rem;
         background-color: #18535B;
-        padding: 0.5rem 1rem;
+        // padding: 0.5rem 1rem;
         border-width: 0;
     }
     .button:hover {
@@ -142,7 +153,7 @@
         color: #ffff;
         font-size: 1rem;
         background-color: #18535B;
-        padding: 0.5rem 1rem;
+        // padding: 0.5rem 1rem;
         border-width: 0;
     }
     .button:hover {

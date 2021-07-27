@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Container, Icon, Sidebar } from "semantic-ui-react";
+import { Menu, Icon, Sidebar } from "semantic-ui-react";
 import "../Navbar/Navbar.scss";
 import { createMedia } from "@artsy/fresnel";
 import { Link } from "react-router-dom";
@@ -19,16 +19,15 @@ const AppMedia = createMedia({
   },
 });
 
-// const mediaStyles = AppMedia.createMediaStyle();
 const { Media } = AppMedia;
 
 const items = [
   { content: "Home", key: "Home", link: "/" },
   { content: "About Us", key: "About Us", link: "/about-us" },
   {
-    content: "Meet the Alumni",
-    key: "Meet the Alumni",
-    link: "/meet-the-alumni",
+    content: "Alumni",
+    key: "Alumni",
+    link: "/alumni",
   },
   { content: "News", key: "News", link: "/news" },
   { content: "Events", key: "Events", link: "/events" },
@@ -36,16 +35,11 @@ const items = [
   { content: "Blogs", key: "Blogs", link: "/blogs" },
 ];
 
-const NavBarChildren = (props) => (
-  <Container fluid>{props.children}</Container>
-);
-
 const NavBarMobile = (props) => {
   const [visible, setVisible] = useState(false);
   const pushHandler = () => {
-    if(visible)
-      setVisible(false);
-  }
+    if (visible) setVisible(false);
+  };
   const [activeItem, setActiveItem] = useState("");
   const clickHandler = (item) => {
     setActiveItem(item.content);
@@ -55,11 +49,11 @@ const NavBarMobile = (props) => {
   return (
     <>
       <Menu inverted style={navStyle} widths={4}>
-          <Menu.Item onClick={toggleHandler}>
-            <Icon name="sidebar" />
-          </Menu.Item>
-        </Menu>
-      <Sidebar.Pushable className='side-push'>
+        <Menu.Item onClick={toggleHandler}>
+          <Icon name="sidebar" />
+        </Menu.Item>
+      </Menu>
+      <Sidebar.Pushable className="side-push">
         <Sidebar
           as={Menu}
           animation="overlay"
@@ -71,22 +65,22 @@ const NavBarMobile = (props) => {
           visible={visible}
         >
           {items.map((item) => (
-            <Menu.Item {...item} 
+            <Menu.Item
+              {...item}
               name={item}
               active={activeItem === item.content}
               onClick={() => clickHandler(item)}
               className="nav-items"
-              as = { Link }
-              to = {item.link}
-            >
-            </Menu.Item>
-        ))}
+              as={Link}
+              to={item.link}
+            ></Menu.Item>
+          ))}
         </Sidebar>
         <Sidebar.Pusher
           dimmed={visible}
           onClick={pushHandler}
           style={{ minHeight: "100vh" }}
-          className='side-push'
+          className="side-push"
         >
           {props.children}
         </Sidebar.Pusher>
@@ -101,19 +95,22 @@ const NavBarDesktop = (props) => {
     setActiveItem(item.content);
   };
   return (
-    <Menu inverted widths={9} style={navStyle}>
-      {items.map((item) => (
-        <Menu.Item
-          {...item}
-          name={item}
-          active={activeItem === item.content}
-          onClick={() => clickHandler(item)}
-          className="nav-items"
-          as={Link}
-          to={item.link}
-        ></Menu.Item>
-      ))}
-    </Menu>
+    <>
+      <Menu inverted widths={9} style={navStyle}>
+        {items.map((item) => (
+          <Menu.Item
+            {...item}
+            name={item}
+            active={activeItem === item.content}
+            onClick={() => clickHandler(item)}
+            className="nav-items"
+            as={Link}
+            to={item.link}
+          ></Menu.Item>
+        ))}
+      </Menu>
+      {props.children}
+    </>
   );
 };
 
@@ -121,14 +118,11 @@ const Navbar = (props) => {
   return (
     <div>
       <Media at="mobile">
-        <NavBarMobile>
-            {props.children}
-        </NavBarMobile>
+        <NavBarMobile>{props.children}</NavBarMobile>
       </Media>
 
       <Media greaterThan="mobile">
-        <NavBarDesktop />
-        <NavBarChildren>{props.children}</NavBarChildren>
+        <NavBarDesktop>{props.children}</NavBarDesktop>
       </Media>
     </div>
   );

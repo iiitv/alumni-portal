@@ -1,0 +1,59 @@
+body{
+    height:100%;
+    width: 100%;
+  }
+.adminLogin{
+    background: linear-gradient(to bottom, #18535B 80%, transparent 0);
+    padding: 1px;
+}
+.adminLogin p{
+    padding: 0;
+    margin: 0;
+}
+.loginCard{
+    background-color: white;
+    width: 40%;
+    margin:auto;
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    border: 1px solid #4140400e;
+    border-radius: 5px;
+    box-shadow: 1.5px 1.5px 1.5px rgba(0,0,0,0.2);
+}
+.loginCard .line{
+    margin: auto;
+    width: 60px;
+    margin-top: 4px;
+    height: 1px;
+    border-top: 1px solid #18535B;
+}
+
+.loginCard p:nth-child(3){
+    font-family: Reem Kufi;
+    margin-top: 17px;
+    font-size: 14px;
+}
+
+.google-img{
+    width:120px;
+    border: .5px solid #18535b75; 
+    border-radius: 8px;
+    padding: 3px 30px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) {
+    .loginCard{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .loginCard{
+        width: 60%;
+    }
+}

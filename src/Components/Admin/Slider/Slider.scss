@@ -1,0 +1,66 @@
+.add-image-head {
+    margin-top: 70%;
+}
+.admin-slider{
+    width: 80%;
+    margin: 0 auto;
+}
+.admin-slider .add-btn{
+    cursor: pointer;
+    background-color: #18535B;
+    color: white;
+    padding: 7px;
+}
+#upload-img{
+    display: none;
+}
+.admin-slider-img img{
+    // height:190px;
+    // width: 270px;
+    width: 100%;
+    max-width: 300px;
+    height: 230px;
+}
+.admin-slider .wrapper{
+    padding: 0;
+    flex: 2;
+    margin-top: 30px;
+    display:grid;
+    grid-gap: 1rem;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.admin-slider-img{
+    position: relative;
+}
+.admin-slider-img .delete-img{
+    cursor: pointer;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    color: white;
+    font-size: 15px;
+    padding: 1px;
+    background-color: rgba(196, 196, 196, 1);
+    border-radius: 50%;
+}
+.admin-slider-img p {
+    padding-left: 3px !important;
+}
+.admin-slider .btn-parent{
+    text-align: center;
+    margin-top: 25px;
+}
+.admin-slider .upload-img-btn{
+    display: inline-block;
+    background-color: #18535B;
+    color: white;
+    outline: none;
+    border:none;
+    cursor: pointer;
+    padding: 7px 10px;
+    border-radius: 4px;
+}
+.admin-slider .upload-img-btn:hover{
+    background-color: #18535bc5;
+}

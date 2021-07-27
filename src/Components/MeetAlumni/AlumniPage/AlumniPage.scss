@@ -1,0 +1,96 @@
+@import "../../../scss/imports";
+
+.alumni-info {
+  width: 80%;
+  margin: auto;
+
+  &-description {
+    @include font-config(3vmin, 100, none, black);
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+  }
+
+  &-footer {
+    margin-top: 10%;
+    text-align: center;
+    @include font-config(3vmin, 400, "ReemKufi", $color-font);
+  }
+}
+
+.alumni-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  &-desc {
+    margin: 5%;
+  }
+
+  &-desc > h1 {
+    @include font-config(8vmin, 400, "ReemKufi", $color-font);
+    line-height: 5vh;
+  }
+
+  &-desc > h3 {
+    @include font-config(4vmin, 400, "ReemKufi", rgba(204, 204, 204, 1));
+    line-height: 5vh;
+  }
+
+  &-desc > hr {
+    background-color: rgba(204, 204, 204, 1);
+    height: 3px;
+    border: none;
+  }
+
+  &-desc > p {
+    margin-top: 5%;
+    @include font-config(3vmin, 300, normal, black);
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+  }
+}
+
+.share {
+  float: right;
+}
+
+.profile-image {
+  max-width: 100%;
+  height: auto;
+  margin: 5% 0 5% 0;
+}
+
+.alumni-footer {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &-social {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &-tag {
+    margin: auto 0 auto 0;
+    @include font-config(3vmin, 400, "ReemKufi", $color-font);
+  }
+}
+
+.social-icon {
+  height: 35px;
+  width: 35px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .alumni-profile {
+    flex-direction: column;
+
+    .alumni-name,
+    .alumni-designation {
+      text-align: center;
+    }
+  }
+}

@@ -7,10 +7,9 @@ import {
 } from "pure-react-carousel";
 
 const renderSlide = (images) => {
-  let imageUrlPrefix = "https://gaurkrishna.pythonanywhere.com/media/gallery/";
 
-  return images.map((Image, index) => {
-    let imageUrl = `${imageUrlPrefix}img${index + 1}.jpg`;
+  return images.map((image, index) => {
+    let imageUrl = image.url;
     return (
       <Slide index={index} key={index}>
         <div className="mobileGallery__container">
@@ -32,7 +31,7 @@ const MobileGallery = ({ images }) => {
       <CarouselProvider
         naturalSlideWidth={500}
         naturalSlideHeight={400}
-        totalSlides={12}
+        totalSlides={images.length}
         interval={2000}
         visibleSlides={1}
       >
