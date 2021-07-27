@@ -1,27 +1,38 @@
-import "./AddBlog.scss";
+import "./EditBlog.scss";
 import { Icon, Message, Form } from "semantic-ui-react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../../../providers/UserProvider";
 import Loader from "../../../Shared/Loader/Loader";
-import { addBlogs } from "../../../../services/blogsServices";
+import { editBlog } from "../../../../services/blogsServices";
 
-const AddBlog = () => {
+const EditBlog = (props) => {
   const history = useHistory();
   const info = useContext(UserContext);
-  const [errorMessage, setErrorMessage] = useState("");
   const { user, isLoading } = info;
-  const [addingBlog, setAddingBlog] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [addingBlog, setaddingBlog] = useState(false);
   const [url, setUrl] = useState(null);
   const [redirect, setredirect] = useState(null);
   const [blog, setBlog] = useState({
+    id: "",
     title: "",
-    date: null,
+    date:"",
     text: "",
-    author: "",
     image: null,
+    author: "",
   });
+
   useEffect(() => {
+    setBlog({
+      id: props.location.obj.id,
+      title: props.location.obj.title,
+      date: props.location.obj.date,
+      place: props.location.obj.place,
+      text: props.location.obj.text,
+      image: props.location.obj.image,
+      author: props.location.obj.author,
+    });
     if (!user && !isLoading) {
       setredirect("/admin-login");
     }
@@ -44,22 +55,22 @@ const AddBlog = () => {
       [e.target.name]: e.target.value.trim(),
     });
   };
-  const handleSubmit = async (e) => {
+  const handleEdit = async (e) => {
     e.preventDefault();
-    setAddingBlog(true);
+    setaddingBlog(true);
     try {
-    await addBlogs(blog); 
-  } catch(err) {
-    setErrorMessage(err.message);
-  }
-    history.push("blogs");
+    await editBlog(blog);
+    } catch(err) {
+      setErrorMessage(err.message);
+    }
+    history.goBack();
   };
   return (
     <div className="add-news">
       {isLoading && <Loader />}
       {!isLoading && (
         <div>
-          <h2 className="heading">Create blog</h2>
+          <h2 className="heading">Edit Blog</h2>
           <p className="line"></p>
           <Form error={!!errorMessage}>
             <label htmlFor="title">Title</label>
@@ -68,6 +79,7 @@ const AddBlog = () => {
               name="title"
               id="title"
               onChange={setInfo}
+              defaultValue={blog.title}
               required
             />
             <label htmlFor="author">Author</label>
@@ -76,6 +88,7 @@ const AddBlog = () => {
               name="author"
               id="author"
               onChange={setInfo}
+              defaultValue={blog.author}
               required
             />
             <label htmlFor="date">Date</label>
@@ -84,6 +97,7 @@ const AddBlog = () => {
               name="date"
               id="date"
               onChange={setInfo}
+              defaultValue={blog.date}
               required
             />
             <label htmlFor="text">Text</label>
@@ -91,6 +105,7 @@ const AddBlog = () => {
               name="text"
               id="text"
               onChange={setInfo}
+              defaultValue={blog.text}
               required
             ></textarea>
             <p className="btn-parent">
@@ -102,6 +117,7 @@ const AddBlog = () => {
                 accept="image/*"
                 id="upload-img"
                 onChange={(e) => handleImage(e)}
+                defaultValue={blog.image}
               ></input>
             </p>
             {url && (
@@ -111,10 +127,10 @@ const AddBlog = () => {
             )}
             <p className="btn-parent">
               {addingBlog ? (
-                <button className="upload-img-btn">Adding...</button>
+                <button className="upload-img-btn">Saving changes...</button>
               ) : (
-                <button className="upload-img-btn" onClick={handleSubmit}>
-                  Submit
+                <button className="upload-img-btn" onClick={handleEdit}>
+                  Save Changes
                 </button>
               )}
             </p>
@@ -126,4 +142,4 @@ const AddBlog = () => {
   );
 };
 
-export default AddBlog;
+export default EditBlog;

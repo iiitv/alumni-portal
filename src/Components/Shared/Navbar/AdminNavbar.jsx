@@ -9,7 +9,7 @@ const navStyle = {
 };
 
 const items = [
-  {content: "Home", key: "Home", link: "/"}, 
+  { content: "Home", key: "Home", link: "/" },
   { content: "Dashboard", key: "Dashboard", link: "/admin/dashboard" },
   { content: "News", key: "News", link: "/admin/news" },
   { content: "Events", key: "Events", link: "/admin/events" },
@@ -27,25 +27,24 @@ const AdminNavbar = (props) => {
   useLayoutEffect(() => {
     const updateSize = () => {
       setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener('resize', updateSize);
+    };
+    window.addEventListener("resize", updateSize);
     updateSize();
-    return () => window.removeEventListener('resize', updateSize);
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
   useEffect(() => {
-    if(size[0] < 700) { 
+    if (size[0] < 700) {
       setChildrenDesktop(false);
       setChildrenMobile(true);
-     } else {
+    } else {
       setChildrenDesktop(true);
       setChildrenMobile(false);
-     }
-  }, [size])
+    }
+  }, [size]);
   const pushHandler = () => {
-    if(visible)
-      setVisible(false);
-  }
+    if (visible) setVisible(false);
+  };
   const [activeItem, setActiveItem] = useState("");
   const clickHandler = (item) => {
     setActiveItem(item.content);
@@ -69,15 +68,15 @@ const AdminNavbar = (props) => {
             ></Menu.Item>
           ))}
         </Menu>
-        {(childrenDesktop) ? props.children : null }
+        {childrenDesktop ? props.children : null}
       </div>
       <div className="mobile-nav">
         <Menu inverted style={navStyle} widths={4}>
-            <Menu.Item onClick={toggleHandler}>
-              <Icon name="sidebar" />
-            </Menu.Item>
-          </Menu>
-        <Sidebar.Pushable className='side-push'>
+          <Menu.Item onClick={toggleHandler}>
+            <Icon name="sidebar" />
+          </Menu.Item>
+        </Menu>
+        <Sidebar.Pushable className="side-push">
           <Sidebar
             as={Menu}
             animation="overlay"
@@ -89,24 +88,24 @@ const AdminNavbar = (props) => {
             visible={visible}
           >
             {items.map((item) => (
-              <Menu.Item {...item} 
+              <Menu.Item
+                {...item}
                 name={item}
                 active={activeItem === item.content}
                 onClick={() => clickHandler(item)}
                 className="nav-items"
-                as = { Link }
-                to = {item.link}
-              >
-              </Menu.Item>
-          ))}
+                as={Link}
+                to={item.link}
+              ></Menu.Item>
+            ))}
           </Sidebar>
           <Sidebar.Pusher
             dimmed={visible}
             onClick={pushHandler}
             style={{ minHeight: "100vh" }}
-            className='side-push'
+            className="side-push"
           >
-            {(childrenMobile) ? props.children : null }
+            {childrenMobile ? props.children : null}
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>

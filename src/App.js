@@ -32,6 +32,8 @@ import BlogsAdminCard from "./Components/Admin/Blog/BlogDashboard/BlogDashboard"
 import AdminNewsPost from "./Components/Admin/News/NewsPost/NewsPost";
 import AdminBlogPost from "./Components/Admin/Blog/BlogPost/BlogPost";
 import AdminAumniCard from "./Components/Admin/Alumni/AlumniCard/AlumniCard";
+import EditNews from "./Components/Admin/News/EditNews/EditNews";
+import EditBlog from "./Components/Admin/Blog/EditBlog/EditBlog";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -76,6 +78,8 @@ const App = () => {
                 <Route exact path="/admin/blogs" component={BlogsAdminCard} />
                 <Route exact path="/admin/blogs/:id" component={AdminBlogPost} />
                 <Route exact path="/admin/alumni" component={AdminAumniCard} />
+                <Route exact path="/admin/news/edit-news/:id" component={EditNews} />
+                <Route exact path="/admin/blogs/edit-blog/:id" component={EditBlog} />
                 <Route component={Error404} />
               </Switch>
             </NavDecider>

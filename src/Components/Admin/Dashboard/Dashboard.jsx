@@ -67,13 +67,13 @@ const Dashboard = () => {
   const info = useContext(UserContext);
   const { user, isLoading } = info;
   const [redirect, setredirect] = useState(null);
-  
+
   useEffect(() => {
-    if(!user && !isLoading) {
+    if (!user && !isLoading) {
       setredirect("/admin-login");
     }
   }, [user, isLoading]);
-  
+
   if (redirect) {
     return <Redirect to={redirect} />;
   }

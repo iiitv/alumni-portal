@@ -20,58 +20,48 @@ if(!firebase.apps.length) {
 
 const db = firebase.firestore();
 
-export const addBlogs = async (blog) => {
+export const addNews = async (news) => {
     try {
         let url = "", fileName = "";
-        if (blog.image) {
+        if (news.image) {
             fileName = getFileName();
-            await handleUpload(blog.image, fileName, "blogs");
-            url = await getImageUrl("blogs", fileName);
+            await handleUpload(news.image, fileName, "news");
+            url = await getImageUrl("news", fileName);
         } else {
             url = "/asset/images/NewsAndBlogs/sample-news.png";
         }
-        await db.collection("Blogs").add({
-            title: blog.title,
+        await db.collection("News").add({
+            title: news.title,
             image: url,
-            date: blog.date,
-            text: blog.text,
-            fileName: fileName,
-            author: blog.author,
-        }).then((response) => console.log(response))
-        console.log("Blog Added!!")
+            date: news.date,
+            place: news.place,
+            text: news.text,
+            fileName: fileName
+        })
+        console.log("News Added!!")
     } catch (error) {
         console.log(error.message);
         return error.message;
     }
 }
 
-export const deleteBlog = async (blog) => {
-    try {
-        await db.collection("Blogs").doc(blog.id).delete();
-        console.log("Blogs Deleted Successfully!");
-    } catch (error) {
-        console.log(error.message);
-        return error.message;
-    }
-}
-
-export const editBlog = async (blog) => {
+export const editNews = async (news) => {
     try {
         let url = "", fileName = "";
-        if (blog.image && blog.image !== "/asset/images/NewsAndBlogs/sample-news.png") {
+        if (news.image && news.image !== "/asset/images/NewsAndBlogs/sample-news.png") {
             fileName = getFileName();
-            await handleUpload(blog.image, fileName, "blog");
-            url = await getImageUrl("blog", fileName);
+            await handleUpload(news.image, fileName, "news");
+            url = await getImageUrl("news", fileName);
         } else {
             url = "/asset/images/NewsAndBlogs/sample-news.png";
         }
-        await db.collection("Blogs").doc(blog.id).update({
-            title: blog.title,
+        await db.collection("News").doc(news.id).update({
+            title: news.title,
             image: url,
-            date: blog.date,
-            text: blog.text,
+            date: news.date,
+            place: news.place,
+            text: news.text,
             fileName: fileName,
-            author: blog.author,
         });
     } catch (e) {
         console.log(e.message);
@@ -79,54 +69,64 @@ export const editBlog = async (blog) => {
     }
 }
 
-export const getAllBlog = async () => {
+export const deleteNews = async (news) => {
+    try {
+        await db.collection("News").doc(news.id).delete();
+        console.log("News Deleted Successfully!");
+    } catch (error) {
+        console.log(error.message);
+        return error.message;
+    }
+}
+
+export const getAllNews = async () => {
     try {
         let data = [];
-        let ref = await db.collection("Blogs").get();
+        let ref = await db.collection("News").get();
         ref.forEach((doc) => {
             data.push({
                 id: doc.id,
                 heading: doc.data().title,
                 body: doc.data().text,
                 date: doc.data().date,
+                place: doc.data().place,
                 img: doc.data().image,
-                author: doc.data().author,
                 fileName: doc.data().fileName
             })
         })
         return data;
     } catch (error) {
         console.log(error.message);
-        console.log("Error while accessing all blogs");
+        console.log("Error while accessing all news");
     }
 }
 
-export const getParticularBlog = async (id) => {
+
+export const getParticularNews = async (id) => {
     try {
         let data;
-        let doc = await db.collection("Blogs").doc(id).get();
+        let doc = await db.collection("News").doc(id).get();
         if(!doc.exists) return null;
         data = {
             id: doc.id,
             heading: doc.data().title,
             body: doc.data().text,
             date: doc.data().date,
-            author: doc.data().author,
+            place: doc.data().place,
             img: doc.data().image,
             fileName: doc.data().fileName
         }
         return data;
     } catch (error) {
         console.log(error.message);
-        console.log("Error while accessing particular blog");
+        console.log("Error while accessing particular news");
     }
 }
 
-
-export const getDashboardBlogs = async()=>{
+export const getDashboardNews = async()=>{
     try {
         let data = [];
-        let ref = await db.collection("Blogs").orderBy("date","desc").limit(4).get();
+        let ref = await db.collection("News").orderBy("date","desc").limit(4).get();
         ref.forEach((doc) => {
             data.push({
                 id: doc.id,
@@ -137,6 +137,6 @@ export const getDashboardBlogs = async()=>{
         return data;
     } catch (error) {
         console.log(error.message);
-        console.log("Error while accessing dashboard blog");
+        console.log("Error while accessing dashboard news");
     }
 }

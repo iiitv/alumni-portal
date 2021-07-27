@@ -1,11 +1,11 @@
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import { getSliderImages } from "../../../services/firebase";
-import { useEffect,useState } from "react";
+import { getSliderImages } from "../../../services/slideshowServices";
+import { useEffect, useState } from "react";
 import "./Slider.scss";
 
 const ImageSlider = () => {
-  const [images,setImage] = useState([]);
+  const [images, setImage] = useState([]);
 
   const properties = {
     duration: 5000,
@@ -15,18 +15,20 @@ const ImageSlider = () => {
     arrows: false,
     pauseOnHover: true,
   };
-  const fetchData = async()=>{
+  
+  const fetchData = async () => {
     let img = await getSliderImages();
     setImage(img);
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     fetchData();
-  },[])
+  }, []);
 
   return (
     <div
       className="img-slider"
-      style={{ backgroundImage: `url(asset/images/Home/Slider/bulb.png)` }}>
+      style={{ backgroundImage: `url(asset/images/Home/Slider/bulb.png)` }}
+    >
       <Slide {...properties} className="slider">
         {images.map((each, index) => (
           <div key={index} className="innerDiv">

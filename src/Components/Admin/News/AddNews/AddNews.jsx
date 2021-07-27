@@ -4,7 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../../../providers/UserProvider";
 import Loader from "../../../Shared/Loader/Loader";
-import { addNews } from "../../../../services/firebase";
+import { addNews } from "../../../../services/newsServices";
 
 const AddNews = () => {
   const history = useHistory();
@@ -52,7 +52,7 @@ const AddNews = () => {
     } catch(err) {
       setErrorMessage(err.message);
     }
-    history.push("dashboard");
+    history.push("news");
   };
   return (
     <div className="add-news">

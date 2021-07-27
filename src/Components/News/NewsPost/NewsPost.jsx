@@ -3,9 +3,9 @@ import { Container, Segment, Popup } from "semantic-ui-react";
 import { useLocation } from "react-router";
 import { useParams } from "react-router-dom";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
-import { useState, useEffect } from 'react';
-import { getParticularNews } from "../../../services/firebase";
-import Loader from '../../Shared/Loader/Loader'
+import { useState, useEffect } from "react";
+import { getParticularNews } from "../../../services/newsServices";
+import Loader from "../../Shared/Loader/Loader";
 import Error404 from "../../Shared/Error404/Error404";
 
 const containerMargin = {
@@ -28,10 +28,10 @@ const NewsBlogsPost = () => {
       setNews(data);
     }
     setLoading(false);
-  }
+  };
   useEffect(() => {
     fetchData();
-  })
+  });
   const copyLink = () => {
     let link = websitePrefix + location.pathname;
     navigator.clipboard.writeText(link);
@@ -44,10 +44,9 @@ const NewsBlogsPost = () => {
     <div>
       {isLoading && <Loader />}
       {!isLoading && notFound && <Error404 />}
-      {!isLoading && !notFound &&
+      {!isLoading && !notFound && (
         <div>
-          <SemanticToastContainer>
-          </SemanticToastContainer>
+          <SemanticToastContainer></SemanticToastContainer>
           <Container style={containerMargin}>
             <Segment>
               <Popup
@@ -65,14 +64,12 @@ const NewsBlogsPost = () => {
                 <Container fluid style={containerMargin}>
                   <div className="page-info">
                     <h2 className="page-info-header"> {news.heading} </h2>
-                    <p className="page-info-date"> {news.date +"  " + news.place}</p>
+                    <p className="page-info-date">
+                      {news.date + "  " + news.place}
+                    </p>
                   </div>
                   <Container textAlign="center">
-                    <img
-                      src={news.img}
-                      alt="news"
-                      className="news-image"
-                    />
+                    <img src={news.img} alt="news" className="news-image" />
                   </Container>
                   <p className="container-text">{news.body}</p>
                   <h1 className="page-footer">@iiitv</h1>
@@ -81,7 +78,7 @@ const NewsBlogsPost = () => {
             </Segment>
           </Container>
         </div>
-      }
+      )}
     </div>
   );
 };
