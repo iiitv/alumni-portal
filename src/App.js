@@ -33,6 +33,10 @@ import AdminNewsPost from "./Components/Admin/News/NewsPost/NewsPost";
 import AdminBlogPost from "./Components/Admin/Blog/BlogPost/BlogPost";
 import EditNews from "./Components/Admin/News/EditNews/EditNews";
 import EditBlog from "./Components/Admin/Blog/EditBlog/EditBlog";
+import AddEvent from "./Components/Admin/Event/AddEvent/AddEvent";
+import EventDashboard from "./Components/Admin/Event/EventDashboard/EventDashboard";
+import EditEvent from "./Components/Admin/Event/EditEvent/EditEvent"
+import AdminEventPost from "./Components/Admin/Event/EventPost/EventPost"
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -67,17 +71,21 @@ const App = () => {
                 <Route exact path="/admin-login" component={AdminLogin} />
                 <Route exact path="/admin/add-news" component={AddNews} />
                 <Route exact path="/admin/create-blog" component={AddBlog} />
+                <Route exact path="/admin/add-events" component={AddEvent} />
                 <Route exact path="/alumni" component={AlumniCard} />
                 <Route exact path="/alumni/:id" component={AlumniPage} />
                 <Route exact path="/admin/dashboard" component={Dashboard} />
                 <Route exact path="/admin/gallery" component={AdminGallery}/>
                 <Route exact path="/admin/slider" component={AdminSlider} />
                 <Route exact path="/admin/news" component={NewsAdminCard} />
+                <Route exact path="/admin/events" component={EventDashboard} />
                 <Route exact path="/admin/news/:id" component={AdminNewsPost} />
                 <Route exact path="/admin/blogs" component={BlogsAdminCard} />
                 <Route exact path="/admin/blogs/:id" component={AdminBlogPost} />
                 <Route exact path="/admin/news/edit-news/:id" component={EditNews} />
                 <Route exact path="/admin/blogs/edit-blog/:id" component={EditBlog} />
+                <Route exact path="/admin/events/edit-events/:id" component={EditEvent} />
+                <Route exact path="/admin/events/:id" component={AdminEventPost} />
                 <Route component={Error404} />
               </Switch>
             </NavDecider>

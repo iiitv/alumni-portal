@@ -1,5 +1,5 @@
 import "./EventPage.scss";
-import { Popup } from "semantic-ui-react";
+import { Popup, Container } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 
 const copyLink = (id) => {
@@ -48,6 +48,13 @@ const EventPage = () => {
             }
           />
         </div>
+        <Container textAlign="center">
+        <img
+         src="/asset/images/NewsAndBlogs/sample-news.png"
+         alt="news"
+         className="news-image"
+        />
+        </Container>
         <div className="event-details">
           <p>{event.details}</p>
         </div>
