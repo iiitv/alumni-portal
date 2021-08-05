@@ -1,84 +1,106 @@
 import "./AlumniCard.scss";
-import { NavLink } from "react-router-dom";
-import React from 'react'
-import { Dropdown } from 'semantic-ui-react'
+import { NavLink , Link, Redirect} from "react-router-dom";
+import { useState, useEffect, useContext, React } from "react";
+import { useLocation } from "react-router";
+import { Dropdown, Popup } from 'semantic-ui-react'
+import { UserContext } from "../../../../providers/UserProvider";
+import { getBatchProfiles, deleteProfile, getBatches } from "../../../../services/alumniServices";
 
 
 const AlumniCard = () => {
 
-    let alumnis = [
-            
-        {
-            name: "Aakash",
-            batch: 2017,
-            present: "Amazon",
-            city: "Lucknow",
-            image: "/asset/images/MeetAlumni/man.png",
-            id: 3,
-        },
-        {
-            name: "Kunal",
-            batch: 2017,
-            present: "Google",
-            city: "Pune",
-            image: "/asset/images/MeetAlumni/man.png",
-            id: 4,
-        },
-        {
-            name: "July",
-            batch: 2017,
-            present: "TCS",
-            city: "Hyderabad",
-            image: "/asset/images/MeetAlumni/man.png",
-            id: 5,
-        },
-        {
-            name: "Kriti",
-            batch: 2017,
-            present: "Adobe",
-            city: "Delhi",
-            image: "/asset/images/MeetAlumni/man.png",
-            id: 6,
-        },
-        
-    ];
+    const info = useContext(UserContext);
+    const { user, isLoading } = info;
+    const [redirect, setredirect] = useState(null);
+    const [isLoadingBatch, setLoading] = useState(true);
+    const [batch, setBatch] = useState([]);
+    const [profile, setProfile] = useState([]);
+    const location = useLocation();
+    let [presentBatch, setPresentBatch] =useState("2017");
 
-    const friendOptions = [
-        {
-          key: '2017',
-          text: '2017',
-          value: '2017',
-        },
-        {
-          key: '2018',
-          text: '2018',
-          value: '2018',
-        },
-        {
-          key: '2019',
-          text: '2019',
-          value: '2019',
-        },
-        {
-          key: '2020',
-          text: '2020',
-          value: '2020',
-        },
-        {
-          key: '2021',
-          text: '2021',
-          value: '2021',
-        },
-    ]
+    useEffect(() => {
+        if (!user && !isLoading) {
+          setredirect("/admin-login");
+        }
+        fetchData();
+      }, [user, isLoading]);
+      if (redirect) {
+        return <Redirect to={redirect} />;
+    }
 
+    const fetchData = async () => {
+        let val = await getBatches();
+        setBatch(val);
+        let profiles =await getBatchProfiles(presentBatch);
+        setProfile(profiles);
+        setLoading(false);
+    }
+
+    const batchChange = async(e,{name, value }) =>{
+        setLoading(true);
+        let profiles =await getBatchProfiles(value);
+        setProfile(profiles);
+        setPresentBatch(value);
+        setLoading(false);
+    }
+
+    const deleteAlumniProfile = async(alumni) =>{
+        try {
+            setLoading(true);
+            await deleteProfile(alumni);
+            fetchData();
+        }catch(err) {
+            console.log(err.message);
+        }
+    }
 
     const renderAlumniCard = (alumni) => {
         return (
             <div className="alumni-card">
+                <div className="alumni-card-header">
+                <Popup 
+                    content = "edit"
+                    trigger = {
+                    <Link to={{pathname: `${location.pathname}/edit-alumni/${alumni.id}`, alumni: {
+                        id: alumni.id,
+                        batch: alumni.batch,
+                        name: alumni.name,
+                        studentId: alumni.studentId,
+                        email: alumni.email,
+                        city: alumni.city,
+                        company: alumni.company,
+                        description: alumni.description,
+                        linkedin: alumni.linkedin,
+                        twitter: alumni.twitter,
+                        gender: alumni.gender,
+                        image: alumni.image ,
+                    }}}>
+                        <img 
+                        className="icon-btn"
+                        src={"/asset/images/Home/Admin/NewsNBlogs/edit.png"}
+                        alt="edit-blog"
+                        />
+                    </Link>
+                    }
+                />
+                <Popup 
+                    content = "delete"
+                    trigger = {
+                    <img 
+                        className="icon-btn"
+                        src={"/asset/images/Home/Admin/NewsNBlogs/delete.png"}
+                        onClick={() => {
+                            deleteAlumniProfile(alumni);
+                        }}
+                        alt="delete-blog"
+                    />
+                    }
+                />
+                </div>
                 <div className="alumni-image">
                     <img
                         src={alumni.image}
-                        alt={alumni.id}
+                        alt={alumni.StudentId}
                         className="profile-card-image"
                     />
                 </div>
@@ -87,7 +109,7 @@ const AlumniCard = () => {
                         <NavLink to={`/alumni/${alumni.id}`}>{alumni.name}</NavLink>
                     </h2>
                     <p>Batch- {alumni.batch} </p>
-                    <p>{alumni.present} | {alumni.city}</p>
+                    <p>{alumni.company} | {alumni.city}</p>
                 </div>
             </div>
         );
@@ -102,25 +124,34 @@ const AlumniCard = () => {
                         selection
                         button
                         header= 'BATCHES'
-                        options={friendOptions}
+                        options={batch}
+                        onChange={batchChange}
                     />
                 </div>
                 <h3> Strength - 120</h3>
-                <h1> Batch of <strong className='batch-year'>2023</strong></h1>
+                <h1> Batch of <strong className='batch-year'>{presentBatch}</strong></h1>
             </div>
         );
     };
 
     return (
         <div className="alumni-card-wrap">
-            <div className="alumni-dir-head">
+            <div className="alumni-dir-head-admin">
                 <h1>Alumni Directory</h1>
+                <div className="alumni-admin-add-area">
+                <Link to="/admin/alumni/add-batch">
+                  <button className="alumni-admin-add-btn">Add Batch</button>
+                </Link>
+                <Link to="/admin/alumni/add-alumni">
+                  <button className="alumni-admin-add-btn">Add Alumni</button>
+                </Link>
+            </div>
             </div>
             <div className="head">
                 <div>{selectionBatch()}</div>
             </div>
             <div className="alumni-card-area">
-                {alumnis.map((alumni, index) => (
+                {profile.map((alumni, index) => (
                     <div key={index}>{renderAlumniCard(alumni)}</div>
                 ))}
             </div>

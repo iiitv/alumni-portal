@@ -1,87 +1,36 @@
 import "./AlumniCard.scss";
 import { NavLink } from "react-router-dom";
-import React from "react";
-import { Dropdown } from "semantic-ui-react";
+import { useState, useEffect, React } from "react";
+import { Dropdown } from 'semantic-ui-react'
+import Loader from '../../Shared/Loader/Loader';
+import { getBatchProfiles, getBatches } from "../../../services/alumniServices";
 
 const AlumniCard = () => {
-  let alumnis = [
-    {
-      name: "Ayush Patel",
-      batch: 2017,
-      present: "Company",
-      city: "Lucknow",
-      image: "/asset/images/MeetAlumni/man.png",
-      id: 1,
-    },
-    {
-      name: "Nitanshu Lokhende",
-      batch: 2017,
-      present: "Amazon",
-      city: "Indore",
-      image: "/asset/images/MeetAlumni/man.png",
-      id: 2,
-    },
-    {
-      name: "Aakash",
-      batch: 2017,
-      present: "Amazon",
-      city: "Lucknow",
-      image: "/asset/images/MeetAlumni/man.png",
-      id: 3,
-    },
-    {
-      name: "Kunal",
-      batch: 2017,
-      present: "Google",
-      city: "Pune",
-      image: "/asset/images/MeetAlumni/man.png",
-      id: 4,
-    },
-    {
-      name: "July",
-      batch: 2017,
-      present: "TCS",
-      city: "Hyderabad",
-      image: "/asset/images/MeetAlumni/man.png",
-      id: 5,
-    },
-    {
-      name: "Kriti",
-      batch: 2017,
-      present: "Adobe",
-      city: "Delhi",
-      image: "/asset/images/MeetAlumni/man.png",
-      id: 6,
-    },
-  ];
 
-  const friendOptions = [
-    {
-      key: "2017",
-      text: "2017",
-      value: "2017",
-    },
-    {
-      key: "2018",
-      text: "2018",
-      value: "2018",
-    },
-    {
-      key: "2019",
-      text: "2019",
-      value: "2019",
-    },
-    {
-      key: "2020",
-      text: "2020",
-      value: "2020",
-    },
-    {
-      key: "2021",
-      text: "2021",
-      value: "2021",
-    },
-  ];
+  const [isLoading, setLoading] = useState(true);
+  const [batch, setBatch] = useState([]);
+  const [profile, setProfile] = useState([]);
+  let [presentBatch, setPresentBatch] =useState("2017");
+
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    let val = await getBatches();
+    setBatch(val);
+    let profiles =await getBatchProfiles("2017");
+    setProfile(profiles);
+    setLoading(false);
+  }
+  const batchChange = async(e,{name, value }) =>{
+    setLoading(true);
+    let profiles =await getBatchProfiles(value);
+    setProfile(profiles);
+    setPresentBatch(value);
+    setLoading(false);
+  }
 
   const renderAlumniCard = (alumni) => {
     return (
@@ -89,7 +38,7 @@ const AlumniCard = () => {
         <div className="alumni-image">
           <img
             src={alumni.image}
-            alt={alumni.id}
+            alt={alumni.studentId}
             className="profile-card-image"
           />
         </div>
@@ -99,7 +48,7 @@ const AlumniCard = () => {
           </h2>
           <p>Batch- {alumni.batch} </p>
           <p>
-            {alumni.present} | {alumni.city}
+            {alumni.company} | {alumni.city}
           </p>
         </div>
       </div>
@@ -111,34 +60,40 @@ const AlumniCard = () => {
       <div className="alumni-batch-select">
         <div className="dropdown-alumni-batch">
           <Dropdown
-            placeholder="Select Batch"
+            placeholder='Select Batch'
             selection
             button
-            header="BATCHES"
-            options={friendOptions}
-          />
+            header= 'BATCHES'
+            options={batch}
+            onChange={batchChange}
+           />
         </div>
         <h3> Strength - 120</h3>
         <h1>
-          Batch of <strong className="batch-year">2023</strong>
+          Batch of <strong className="batch-year">{presentBatch}</strong>
         </h1>
       </div>
     );
   };
 
   return (
-    <div className="alumni-card-wrap">
-      <div className="alumni-dir-head">
-        <h1>Alumni Directory</h1>
-      </div>
-      <div className="head">
-        <div>{selectionBatch()}</div>
-      </div>
-      <div className="alumni-card-area">
-        {alumnis.map((alumni, index) => (
-          <div key={index}>{renderAlumniCard(alumni)}</div>
-        ))}
-      </div>
+    <div >
+      {isLoading && <Loader />}
+      {!isLoading &&
+        <div className="alumni-card-wrap">
+          <div className="alumni-dir-head">
+            <h1>Alumni Directory</h1>
+          </div>
+          <div className="head">
+            <div>{selectionBatch()}</div>
+          </div>
+          <div className="alumni-card-area">
+            {profile.map((alumni, index) => (
+              <div key={index}>{renderAlumniCard(alumni)}</div>
+            ))}
+          </div>
+        </div>
+      }
     </div>
   );
 };
