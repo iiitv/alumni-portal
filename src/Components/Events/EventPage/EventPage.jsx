@@ -1,6 +1,12 @@
 import "./EventPage.scss";
 import { Popup, Container } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
+import { useParams } from "react-router";
+import { useState, useEffect } from "react";
+import { getParticularEvent } from "../../../services/eventsServices"
+import { Link } from "react-router-dom";
+import Loader from "../../Shared/Loader/Loader"
+import Error404 from "../../Shared/Error404/Error404";
 
 const copyLink = (id) => {
   let link = `https://iiitv-alumni-portal.netlify.app/event/${id}`;
@@ -10,26 +16,59 @@ const copyLink = (id) => {
   });
 };
 
-let event = {
-  id: 1,
-  month: "July",
-  date: 15,
-  name: "Alumni Speaks : Getting the funds",
-  timeline: "Future",
-  details: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pedejusto, fringilla vel, aliquet nec, vulputate eget, arcu. In enimjusto, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullamdictum felis eu pede link mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequatvitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut ",
-};
+const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const getEventStatus = (date) => {
+    let eventDate = new Date(date);
+    let currentDate = new Date();
+    if (eventDate.getTime() < currentDate.getTime()) return "Past";
+    else if (eventDate.getTime() > currentDate.getTime()) return "Future";
+    else return "Present";
+  };
 
 const EventPage = () => {
-  return (
+    const [isLoading, setLoading] = useState(true);
+    const [event, setEvent] = useState();
+    const [notFound, setNotFound] = useState(false);
+    const { id } = useParams();
+    const fetchData = async () => {
+      let data = await getParticularEvent(id);
+      if (data == null) {
+        setNotFound(true);
+      } else {
+        setEvent(data);
+      }
+      setLoading(false);
+    }
+    useEffect(() => {
+      fetchData();
+    })
+  return (<>
+    {isLoading && <Loader />}
+    {!isLoading && notFound && <Error404 />}
+    {!isLoading && !notFound &&
       <div className="event-wrapper">
         <SemanticToastContainer />
         <div className="particular-event">
           <div className="event-time-info">
-            <p className="event-month">{event.month.toUpperCase()}</p>
-            <p className="event-date">{event.date}</p>
+            <p className="event-month"> {months[new Date(event.date).getMonth()]}</p>
+            <p className="event-date">{new Date(event.date).getDate()}</p>
           </div>
           <div className="event-info">
-            <p className="event-timeline">{event.timeline}</p>
+            <p className="event-timeline">{getEventStatus(event.date)}</p>
             <p className="event-name">
              {event.name}
             </p>
@@ -56,12 +95,15 @@ const EventPage = () => {
         />
         </Container>
         <div className="event-details">
-          <p>{event.details}</p>
+          <p>{event.description}</p>
         </div>
         <div className="event-button">
+            <Link to={event.link}>
           <button className="register-event-btn">Register</button>
+            </Link>
         </div>
-      </div>
+      </div>}
+      </>
   );
 };
 

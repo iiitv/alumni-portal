@@ -103,7 +103,7 @@ const Event = () => {
           <p className="event-month">
             {months[new Date(event.date).getMonth()]}
           </p>
-          <p className="event-date">{event.date}</p>
+          <p className="event-date">{new Date(event.date).getDate()}</p>
         </div>
         <div className="event-info">
           <p className="event-timeline">{getEventStatus(event.date)}</p>
