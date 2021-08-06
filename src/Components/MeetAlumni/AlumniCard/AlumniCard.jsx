@@ -25,11 +25,9 @@ const AlumniCard = () => {
     setLoading(false);
   }
   const batchChange = async(e,{name, value }) =>{
-    setLoading(true);
     let profiles =await getBatchProfiles(value);
     setProfile(profiles);
     setPresentBatch(value);
-    setLoading(false);
   }
 
   const renderAlumniCard = (alumni) => {
