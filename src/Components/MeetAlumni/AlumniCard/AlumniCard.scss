@@ -1,16 +1,15 @@
 .alumni-dir-head{
   margin: 10px 70px;
   padding: 5px 10px;
-  color: white;
-  background: rgb(255,255,255);
-  background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(24,83,91,1) 50%);
+  color: #18535b;
 }
+
 .alumni-card-area {
   margin:  20px 40px;
   display:grid;
   grid-gap: 2rem;
   justify-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
 .alumni-batch-select{
   display: flex;
@@ -38,15 +37,26 @@
 }
 
 .alumni-card{
-  padding: 2 0px;
+  padding: 2px 0px;
   text-align: center;
   border: 1px solid #4140400e;
   border-radius: 5px;
   box-shadow: 1.5px 1.5px 1.5px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  min-width: 270px;
 }
 
+// .alumni-image{
+
+// }
+
 .profile-card-image{
-  padding: 20px 20px 0 20px;
+  display: block;
+  width: 250px;
+  height: 250px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .alumni-card-info{

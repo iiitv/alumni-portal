@@ -31,6 +31,10 @@ import NewsAdminCard from "./Components/Admin/News/News/NewsDashboard";
 import BlogsAdminCard from "./Components/Admin/Blog/BlogDashboard/BlogDashboard";
 import AdminNewsPost from "./Components/Admin/News/NewsPost/NewsPost";
 import AdminBlogPost from "./Components/Admin/Blog/BlogPost/BlogPost";
+import AdminAumniCard from "./Components/Admin/Alumni/AlumniCard/AlumniCard";
+import AdminAddBatch from "./Components/Admin/Alumni/AddAlumni/AddBatch";
+import AdminAddAlumni from "./Components/Admin/Alumni/AddAlumni/AddAlumni";
+import AdminEditAlumni from "./Components/Admin/Alumni/EditAlumni/EditAlumni";
 import EditNews from "./Components/Admin/News/EditNews/EditNews";
 import EditBlog from "./Components/Admin/Blog/EditBlog/EditBlog";
 import AddEvent from "./Components/Admin/Event/AddEvent/AddEvent";
@@ -82,6 +86,10 @@ const App = () => {
                 <Route exact path="/admin/news/:id" component={AdminNewsPost} />
                 <Route exact path="/admin/blogs" component={BlogsAdminCard} />
                 <Route exact path="/admin/blogs/:id" component={AdminBlogPost} />
+                <Route exact path="/admin/alumni" component={AdminAumniCard} />
+                <Route exact path="/admin/alumni/add-batch" component={AdminAddBatch} />
+                <Route exact path="/admin/alumni/add-alumni" component={AdminAddAlumni} />
+                <Route exact path="/admin/alumni/edit-alumni/:id" component={AdminEditAlumni} />
                 <Route exact path="/admin/news/edit-news/:id" component={EditNews} />
                 <Route exact path="/admin/blogs/edit-blog/:id" component={EditBlog} />
                 <Route exact path="/admin/events/edit-events/:id" component={EditEvent} />
