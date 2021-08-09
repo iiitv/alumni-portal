@@ -1,8 +1,52 @@
+.event-timeline{
+    font-family: 'Gilroy';
+    font-size: 14px;
+    color: #BBBBBB;
+}
+.event-month{
+    font-family: 'Gilroy';
+    font-size:20px;
+}
+.event-date{
+    font-family: 'Gilroy';
+    font-size:40px;
+}
+.event-name{
+    font-family: 'Gilroy';
+    padding-bottom: 7px;
+    font-size:20px;
+}
+.event-name a{
+    color: #000000;
+}
+.event-name a:hover{
+    color:#194E56;
+}
+.register-event-btn{
+    font-family: 'Gilroy';
+    background-color:#194E56;
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.event-info p,.event-time-info p{
+    margin: 0;
+}
+.event-heading{
+    font-family: 'Avenir';
+    color:#194E56;
+}
 .all-event-info{
     width: 70%;
     margin: 0 auto;
 }
 .all-event-info .particular-event{
+    margin-bottom: 15px;
+    padding: 15px 0;
+    display: flex;
     position: relative;
     border: 1px solid #4140400e;
     border-radius: 5px;
@@ -15,6 +59,8 @@
 }
 .all-event-info .event-info{
     flex:6;
+    border-left: 1px solid #CECECE;
+    padding-left: 15px;
 }
 .share-event-btn{
     cursor: pointer;
