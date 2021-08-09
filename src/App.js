@@ -25,6 +25,7 @@ import BlogsCard from "./Components/Blog/BlogsCards/BlogsCard";
 import Error404 from "./Components/Shared/Error404/Error404";
 import AlumniCard from "./Components/MeetAlumni/AlumniCard/AlumniCard";
 import AlumniPage from "./Components/MeetAlumni/AlumniPage/AlumniPage";
+import AdminAlumniPage from "./Components/Admin/Alumni/AlumniPage/AlumniPage"
 import NavDecider from "./Components/Shared/Navbar/NavDecider";
 import HeaderDecider from "./Components/Shared/Header/HeaderDecider";
 import NewsAdminCard from "./Components/Admin/News/News/NewsDashboard";
@@ -89,6 +90,7 @@ const App = () => {
                 <Route exact path="/admin/alumni" component={AdminAumniCard} />
                 <Route exact path="/admin/alumni/add-batch" component={AdminAddBatch} />
                 <Route exact path="/admin/alumni/add-alumni" component={AdminAddAlumni} />
+                <Route exact path="/admin/alumni/:id" component={AdminAlumniPage} />
                 <Route exact path="/admin/alumni/edit-alumni/:id" component={AdminEditAlumni} />
                 <Route exact path="/admin/news/edit-news/:id" component={EditNews} />
                 <Route exact path="/admin/blogs/edit-blog/:id" component={EditBlog} />
