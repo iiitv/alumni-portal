@@ -158,3 +158,26 @@ export const editAlumni = async (profile) => {
       return error.message;
   }
 }
+
+export const getParticularAlumniInfo = async (batch, id) => {
+  try {
+    let data;
+    let doc = await db.collection("Alumni").doc(batch).collection("Students").doc(id).get();
+    if(!doc.exists) return null;
+    data = {
+      batch: doc.data().batch,
+      name: doc.data().name,
+      studentId: doc.data().studentId,
+      city: doc.data().city,
+      company: doc.data().company,
+      description: doc.data().description,
+      linkedin: doc.data().linkedin,
+      twitter: doc.data().twitter,
+      image: doc.data().url,
+    }
+    return data;
+} catch (error) {
+    console.log(error.message);
+    console.log("Error while accessing particular blog");
+}
+}

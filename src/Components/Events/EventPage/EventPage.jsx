@@ -1,5 +1,5 @@
 import "./EventPage.scss";
-import { Popup, Container } from "semantic-ui-react";
+import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
@@ -15,6 +15,11 @@ const copyLink = (id) => {
     description: <p>Event Link Copied to Clipboard</p>,
   });
 };
+
+const getLink = (link) => {
+  if(link.includes("http//:") || link.includes("https//:")) return link;
+  else return "https//:" + link;
+}
 
 const months = [
     "January",
@@ -78,7 +83,7 @@ const EventPage = () => {
             trigger={
               <img
                 className="share-btn"
-                src="./../asset/svg/share.svg"
+                src="/asset/svg/share.svg"
                 onClick={() => {
                   copyLink(event.id);
                 }}
@@ -87,18 +92,11 @@ const EventPage = () => {
             }
           />
         </div>
-        <Container textAlign="center">
-        <img
-         src="/asset/images/NewsAndBlogs/sample-news.png"
-         alt="news"
-         className="news-image"
-        />
-        </Container>
         <div className="event-details">
           <p>{event.description}</p>
         </div>
         <div className="event-button">
-            <Link to={event.link}>
+            <Link to={{ pathname: getLink(event.link) }} target="_blank" >
           <button className="register-event-btn">Register</button>
             </Link>
         </div>

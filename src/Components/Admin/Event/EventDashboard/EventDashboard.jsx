@@ -42,6 +42,11 @@ const Event = () => {
     else return "Present";
   };
 
+  const getLink = (link) => {
+    if(link.includes("http//:") || link.includes("https//:")) return link;
+    else return "https//:" + link;
+  }
+
   const location = useLocation();
   const deleteEventHandler = async (obj) => {
     try {
@@ -80,9 +85,9 @@ const Event = () => {
                 <img 
                   className="icon-btn"
                   src={"/asset/images/Home/Admin/NewsNBlogs/edit.png"}
-                  alt="edit-blog"
+                  alt="edit-event"
                 />
-              </Link>
+            </Link>
             }
           />
           <Popup 
@@ -110,7 +115,9 @@ const Event = () => {
           <p className="event-name">
             <NavLink to={`/admin/events/${event.id}`}>{event.name}</NavLink>
           </p>
-          <Link to={event.link}>
+          <Link to={{ pathname: "https"+ event.link
+            //  getLink(event.link)  
+             }} target="_blank" >
             <button className="register-event-btn">Register</button>
           </Link>
         </div>
@@ -134,7 +141,7 @@ const Event = () => {
     <>
       {isLoading && <Loader />}
       {!isLoading && (
-        <div>
+        <div className="events-container">
           <div className="news-header-div">
             <div className="admin-news-heading">
               <p>Events</p>

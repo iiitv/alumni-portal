@@ -20,7 +20,7 @@
 .alumni-profile {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 
   img {
@@ -64,6 +64,7 @@
   max-width: 100%;
   height: auto;
   margin: 5% 0 5% 0;
+  width: 25% !important;
 }
 
 .alumni-footer {

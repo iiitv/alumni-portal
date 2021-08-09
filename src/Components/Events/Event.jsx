@@ -22,6 +22,11 @@ const Event = () => {
     "December",
   ];
 
+  const getLink = (link) => {
+    if(link.includes("http//:") || link.includes("https//:")) return link;
+    else return "https//:" + link;
+  }
+
   const [events, setEvents] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const fetchData = async () => {
@@ -62,7 +67,7 @@ const Event = () => {
           <p className="event-name">
             <NavLink to={`/admin/events/${event.id}`}>{event.name}</NavLink>
           </p>
-          <Link to={event.link}>
+          <Link to={{ pathname: getLink(event.link) }} target="_blank" >
             <button className="register-event-btn">Register</button>
           </Link>
         </div>

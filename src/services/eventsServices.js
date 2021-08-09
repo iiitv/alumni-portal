@@ -4,7 +4,6 @@ import "firebase/auth";
 import '@firebase/storage';
 import '@firebase/database'
 import "firebase/firestore";
-import { getFileName, handleUpload, getImageUrl } from "./utils";
 dotenv.config();
 
 if(!firebase.apps.length) {
@@ -22,23 +21,13 @@ const db = firebase.firestore();
 
 export const addEvents = async (event) => {
     try {
-        let url = "", fileName = "";
-        if (event.image) {
-            fileName = getFileName();
-            await handleUpload(event.image, fileName, "news");
-            url = await getImageUrl("news", fileName);
-        } else {
-            url = "/asset/images/NewsAndBlogs/sample-news.png";
-        }
         await db.collection("Events").add({
-            image: url,
             link: event.link,
             name: event.name,
             date: event.date,
             time: event.time,
             venue: event.venue,
             description: event.description,
-            fileName: fileName
         })
         console.log("Event successfully Added!!")
     } catch (error) {
@@ -49,21 +38,13 @@ export const addEvents = async (event) => {
 
 export const editEvent = async (event) => {
     try {
-        let url = "", fileName = "";
-        if (event.image && event.image !== "/asset/images/NewsAndBlogs/sample-news.png") {
-            fileName = getFileName();
-            await handleUpload(event.image, fileName, "news");
-            url = await getImageUrl("news", fileName);
-        } else {
-            url = "/asset/images/NewsAndBlogs/sample-news.png";
-        }
-        await db.collection("News").doc(event.id).update({
-            title: event.title,
-            image: url,
+        await db.collection("Events").doc(event.id).update({
+            name: event.name,
             date: event.date,
-            place: event.place,
-            text: event.text,
-            fileName: fileName,
+            venue: event.venue,
+            description: event.description,
+            link: event.link,
+            time: event.time
         });
     } catch (e) {
         console.log(e.message);
@@ -89,12 +70,11 @@ export const getAllEvents = async () => {
             data.push({
                 id: doc.id,
                 name: doc.data().name,
-                body: doc.data().description,
+                description: doc.data().description,
+                link: doc.data().link,
                 date: doc.data().date,
                 time: doc.data().time,
                 venue: doc.data().venue,
-                img: doc.data().image,
-                fileName: doc.data().fileName
             })
         })
         return data;
@@ -116,8 +96,6 @@ export const getParticularEvent = async (id) => {
             description: doc.data().description,
             date: doc.data().date,
             venue: doc.data().venue,
-            img: doc.data().image,
-            fileName: doc.data().fileName,
             time: doc.data().time,
             link: doc.data().link
         }

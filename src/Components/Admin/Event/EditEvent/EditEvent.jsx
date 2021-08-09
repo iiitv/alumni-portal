@@ -6,13 +6,12 @@ import { UserContext } from "../../../../providers/UserProvider";
 import Loader from "../../../Shared/Loader/Loader";
 import { editEvent } from "../../../../services/eventsServices";
 
-const AddEvent = (props) => {
+const EditEvent = (props) => {
   const history = useHistory();
   const info = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
   const { user, isLoading } = info;
   const [addingEvent, setAddingEvent] = useState(false);
-  const [url, setUrl] = useState(null);
   const [redirect, setredirect] = useState(null);
   const [event, setEvent] = useState({
     name: "",
@@ -20,7 +19,6 @@ const AddEvent = (props) => {
     time: "",
     venue: "",
     description: "",
-    image: null,
     link: "",
     id: "",
   });
@@ -32,11 +30,10 @@ const AddEvent = (props) => {
       date: props.location.event.date,
       venue: props.location.event.venue,
       description: props.location.event.description,
-      image: props.location.event.image,
       link: props.location.event.link,
       time: props.location.event.time,
     });
-    setUrl(props.location.event.image);
+    console.log(props.location.event);
     if (!user && !isLoading) {
       setredirect("/admin-login");
     }
@@ -46,15 +43,6 @@ const AddEvent = (props) => {
     return <Redirect to={redirect} />;
   }
 
-  const handleImage = (e) => {
-    if (e.target.files) {
-      setUrl(URL.createObjectURL(e.target.files[0]));
-      setEvent({
-        ...event,
-        image: e.target.files[0],
-      });
-    }
-  };
   const setInfo = (e) => {
     setEvent({
       ...event,
@@ -69,14 +57,14 @@ const AddEvent = (props) => {
     } catch (err) {
       setErrorMessage(err.message);
     }
-    history.push("events");
+    history.goBack();
   };
   return (
     <div className="add-news">
       {isLoading && <Loader />}
       {!isLoading && (
         <div>
-          <h2 className="heading">Create Event</h2>
+          <h2 className="heading">Edit Event</h2>
           <p className="line"></p>
           <Form error={!!errorMessage}>
             <label htmlFor="title">Title</label>
@@ -133,23 +121,6 @@ const AddEvent = (props) => {
               required
             ></textarea>
             <p className="btn-parent">
-              <label className="upload-img-btn" htmlFor="upload-img">
-                <Icon name="cloud upload"></Icon> Upload Image
-              </label>
-              <input
-                type="file"
-                accept="image/*"
-                id="upload-img"
-                onChange={(e) => handleImage(e)}
-                value={event.image}
-              ></input>
-            </p>
-            {url && (
-              <p className="img-par">
-                <img className="preview-img" src={url} alt="hello"></img>
-              </p>
-            )}
-            <p className="btn-parent">
               {addingEvent ? (
                 <button className="upload-img-btn">Adding...</button>
               ) : (
@@ -166,4 +137,4 @@ const AddEvent = (props) => {
   );
 };
 
-export default AddEvent;
+export default EditEvent;

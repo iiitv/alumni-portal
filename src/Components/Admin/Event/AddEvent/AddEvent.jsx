@@ -12,7 +12,6 @@ const AddEvent = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const { user, isLoading } = info;
   const [addingEvent, setAddingEvent] = useState(false);
-  const [url, setUrl] = useState(null);
   const [redirect, setredirect] = useState(null);
   const [event, setEvent] = useState({
     name: "",
@@ -20,7 +19,6 @@ const AddEvent = () => {
     time: "",
     venue: "",
     description: "",
-    image: null,
     link: ""
   });
 
@@ -34,15 +32,6 @@ const AddEvent = () => {
     return <Redirect to={redirect} />;
   }
 
-  const handleImage = (e) => {
-    if (e.target.files) {
-      setUrl(URL.createObjectURL(e.target.files[0]));
-      setEvent({
-        ...event,
-        image: e.target.files[0],
-      });
-    }
-  };
   const setInfo = (e) => {
     setEvent({
       ...event,
@@ -114,22 +103,6 @@ const AddEvent = () => {
               onChange={setInfo}
               required
             ></textarea>
-            <p className="btn-parent">
-              <label className="upload-img-btn" htmlFor="upload-img">
-                <Icon name="cloud upload"></Icon> Upload Image
-              </label>
-              <input
-                type="file"
-                accept="image/*"
-                id="upload-img"
-                onChange={(e) => handleImage(e)}
-              ></input>
-            </p>
-            {url && (
-              <p className="img-par">
-                <img className="preview-img" src={url} alt="hello"></img>
-              </p>
-            )}
             <p className="btn-parent">
               {addingEvent ? (
                 <button className="upload-img-btn">Adding...</button>

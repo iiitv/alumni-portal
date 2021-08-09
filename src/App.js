@@ -90,7 +90,7 @@ const App = () => {
                 <Route exact path="/admin/alumni" component={AdminAumniCard} />
                 <Route exact path="/admin/alumni/add-batch" component={AdminAddBatch} />
                 <Route exact path="/admin/alumni/add-alumni" component={AdminAddAlumni} />
-                <Route exact path="/admin/alumni/:id" component={AdminAlumniPage} />
+                <Route exact path="/admin/alumni/:batch/:id" component={AdminAlumniPage} />
                 <Route exact path="/admin/alumni/edit-alumni/:id" component={AdminEditAlumni} />
                 <Route exact path="/admin/news/edit-news/:id" component={EditNews} />
                 <Route exact path="/admin/blogs/edit-blog/:id" component={EditBlog} />
