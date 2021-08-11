@@ -24,18 +24,21 @@ const EditEvent = (props) => {
   });
 
   useEffect(() => {
-    setEvent({
-      id: props.location.event.id,
-      name: props.location.event.name,
-      date: props.location.event.date,
-      venue: props.location.event.venue,
-      description: props.location.event.description,
-      link: props.location.event.link,
-      time: props.location.event.time,
-    });
-    console.log(props.location.event);
     if (!user && !isLoading) {
       setredirect("/admin-login");
+    } else {
+      if(props.location.event) {
+        setEvent({
+          id: props.location.event.id,
+          name: props.location.event.name,
+          date: props.location.event.date,
+          venue: props.location.event.venue,
+          description: props.location.event.description,
+          link: props.location.event.link,
+          time: props.location.event.time,
+        });
+        console.log(props.location.event);
+      } else setredirect("/admin/events")
     }
   }, [user, isLoading]);
 

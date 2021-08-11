@@ -1,53 +1,36 @@
 import "./EventDashboard.scss";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, Redirect } from "react-router-dom";
 import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
-import { deleteEvent, getAllEvents } from "../../../../services/eventsServices";
-import { useState, useEffect } from "react";
+import { deleteEvent, getAllEvents, getLink, getEventStatus, getEventMonth } from "../../../../services/eventsServices";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../../../providers/UserProvider";
 import { useLocation } from "react-router";
 import Loader from "../../../Shared/Loader/Loader";
 
 const Event = () => {
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
 
   const [events, setEvents] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [redirect, setRedirect] = useState("");
+  const location = useLocation();
+  const info = useContext(UserContext);
+  const { user, isLoading } = info;
   const fetchData = async () => {
     let allEvents = await getAllEvents();
     setEvents(allEvents);
     setLoading(false);
   };
   useEffect(() => {
-    fetchData();
+    if (!user && !isLoading) {
+      setRedirect("/admin-login");
+    } else fetchData();
   }, []);
 
-  const getEventStatus = (date) => {
-    let eventDate = new Date(date);
-    let currentDate = new Date();
-    if (eventDate.getTime() < currentDate.getTime()) return "Past";
-    else if (eventDate.getTime() > currentDate.getTime()) return "Future";
-    else return "Present";
-  };
-
-  const getLink = (link) => {
-    if(link.includes("http//:") || link.includes("https//:")) return link;
-    else return "https//:" + link;
+  if (redirect) {
+    return <Redirect to={redirect} />;
   }
 
-  const location = useLocation();
   const deleteEventHandler = async (obj) => {
     try {
       await deleteEvent(obj);
@@ -106,7 +89,7 @@ const Event = () => {
         </div>
         <div className="event-time-info">
           <p className="event-month">
-            {months[new Date(event.date).getMonth()]}
+            {getEventMonth(event.date)}
           </p>
           <p className="event-date">{new Date(event.date).getDate()}</p>
         </div>
@@ -115,9 +98,9 @@ const Event = () => {
           <p className="event-name">
             <NavLink to={`/admin/events/${event.id}`}>{event.name}</NavLink>
           </p>
-          <Link to={{ pathname: "https"+ event.link
-            //  getLink(event.link)  
-             }} target="_blank" >
+          <Link
+          to={{ pathname: getLink(event.link) }}
+             target="_blank" >
             <button className="register-event-btn">Register</button>
           </Link>
         </div>
@@ -139,8 +122,8 @@ const Event = () => {
   };
   return (
     <>
-      {isLoading && <Loader />}
-      {!isLoading && (
+      {loading && <Loader />}
+      {!loading && (
         <div className="events-container">
           <div className="news-header-div">
             <div className="admin-news-heading">

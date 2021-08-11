@@ -2,31 +2,11 @@ import "./Event.scss";
 import { NavLink, Link } from "react-router-dom";
 import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
-import { getAllEvents } from "../../services/eventsServices";
+import { getAllEvents, getEventMonth, getEventStatus, getLink } from "../../services/eventsServices";
 import { useState, useEffect } from "react";
 import Loader from "../Shared/Loader/Loader";
 
 const Event = () => {
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const getLink = (link) => {
-    if(link.includes("http//:") || link.includes("https//:")) return link;
-    else return "https//:" + link;
-  }
-
   const [events, setEvents] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const fetchData = async () => {
@@ -37,14 +17,6 @@ const Event = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  const getEventStatus = (date) => {
-    let eventDate = new Date(date);
-    let currentDate = new Date();
-    if (eventDate.getTime() < currentDate.getTime()) return "Past";
-    else if (eventDate.getTime() > currentDate.getTime()) return "Future";
-    else return "Present";
-  };
 
   const copyLink = (id) => {
     let link = `https://iiitv-alumni-portal.netlify.app/event/${id}`;
@@ -58,7 +30,7 @@ const Event = () => {
       <div className="particular-event">
         <div className="event-time-info">
           <p className="event-month">
-            {months[new Date(event.date).getMonth()]}
+            {getEventMonth(event.date)}
           </p>
           <p className="event-date">{new Date(event.date).getDate()}</p>
         </div>

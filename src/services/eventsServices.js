@@ -19,6 +19,21 @@ if(!firebase.apps.length) {
 
 const db = firebase.firestore();
 
+const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
 export const addEvents = async (event) => {
     try {
         await db.collection("Events").add({
@@ -123,3 +138,20 @@ export const getDashboardNews = async()=>{
         console.log("Error while accessing dashboard news");
     }
 }
+
+export const getEventStatus = (date) => {
+    let eventDate = new Date(date);
+    let currentDate = new Date();
+    if (eventDate.getTime() < currentDate.getTime()) return "Past";
+    else if (eventDate.getTime() > currentDate.getTime()) return "Future";
+    else return "Present";
+  };
+
+export const getLink = (link) => {
+    if(link.includes("http://") || link.includes("https://")) return link;
+    else return "https://" + link;
+}
+
+export const getEventMonth = (date) => {
+    return months[new Date(date).getMonth()];
+} 

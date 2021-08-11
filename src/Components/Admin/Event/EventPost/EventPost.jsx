@@ -3,7 +3,7 @@ import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
-import { getParticularEvent } from "../../../../services/eventsServices"
+import { getParticularEvent, getLink, getEventStatus, getEventMonth } from "../../../../services/eventsServices"
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Shared/Loader/Loader"
 import Error404 from "../../../Shared/Error404/Error404";
@@ -15,34 +15,6 @@ const copyLink = (id) => {
     description: <p>Event Link Copied to Clipboard</p>,
   });
 };
-
-const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const getEventStatus = (date) => {
-    let eventDate = new Date(date);
-    let currentDate = new Date();
-    if (eventDate.getTime() < currentDate.getTime()) return "Past";
-    else if (eventDate.getTime() > currentDate.getTime()) return "Future";
-    else return "Present";
-  };
-
-  const getLink = (link) => {
-    if(link.includes("http//:") || link.includes("https//:")) return link;
-    else return "https//:" + link;
-  }
 
 const EventPage = () => {
     const [isLoading, setLoading] = useState(true);
@@ -69,7 +41,7 @@ const EventPage = () => {
         <SemanticToastContainer />
         <div className="particular-event">
           <div className="event-time-info">
-            <p className="event-month"> {months[new Date(event.date).getMonth()]}</p>
+            <p className="event-month"> {getEventMonth(event.date)}</p>
             <p className="event-date">{new Date(event.date).getDate()}</p>
           </div>
           <div className="event-info">
