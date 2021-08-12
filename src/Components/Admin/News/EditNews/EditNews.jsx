@@ -24,14 +24,18 @@ const EditNews = (props) => {
   });
 
   useEffect(() => {
-    setNews({
-      id: props.location.obj.id,
-      title: props.location.obj.title,
-      date: props.location.obj.date,
-      place: props.location.obj.place,
-      text: props.location.obj.text,
-      image: props.location.obj.image,
-    });
+    if(props.location.obj) {
+      setNews({
+        id: props.location.obj.id,
+        title: props.location.obj.title,
+        date: props.location.obj.date,
+        place: props.location.obj.place,
+        text: props.location.obj.text,
+        image: props.location.obj.image,
+      });
+      console.log(props.location.obj);
+    } else setredirect("/admin/news")
+    
     if (!user && !isLoading) {
       setredirect("/admin-login");
     }
