@@ -25,6 +25,7 @@ import BlogsCard from "./Components/Blog/BlogsCards/BlogsCard";
 import Error404 from "./Components/Shared/Error404/Error404";
 import AlumniCard from "./Components/MeetAlumni/AlumniCard/AlumniCard";
 import AlumniPage from "./Components/MeetAlumni/AlumniPage/AlumniPage";
+import AdminAlumniPage from "./Components/Admin/Alumni/AlumniPage/AlumniPage"
 import NavDecider from "./Components/Shared/Navbar/NavDecider";
 import HeaderDecider from "./Components/Shared/Header/HeaderDecider";
 import NewsAdminCard from "./Components/Admin/News/News/NewsDashboard";
@@ -37,6 +38,10 @@ import AdminAddAlumni from "./Components/Admin/Alumni/AddAlumni/AddAlumni";
 import AdminEditAlumni from "./Components/Admin/Alumni/EditAlumni/EditAlumni";
 import EditNews from "./Components/Admin/News/EditNews/EditNews";
 import EditBlog from "./Components/Admin/Blog/EditBlog/EditBlog";
+import AddEvent from "./Components/Admin/Event/AddEvent/AddEvent";
+import EventDashboard from "./Components/Admin/Event/EventDashboard/EventDashboard";
+import EditEvent from "./Components/Admin/Event/EditEvent/EditEvent"
+import AdminEventPost from "./Components/Admin/Event/EventPost/EventPost"
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -71,21 +76,26 @@ const App = () => {
                 <Route exact path="/admin-login" component={AdminLogin} />
                 <Route exact path="/admin/add-news" component={AddNews} />
                 <Route exact path="/admin/create-blog" component={AddBlog} />
+                <Route exact path="/admin/add-events" component={AddEvent} />
                 <Route exact path="/alumni" component={AlumniCard} />
                 <Route exact path="/alumni/:id" component={AlumniPage} />
                 <Route exact path="/admin/dashboard" component={Dashboard} />
                 <Route exact path="/admin/gallery" component={AdminGallery}/>
                 <Route exact path="/admin/slider" component={AdminSlider} />
                 <Route exact path="/admin/news" component={NewsAdminCard} />
+                <Route exact path="/admin/events" component={EventDashboard} />
                 <Route exact path="/admin/news/:id" component={AdminNewsPost} />
                 <Route exact path="/admin/blogs" component={BlogsAdminCard} />
                 <Route exact path="/admin/blogs/:id" component={AdminBlogPost} />
                 <Route exact path="/admin/alumni" component={AdminAumniCard} />
                 <Route exact path="/admin/alumni/add-batch" component={AdminAddBatch} />
                 <Route exact path="/admin/alumni/add-alumni" component={AdminAddAlumni} />
+                <Route exact path="/admin/alumni/:batch/:id" component={AdminAlumniPage} />
                 <Route exact path="/admin/alumni/edit-alumni/:id" component={AdminEditAlumni} />
                 <Route exact path="/admin/news/edit-news/:id" component={EditNews} />
                 <Route exact path="/admin/blogs/edit-blog/:id" component={EditBlog} />
+                <Route exact path="/admin/events/edit-events/:id" component={EditEvent} />
+                <Route exact path="/admin/events/:id" component={AdminEventPost} />
                 <Route component={Error404} />
               </Switch>
             </NavDecider>

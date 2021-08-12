@@ -106,7 +106,7 @@ const AlumniCard = () => {
                 </div>
                 <div className="alumni-card-info">
                     <h2 className="alumni-name">
-                        <NavLink to={`/alumni/${alumni.id}`}>{alumni.name}</NavLink>
+                        <NavLink to={`/admin/alumni/${alumni.batch}/${alumni.id}`}>{alumni.name} </NavLink>
                     </h2>
                     <p>Batch- {alumni.batch} </p>
                     <p>{alumni.company} | {alumni.city}</p>
