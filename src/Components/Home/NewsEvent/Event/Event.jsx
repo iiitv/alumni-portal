@@ -15,23 +15,6 @@ const Event = () => {
     fetchEventsLatest()
   },[]);
 
-
-  let events = [
-    {
-      month: "July",
-      date: 15,
-      name: "Alumni Speaks : Getting the funds",
-      timeline: "Future",
-      id: 1,
-    },
-    {
-      month: "July",
-      date: 15,
-      name: "Alumni Speaks : Getting the funds",
-      timeline: "Future",
-      id: 2,
-    },
-  ];
   const renderEvent = (event) => {
     return (
       <div className="particular-event">
