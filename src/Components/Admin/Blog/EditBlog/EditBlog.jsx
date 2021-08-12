@@ -24,15 +24,18 @@ const EditBlog = (props) => {
   });
 
   useEffect(() => {
-    setBlog({
-      id: props.location.obj.id,
-      title: props.location.obj.title,
-      date: props.location.obj.date,
-      place: props.location.obj.place,
-      text: props.location.obj.text,
-      image: props.location.obj.image,
-      author: props.location.obj.author,
-    });
+    if(props.location.obj) {
+      setBlog({
+        id: props.location.obj.id,
+        title: props.location.obj.title,
+        date: props.location.obj.date,
+        place: props.location.obj.place,
+        text: props.location.obj.text,
+        image: props.location.obj.image,
+        author: props.location.obj.author,
+      });
+      console.log(props.location.obj);
+    } else setredirect("/admin/news")
     if (!user && !isLoading) {
       setredirect("/admin-login");
     }
