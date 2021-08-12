@@ -139,6 +139,25 @@ export const getDashboardNews = async()=>{
     }
 }
 
+export const getNewestEvents = async()=>{
+    try {
+        let data = [];
+        let ref = await db.collection("Events").orderBy("date","desc").limit(2).get();
+        ref.forEach((doc) => {
+            data.push({
+                id: doc.id,
+                name: doc.data().name,
+                date: doc.data().date,
+                link: doc.data().link
+            })
+        })
+        return data;
+    } catch (error) {
+        console.log(error.message);
+        console.log("Error while accessing dashboard news");
+    }
+}
+
 export const getEventStatus = (date) => {
     let eventDate = new Date(date);
     let currentDate = new Date();

@@ -37,7 +37,7 @@ const Event = () => {
         <div className="event-info">
           <p className="event-timeline">{getEventStatus(event.date)}</p>
           <p className="event-name">
-            <NavLink to={`/admin/events/${event.id}`}>{event.name}</NavLink>
+            <NavLink to={`events/${event.id}`}>{event.name}</NavLink>
           </p>
           <Link to={{ pathname: getLink(event.link) }} target="_blank" >
             <button className="register-event-btn">Register</button>

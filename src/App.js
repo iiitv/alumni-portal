@@ -70,7 +70,7 @@ const App = () => {
                 <Route exact path="/news" component={NewsCard} />
                 <Route exact path="/news/:id" component={NewsPost} />
                 <Route exact path="/events" component={Event} />
-                <Route exact path="/event/:id" component={EventPage} />
+                <Route exact path="/events/:id" component={EventPage} />
                 <Route exact path="/blogs" component={BlogsCard} />
                 <Route exact path="/blogs/:id" component={BlogsPost} />
                 <Route exact path="/admin-login" component={AdminLogin} />
