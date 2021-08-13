@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import NewsPost from "./Components/News/NewsPost/NewsPost";
 import BlogsPost from "./Components/Blog/BlogsPost/BlogsPost";
-import Footer from "./Components/Shared/Footer/Footer";
 import Event from './Components/Events/Event';
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import EventPage from './Components/Events/EventPage/EventPage'
