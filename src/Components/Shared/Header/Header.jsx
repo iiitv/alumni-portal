@@ -45,9 +45,6 @@ const Header = () => {
             <img src={socialIcons[4]} alt="instagram" className="social-icon" />
           </a>
         </div>
-        <Link to="/admin-login">
-          <button className="button">Sign Up/Login</button>
-        </Link>
       </div>
     </div>
   );

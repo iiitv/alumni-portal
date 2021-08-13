@@ -1,8 +1,8 @@
 import { Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import "./Footer.scss";
+import "./AdminFooter.scss";
 
-const Footer = () => {
+const AdminFooter = () => {
   const items = [
     { content: "Home", key: "Home", link: "/" },
     { content: "About Us", key: "About Us", link: "/about-us" },
@@ -14,7 +14,6 @@ const Footer = () => {
     { content: "News", key: "News", link: "/news" },
     { content: "Events", key: "Events", link: "/events" },
     { content: "Blogs", key: "Blogs", link: "/blogs" },
-    { content: "Admin Login", key: "AdminLogin", link: "/admin-login" },
   ];
 
   const disclaimerText =
@@ -58,4 +57,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default AdminFooter;

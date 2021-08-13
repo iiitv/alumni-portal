@@ -31,7 +31,6 @@ const items = [
   },
   { content: "News", key: "News", link: "/news" },
   { content: "Events", key: "Events", link: "/events" },
-  { content: "Jobs", key: "Jobs", link: "/jobs" },
   { content: "Blogs", key: "Blogs", link: "/blogs" },
 ];
 
