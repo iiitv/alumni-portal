@@ -1,36 +1,35 @@
 import "./Event.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import { getNewestEvents, getEventMonth, getEventStatus, getLink, getEventDate } from "../../../../services/eventsServices"
+import { useEffect, useState } from "react";
 
 const Event = () => {
-  let events = [
-    {
-      month: "July",
-      date: 15,
-      name: "Alumni Speaks : Getting the funds",
-      timeline: "Future",
-      id: 1,
-    },
-    {
-      month: "July",
-      date: 15,
-      name: "Alumni Speaks : Getting the funds",
-      timeline: "Future",
-      id: 2,
-    },
-  ];
+  const [latestEvents, setLatestEvents] = useState([]);
+  
+  const fetchEventsLatest = async () => {
+    let events = await getNewestEvents();
+    setLatestEvents(events);
+    console.log(events)  
+  }
+  useEffect(() => {
+    fetchEventsLatest()
+  },[]);
+
   const renderEvent = (event) => {
     return (
       <div className="particular-event">
         <div className="event-time-info">
-          <p className="event-month">{event.month.toUpperCase()}</p>
-          <p className="event-date">{event.date}</p>
+          <p className="event-month">{getEventMonth(event.date)}</p>
+          <p className="event-date">{getEventDate(event.date)}</p>
         </div>
         <div className="event-info">
-          <p className="event-timeline">{event.timeline}</p>
+          <p className="event-timeline">{getEventStatus(event.date)}</p>
           <p className="event-name">
-            <NavLink to={`/event/${event.id}`}>{event.name}</NavLink>
+            <NavLink to={`/events/${event.id}`}>{event.name}</NavLink>
           </p>
-          <button className="register-event-btn">Register</button>
+          <Link to= {{ pathname: getLink(event.link) }} target="_blank">
+            <button className="register-event-btn">Register</button>
+          </Link>
         </div>
       </div>
     );
@@ -41,9 +40,12 @@ const Event = () => {
       style={{ backgroundImage: `url(asset/images/Home/Event/bg.png)` }}
     >
       <h1 className="event-heading">Events</h1>
-      {events.map((event, index) => (
-        <div key={index}>{renderEvent(event)}</div>
-      ))}
+
+      {latestEvents.map((event, index) => {
+        return(
+          <div key={index}>{renderEvent(event)}</div>
+        )
+      })}
     </div>
   );
 };

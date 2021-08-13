@@ -12,7 +12,6 @@ const AlumniCard = () => {
   const [profile, setProfile] = useState([]);
   let [presentBatch, setPresentBatch] =useState("2017");
 
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -42,7 +41,7 @@ const AlumniCard = () => {
         </div>
         <div className="alumni-card-info">
           <h2 className="alumni-name">
-            <NavLink to={`/alumni/${alumni.id}`}>{alumni.name}</NavLink>
+            <NavLink to={`/alumni/${alumni.batch}/${alumni.id}`}>{alumni.name}</NavLink>
           </h2>
           <p>Batch- {alumni.batch} </p>
           <p>

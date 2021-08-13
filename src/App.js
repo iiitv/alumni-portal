@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import NewsPost from "./Components/News/NewsPost/NewsPost";
 import BlogsPost from "./Components/Blog/BlogsPost/BlogsPost";
-import Footer from "./Components/Shared/Footer/Footer";
 import Event from './Components/Events/Event';
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import EventPage from './Components/Events/EventPage/EventPage'
@@ -42,6 +41,7 @@ import AddEvent from "./Components/Admin/Event/AddEvent/AddEvent";
 import EventDashboard from "./Components/Admin/Event/EventDashboard/EventDashboard";
 import EditEvent from "./Components/Admin/Event/EditEvent/EditEvent"
 import AdminEventPost from "./Components/Admin/Event/EventPost/EventPost"
+import FooterDecider from "./Components/Shared/Footer/FooterDecider";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -70,7 +70,7 @@ const App = () => {
                 <Route exact path="/news" component={NewsCard} />
                 <Route exact path="/news/:id" component={NewsPost} />
                 <Route exact path="/events" component={Event} />
-                <Route exact path="/event/:id" component={EventPage} />
+                <Route exact path="/events/:id" component={EventPage} />
                 <Route exact path="/blogs" component={BlogsCard} />
                 <Route exact path="/blogs/:id" component={BlogsPost} />
                 <Route exact path="/admin-login" component={AdminLogin} />
@@ -78,7 +78,7 @@ const App = () => {
                 <Route exact path="/admin/create-blog" component={AddBlog} />
                 <Route exact path="/admin/add-events" component={AddEvent} />
                 <Route exact path="/alumni" component={AlumniCard} />
-                <Route exact path="/alumni/:id" component={AlumniPage} />
+                <Route exact path="/alumni/:batch/:id" component={AlumniPage} />
                 <Route exact path="/admin/dashboard" component={Dashboard} />
                 <Route exact path="/admin/gallery" component={AdminGallery}/>
                 <Route exact path="/admin/slider" component={AdminSlider} />
@@ -100,7 +100,7 @@ const App = () => {
               </Switch>
             </NavDecider>
           </MediaContextProvider>
-          <Footer />
+          <FooterDecider />
         </Router>
       </UserProvider>
     </div>

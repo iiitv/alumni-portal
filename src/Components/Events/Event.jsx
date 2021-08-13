@@ -2,7 +2,7 @@ import "./Event.scss";
 import { NavLink, Link } from "react-router-dom";
 import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
-import { getAllEvents, getEventMonth, getEventStatus, getLink } from "../../services/eventsServices";
+import { getAllEvents, getEventMonth, getEventStatus, getLink, getEventDate } from "../../services/eventsServices";
 import { useState, useEffect } from "react";
 import Loader from "../Shared/Loader/Loader";
 
@@ -32,12 +32,12 @@ const Event = () => {
           <p className="event-month">
             {getEventMonth(event.date)}
           </p>
-          <p className="event-date">{new Date(event.date).getDate()}</p>
+          <p className="event-date">{getEventDate(event.date)}</p>
         </div>
         <div className="event-info">
           <p className="event-timeline">{getEventStatus(event.date)}</p>
           <p className="event-name">
-            <NavLink to={`/admin/events/${event.id}`}>{event.name}</NavLink>
+            <NavLink to={`events/${event.id}`}>{event.name}</NavLink>
           </p>
           <Link to={{ pathname: getLink(event.link) }} target="_blank" >
             <button className="register-event-btn">Register</button>
