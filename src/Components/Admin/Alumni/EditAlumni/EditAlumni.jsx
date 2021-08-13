@@ -32,31 +32,47 @@ const EditAlumni = (props) => {
   });
 
 
-  const getData = async () => {
-    let val = await getBatches();
-    setBatch(val);
-    setProfile({
-      id: props.location.alumni.id,
-      batch:props.location.alumni.batch,
-      name: props.location.alumni.name,
-      studentId: props.location.alumni.studentId,
-      email: props.location.alumni.email,
-      city: props.location.alumni.city,
-      company: props.location.alumni.company,
-      description: props.location.alumni.description,
-      linkedin: props.location.alumni.linkedin,
-      twitter: props.location.alumni.twitter,
-      gender: props.location.alumni.gender,
-      image: props.location.alumni.image,
-    });
-    setLoading(false);
-  }
+  // const getData = async () => {
+  //   let val = await getBatches();
+  //   setBatch(val);
+  //   setProfile({
+  //     id: props.location.alumni.id,
+  //     batch:props.location.alumni.batch,
+  //     name: props.location.alumni.name,
+  //     studentId: props.location.alumni.studentId,
+  //     email: props.location.alumni.email,
+  //     city: props.location.alumni.city,
+  //     company: props.location.alumni.company,
+  //     description: props.location.alumni.description,
+  //     linkedin: props.location.alumni.linkedin,
+  //     twitter: props.location.alumni.twitter,
+  //     gender: props.location.alumni.gender,
+  //     image: props.location.alumni.image,
+  //   });
+  //   setLoading(false);
+  // }
 
   useEffect(() => {
+    if(props.location.alumni) {
+      console.log("hi mf from if");
+      setProfile({
+        id: props.location.alumni.id,
+        batch:props.location.alumni.batch,
+        name: props.location.alumni.name,
+        studentId: props.location.alumni.studentId,
+        email: props.location.alumni.email,
+        city: props.location.alumni.city,
+        company: props.location.alumni.company,
+        description: props.location.alumni.description,
+        linkedin: props.location.alumni.linkedin,
+        twitter: props.location.alumni.twitter,
+        gender: props.location.alumni.gender,
+        image: props.location.alumni.image,
+      });
+    } else setredirect("/admin/alumni")
     if (!user && !isLoading) {
       setredirect("/admin-login");
     }
-    getData();
   }, [user, isLoading]);
   if (redirect) {
     return <Redirect to={redirect} />;
@@ -104,8 +120,9 @@ const EditAlumni = (props) => {
 ]
   return (
     <div className="add-news">
+      <p>nksdckdsjk</p>
       {isLoading && <Loader />}
-      {!isLoading && !isLoadingBatch && (
+      {!isLoading &&  (
         <div>
           <h2 className="heading">Add Alumni</h2>
           <p className="line"></p>

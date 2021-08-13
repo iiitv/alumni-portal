@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import NewsPost from "./Components/News/NewsPost/NewsPost";
 import BlogsPost from "./Components/Blog/BlogsPost/BlogsPost";
+import Footer from "./Components/Shared/Footer/Footer";
 import Event from './Components/Events/Event';
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import EventPage from './Components/Events/EventPage/EventPage'
@@ -41,7 +42,6 @@ import AddEvent from "./Components/Admin/Event/AddEvent/AddEvent";
 import EventDashboard from "./Components/Admin/Event/EventDashboard/EventDashboard";
 import EditEvent from "./Components/Admin/Event/EditEvent/EditEvent"
 import AdminEventPost from "./Components/Admin/Event/EventPost/EventPost"
-import FooterDecider from "./Components/Shared/Footer/FooterDecider";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -90,8 +90,8 @@ const App = () => {
                 <Route exact path="/admin/alumni" component={AdminAumniCard} />
                 <Route exact path="/admin/alumni/add-batch" component={AdminAddBatch} />
                 <Route exact path="/admin/alumni/add-alumni" component={AdminAddAlumni} />
-                <Route exact path="/admin/alumni/:batch/:id" component={AdminAlumniPage} />
                 <Route exact path="/admin/alumni/edit-alumni/:id" component={AdminEditAlumni} />
+                <Route exact path="/admin/alumni/:batch/:id" component={AdminAlumniPage} />
                 <Route exact path="/admin/news/edit-news/:id" component={EditNews} />
                 <Route exact path="/admin/blogs/edit-blog/:id" component={EditBlog} />
                 <Route exact path="/admin/events/edit-events/:id" component={EditEvent} />
@@ -100,7 +100,7 @@ const App = () => {
               </Switch>
             </NavDecider>
           </MediaContextProvider>
-          <FooterDecider />
+          <Footer />
         </Router>
       </UserProvider>
     </div>

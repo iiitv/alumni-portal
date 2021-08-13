@@ -79,7 +79,7 @@ const AddAlumni = () => {
   } catch(err) {
     setErrorMessage(err.message);
   }
-      
+    history.goBack();
   }; 
 
 
