@@ -3,7 +3,7 @@ import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
-import { getParticularEvent, getLink, getEventStatus, getEventMonth } from "../../../../services/eventsServices"
+import { getParticularEvent, getLink, getEventStatus, getEventMonth, getEventDate } from "../../../../services/eventsServices"
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Shared/Loader/Loader"
 import Error404 from "../../../Shared/Error404/Error404";
@@ -42,7 +42,7 @@ const EventPage = () => {
         <div className="particular-event">
           <div className="event-time-info">
             <p className="event-month"> {getEventMonth(event.date)}</p>
-            <p className="event-date">{new Date(event.date).getDate()}</p>
+            <p className="event-date">{getEventDate(event.date)}</p>
           </div>
           <div className="event-info">
             <p className="event-timeline">{getEventStatus(event.date)}</p>

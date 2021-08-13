@@ -174,3 +174,7 @@ export const getLink = (link) => {
 export const getEventMonth = (date) => {
     return months[new Date(date).getMonth()];
 } 
+
+export const getEventDate = (date) => {
+    return new Date(date).getDate();
+}

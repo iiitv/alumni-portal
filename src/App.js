@@ -78,7 +78,7 @@ const App = () => {
                 <Route exact path="/admin/create-blog" component={AddBlog} />
                 <Route exact path="/admin/add-events" component={AddEvent} />
                 <Route exact path="/alumni" component={AlumniCard} />
-                <Route exact path="/alumni/:id" component={AlumniPage} />
+                <Route exact path="/alumni/:batch/:id" component={AlumniPage} />
                 <Route exact path="/admin/dashboard" component={Dashboard} />
                 <Route exact path="/admin/gallery" component={AdminGallery}/>
                 <Route exact path="/admin/slider" component={AdminSlider} />

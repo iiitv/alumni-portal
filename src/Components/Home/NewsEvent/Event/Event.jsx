@@ -1,6 +1,6 @@
 import "./Event.scss";
 import { NavLink, Link } from "react-router-dom";
-import { getNewestEvents, getEventMonth, getEventStatus, getLink } from "../../../../services/eventsServices"
+import { getNewestEvents, getEventMonth, getEventStatus, getLink, getEventDate } from "../../../../services/eventsServices"
 import { useEffect, useState } from "react";
 
 const Event = () => {
@@ -20,7 +20,7 @@ const Event = () => {
       <div className="particular-event">
         <div className="event-time-info">
           <p className="event-month">{getEventMonth(event.date)}</p>
-          <p className="event-date">{new Date(event.date).getDate()}</p>
+          <p className="event-date">{getEventDate(event.date)}</p>
         </div>
         <div className="event-info">
           <p className="event-timeline">{getEventStatus(event.date)}</p>

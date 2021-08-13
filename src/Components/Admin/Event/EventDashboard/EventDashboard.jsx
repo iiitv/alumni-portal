@@ -2,7 +2,7 @@ import "./EventDashboard.scss";
 import { NavLink, Link, Redirect } from "react-router-dom";
 import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
-import { deleteEvent, getAllEvents, getLink, getEventStatus, getEventMonth } from "../../../../services/eventsServices";
+import { deleteEvent, getAllEvents, getLink, getEventStatus, getEventMonth, getEventDate } from "../../../../services/eventsServices";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../../../providers/UserProvider";
 import { useLocation } from "react-router";
@@ -91,7 +91,7 @@ const Event = () => {
           <p className="event-month">
             {getEventMonth(event.date)}
           </p>
-          <p className="event-date">{new Date(event.date).getDate()}</p>
+          <p className="event-date">{getEventDate(event.date)}</p>
         </div>
         <div className="event-info">
           <p className="event-timeline">{getEventStatus(event.date)}</p>
