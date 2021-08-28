@@ -129,7 +129,7 @@ const AlumniCard = () => {
                         onChange={batchChange}
                     />
                 </div>
-                <h3> Strength - 120</h3>
+                <h3> Strength - {profile.length}</h3>
                 <h1> Batch of <strong className='batch-year'>{presentBatch}</strong></h1>
             </div>
         );

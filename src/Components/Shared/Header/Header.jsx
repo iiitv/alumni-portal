@@ -1,6 +1,5 @@
 import React from "react";
 import { Divider } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 import "./Header.scss";
 
 const Header = () => {
@@ -45,9 +44,6 @@ const Header = () => {
             <img src={socialIcons[4]} alt="instagram" className="social-icon" />
           </a>
         </div>
-        <Link to="/admin-login">
-          <button className="button">Sign Up/Login</button>
-        </Link>
       </div>
     </div>
   );
