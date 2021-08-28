@@ -7,6 +7,7 @@ import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import { UserContext } from "../../../../providers/UserProvider";
 import { getParticularAlumniInfo } from "../../../../services/alumniServices"
 import Loader from "../../../../Components/Shared/Loader/Loader"
+import { getLink } from "../../../../services/utils"
 
 const containerMargin = {
   marginTop: "5%",
@@ -25,10 +26,7 @@ const AlumniPost = (props) => {
   const [notFound, setNotFound] = useState(false);
   const { id } = useParams();
   const { batch } = useParams();
-  const getLink = (link) => {
-    if(link.includes("http//:") || link.includes("https//:")) return link;
-    else return "https//:" + link;
-  }
+
   const fetchData = async () => {
     let data = await getParticularAlumniInfo(batch, id);
     if (data == null) {

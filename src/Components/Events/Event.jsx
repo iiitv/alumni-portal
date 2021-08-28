@@ -2,7 +2,8 @@ import "./Event.scss";
 import { NavLink, Link } from "react-router-dom";
 import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
-import { getAllEvents, getEventMonth, getEventStatus, getLink, getEventDate } from "../../services/eventsServices";
+import { getAllEvents, getEventMonth, getEventStatus, getEventDate } from "../../services/eventsServices";
+import { getLink } from "../../services/utils"
 import { useState, useEffect } from "react";
 import Loader from "../Shared/Loader/Loader";
 

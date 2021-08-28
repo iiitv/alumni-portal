@@ -166,11 +166,6 @@ export const getEventStatus = (date) => {
     else return "Present";
   };
 
-export const getLink = (link) => {
-    if(link.includes("http://") || link.includes("https://")) return link;
-    else return "https://" + link;
-}
-
 export const getEventMonth = (date) => {
     return months[new Date(date).getMonth()];
 } 

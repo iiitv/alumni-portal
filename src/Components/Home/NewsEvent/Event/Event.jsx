@@ -1,6 +1,7 @@
 import "./Event.scss";
 import { NavLink, Link } from "react-router-dom";
-import { getNewestEvents, getEventMonth, getEventStatus, getLink, getEventDate } from "../../../../services/eventsServices"
+import { getLink } from "../../../../services/utils"
+import { getNewestEvents, getEventMonth, getEventStatus, getEventDate } from "../../../../services/eventsServices"
 import { useEffect, useState } from "react";
 
 const Event = () => {

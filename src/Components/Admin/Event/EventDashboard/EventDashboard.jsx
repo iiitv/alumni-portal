@@ -2,8 +2,9 @@ import "./EventDashboard.scss";
 import { NavLink, Link, Redirect } from "react-router-dom";
 import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
-import { deleteEvent, getAllEvents, getLink, getEventStatus, getEventMonth, getEventDate } from "../../../../services/eventsServices";
+import { deleteEvent, getAllEvents, getEventStatus, getEventMonth, getEventDate } from "../../../../services/eventsServices";
 import { useState, useEffect, useContext } from "react";
+import { getLink } from "../../../../services/utils"
 import { UserContext } from "../../../../providers/UserProvider";
 import { useLocation } from "react-router";
 import Loader from "../../../Shared/Loader/Loader";

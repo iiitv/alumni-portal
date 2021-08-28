@@ -3,7 +3,8 @@ import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
-import { getParticularEvent, getLink, getEventStatus, getEventMonth, getEventDate } from "../../../services/eventsServices"
+import { getParticularEvent, getEventStatus, getEventMonth, getEventDate } from "../../../services/eventsServices"
+import { getLink } from "../../../services/utils"
 import { Link } from "react-router-dom";
 import Loader from "../../Shared/Loader/Loader"
 import Error404 from "../../Shared/Error404/Error404";

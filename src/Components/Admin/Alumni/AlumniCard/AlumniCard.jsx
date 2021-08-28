@@ -32,6 +32,7 @@ const AlumniCard = () => {
         let val = await getBatches();
         setBatch(val);
         let profiles =await getBatchProfiles(presentBatch);
+        console.log(profiles[0]);
         setProfile(profiles);
         setLoading(false);
     }
@@ -61,7 +62,7 @@ const AlumniCard = () => {
                 <Popup 
                     content = "edit"
                     trigger = {
-                    <Link to={{pathname: `${location.pathname}/edit-alumni/${alumni.id}`, alumni: {
+                    <Link to={{pathname: `/admin/alumni/edit-alumni/${alumni.id}`, alumni: {
                         id: alumni.id,
                         batch: alumni.batch,
                         name: alumni.name,
