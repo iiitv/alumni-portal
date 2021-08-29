@@ -34,14 +34,14 @@
     color: #2f88a5;
 }
 .news-image-div{
+    width: 70%;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
 }
 .news-image {
     border-radius: 0.5rem;
-    max-width: 100%;
-    max-height: 100%;
+    object-fit: contain;
 }
 .share-news-div{
     text-align: right;

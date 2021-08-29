@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import { useState, useEffect } from 'react';
 import { getParticularNews } from "../../../../services/newsServices";
-import Loader from '../../../Shared/Error404/Error404'
-import Error404 from "../../../Shared/Loader/Loader";
+import Loader from '../../../Shared/Loader/Loader'
+import Error404 from "../../../Shared/Error404/Error404";
 
 const containerMargin = {
   marginTop: "5%",

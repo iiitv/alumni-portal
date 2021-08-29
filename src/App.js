@@ -83,8 +83,8 @@ const App = () => {
                 <Route exact path="/admin/gallery" component={AdminGallery}/>
                 <Route exact path="/admin/slider" component={AdminSlider} />
                 <Route exact path="/admin/news" component={NewsAdminCard} />
-                <Route exact path="/admin/events" component={EventDashboard} />
                 <Route exact path="/admin/news/:id" component={AdminNewsPost} />
+                <Route exact path="/admin/events" component={EventDashboard} />
                 <Route exact path="/admin/blogs" component={BlogsAdminCard} />
                 <Route exact path="/admin/blogs/:id" component={AdminBlogPost} />
                 <Route exact path="/admin/alumni" component={AdminAumniCard} />

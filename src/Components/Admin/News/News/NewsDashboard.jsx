@@ -19,6 +19,7 @@ const NewsAdminCard = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  const location = useLocation();
   const deleteNewsHandler = async (obj) => {
     try {
       await deleteNews(obj);
@@ -28,7 +29,6 @@ const NewsAdminCard = () => {
         console.log(err.message);
       }
   }
-  const location = useLocation();
   const renderNews = (obj) => {
     return (
       <div className="news-block">
@@ -51,19 +51,7 @@ const NewsAdminCard = () => {
                 />
               </Link>
             }
-            // onClick={() => {
-            //   let path = `dashboard`;
-            //   history.push(path, this.state.obj);
-            // }}
           />
-          {/* <Link to={`${location.pathname}/edit-news/${obj.id}`}>
-            <img 
-              className="icon-btn"
-              src={"/asset/images/Home/Admin/NewsNBlogs/edit.png"}
-              alt="edit-news"
-            />
-          </Link> */}
-          
           <Popup 
             content = "delete"
             trigger = {
@@ -73,7 +61,7 @@ const NewsAdminCard = () => {
                 onClick={() => {
                   deleteNewsHandler(obj);
                 }}
-                alt=""
+                alt="delete-news"
               />
             }
           />
