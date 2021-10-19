@@ -5,7 +5,6 @@ import "./Footer.scss";
 const Footer = () => {
   const items = [
     { content: "Home", key: "Home", link: "/" },
-    { content: "About Us", key: "About Us", link: "/about-us" },
     {
       content: "Meet the Alumni",
       key: "Meet the Alumni",

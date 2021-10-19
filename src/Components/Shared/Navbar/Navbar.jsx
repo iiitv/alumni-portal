@@ -23,7 +23,6 @@ const { Media } = AppMedia;
 
 const items = [
   { content: "Home", key: "Home", link: "/" },
-  { content: "About Us", key: "About Us", link: "/about-us" },
   {
     content: "Alumni",
     key: "Alumni",

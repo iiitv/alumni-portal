@@ -42,6 +42,7 @@ import AddEvent from "./Components/Admin/Event/AddEvent/AddEvent";
 import EventDashboard from "./Components/Admin/Event/EventDashboard/EventDashboard";
 import EditEvent from "./Components/Admin/Event/EditEvent/EditEvent"
 import AdminEventPost from "./Components/Admin/Event/EventPost/EventPost"
+import FooterDecider from "./Components/Shared/Footer/FooterDecider";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -100,7 +101,7 @@ const App = () => {
               </Switch>
             </NavDecider>
           </MediaContextProvider>
-          <Footer />
+          <FooterDecider />
         </Router>
       </UserProvider>
     </div>
