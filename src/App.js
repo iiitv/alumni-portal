@@ -42,6 +42,7 @@ import AddEvent from "./Components/Admin/Event/AddEvent/AddEvent";
 import EventDashboard from "./Components/Admin/Event/EventDashboard/EventDashboard";
 import EditEvent from "./Components/Admin/Event/EditEvent/EditEvent"
 import AdminEventPost from "./Components/Admin/Event/EventPost/EventPost"
+import FooterDecider from "./Components/Shared/Footer/FooterDecider";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -83,8 +84,8 @@ const App = () => {
                 <Route exact path="/admin/gallery" component={AdminGallery}/>
                 <Route exact path="/admin/slider" component={AdminSlider} />
                 <Route exact path="/admin/news" component={NewsAdminCard} />
-                <Route exact path="/admin/events" component={EventDashboard} />
                 <Route exact path="/admin/news/:id" component={AdminNewsPost} />
+                <Route exact path="/admin/events" component={EventDashboard} />
                 <Route exact path="/admin/blogs" component={BlogsAdminCard} />
                 <Route exact path="/admin/blogs/:id" component={AdminBlogPost} />
                 <Route exact path="/admin/alumni" component={AdminAumniCard} />
@@ -100,7 +101,7 @@ const App = () => {
               </Switch>
             </NavDecider>
           </MediaContextProvider>
-          <Footer />
+          <FooterDecider />
         </Router>
       </UserProvider>
     </div>
