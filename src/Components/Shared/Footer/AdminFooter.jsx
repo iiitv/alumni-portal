@@ -9,7 +9,7 @@ const AdminFooter = () => {
     {
       content: "Meet the Alumni",
       key: "Meet the Alumni",
-      link: "/meet-the-alumni",
+      link: "/alumni",
     },
     { content: "News", key: "News", link: "/news" },
     { content: "Events", key: "Events", link: "/events" },
