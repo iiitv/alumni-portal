@@ -1,0 +1,36 @@
+.all-event-info{
+    width: 70%;
+    margin: 0 auto;
+}
+.all-event-info .particular-event{
+    position: relative;
+    border: 1px solid #4140400e;
+    border-radius: 5px;
+    box-shadow: 1.5px 1.5px 1.5px rgba(0,0,0,0.1);
+}
+.all-event-info .event-time-info{
+    padding: 0 5px;
+    text-align: center;
+    flex:1;
+}
+.all-event-info .event-info{
+    flex:6;
+}
+.share-event-btn{
+    cursor: pointer;
+    position: absolute;
+    right: 2%;
+    top: 10;
+    height: 20px;
+}
+
+.events-container {
+    margin: 0 5% 0 5%;
+}
+
+@media only screen and (max-width:800px) {
+    .all-event-info{
+        width: 90%;
+        margin: 0 auto;
+    }
+}

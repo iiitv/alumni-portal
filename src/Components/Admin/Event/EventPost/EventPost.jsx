@@ -1,13 +1,13 @@
-import "./EventPage.scss";
+import "./EventPost.scss";
 import { Popup } from "semantic-ui-react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
-import { getParticularEvent, getEventStatus, getEventMonth, getEventDate } from "../../../services/eventsServices"
-import { getLink } from "../../../services/utils"
+import { getParticularEvent, getEventStatus, getEventMonth, getEventDate } from "../../../../services/eventsServices"
+import { getLink } from "../../../../services/utils"
 import { Link } from "react-router-dom";
-import Loader from "../../Shared/Loader/Loader"
-import Error404 from "../../Shared/Error404/Error404";
+import Loader from "../../../../Components/Shared/Loader/Loader"
+import Error404 from "../../../Shared/Error404/Error404";
 
 const copyLink = (id) => {
   let link = `https://iiitv-alumni-portal.netlify.app/event/${id}`;
@@ -69,7 +69,7 @@ const EventPage = () => {
           <p>{event.description}</p>
         </div>
         <div className="event-button">
-            <Link to={{ pathname: getLink(event.link) }} target="_blank" >
+        <Link to={{ pathname: getLink(event.link) }} target="_blank" >
           <button className="register-event-btn">Register</button>
             </Link>
         </div>

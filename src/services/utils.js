@@ -43,3 +43,8 @@ export const deleteImage = async (img, folderName) => {
     }
     console.log("Image Deleted Successfully")
 }
+
+export const getLink = (link) => {
+    if(link.includes("http://") || link.includes("https://")) return link;
+    else return "https://" + link;
+}

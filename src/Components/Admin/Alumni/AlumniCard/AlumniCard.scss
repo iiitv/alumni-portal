@@ -1,0 +1,40 @@
+.alumni-dir-head-admin{
+  margin: 10px 60px;
+  padding: 5px 10px;
+  color: #18535b;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: #18535b;
+}
+
+.alumni-admin-add-area{
+  display: flex;
+  justify-content: space-between;
+}
+
+.alumni-admin-add-btn{
+  font-family: 'ReemKufi';
+  background-color: #18535B;
+  color: #ffff;
+  font-size: 1.2rem;
+  background-color: #18535B;
+  padding: 1rem;
+  border-width: 0;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.alumni-admin-add-btn:hover{
+  background-color: #26818d;
+}
+
+@media only screen and (max-width: 800px) {
+  .alumni-dir-head-admin{
+    flex-direction: column;
+  }
+  .alumni-admin-add-btn{
+    margin-left: 0px;
+    font-size: 1.1rem;
+  }
+}

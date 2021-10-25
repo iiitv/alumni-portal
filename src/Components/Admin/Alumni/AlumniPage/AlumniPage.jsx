@@ -1,11 +1,13 @@
 import "./AlumniPage.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Container, Segment, Popup } from "semantic-ui-react";
-import { useLocation, useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { useLocation, useParams, useHistory } from "react-router";
+import { Link, Redirect } from "react-router-dom";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
-import { getParticularAlumniInfo } from "../../../services/alumniServices"
-import Loader from "../../../Components/Shared/Loader/Loader"
+import { UserContext } from "../../../../providers/UserProvider";
+import { getParticularAlumniInfo } from "../../../../services/alumniServices"
+import Loader from "../../../../Components/Shared/Loader/Loader"
+import { getLink } from "../../../../services/utils"
 
 const containerMargin = {
   marginTop: "5%",
@@ -13,17 +15,17 @@ const containerMargin = {
 
 const websitePrefix = "https://iiitv-alumni-portal.netlify.app";
 
-const AlumniPost = () => {
+const AlumniPost = (props) => {
   const location = useLocation();
+  const history = useHistory();
+  const info = useContext(UserContext);
+  const { user, isLoading } = info;
   const [loading, setLoading] = useState(true);
   const [alumniInfo, setAlumniInfo] = useState({});
+  const [redirect, setRedirect] = useState("")
   const [notFound, setNotFound] = useState(false);
   const { id } = useParams();
   const { batch } = useParams();
-  const getLink = (link) => {
-    if(link.includes("http//:") || link.includes("https//:")) return link;
-    else return "https//:" + link;
-  }
 
   const fetchData = async () => {
     let data = await getParticularAlumniInfo(batch, id);
@@ -35,8 +37,15 @@ const AlumniPost = () => {
     setLoading(false);
   }
   useEffect(() => {
-      fetchData();
-  },[]);
+      if (!user && !isLoading) {
+        setRedirect("/admin-login");
+      }
+      else fetchData();
+  },[user, isLoading]);
+
+  if (redirect) {
+    return <Redirect to={redirect} />;
+  }
 
   const copyLink = () => {
     let link = websitePrefix + location.pathname;
